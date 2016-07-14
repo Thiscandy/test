@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>学习资料</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>网站系统开发</h1>
+		<h3>开发主网页名称为：index.html</h3>
+		<p>开发用到以下插件：</p>
+		<ul>
+			<li>easyui-layout:布局框架</li>
+			<li>easyui-accordion:手风琴</li>
+			<li>easyui-linkbutton：链接按钮</li>
+			<li>easyui-tabs：选项卡</li>
+		</ul>
+		<h3>开发基础页面</h3>
+		<p>代码如下所示：</p>
+		<pre style="color:#060">
+		&lt;body class=&quot;easyui-layout&quot;&gt;
+
+		/* 在body里加入布局框架 */
+
+		&lt;div data-options=&quot;region:'north',border:false&quot; style=&quot;height:60px; background-image:url(images/bj.jpg);&quot;&gt;
+
+		/* 加入框架属性：布局区域：北区，清除边框，加入背景图片 */
+
+			BI
+		&lt;/div&gt;
+
+		&lt;div data-options=&quot;region:'west',title:'导航栏',border:false&quot; class=&quot;divle&quot;&gt;
+
+		/* 加入框架属性：布局区域：西区，名字为导航栏，清除边框，套用样式divle */
+
+		&lt;div id=&quot;aa&quot; class=&quot;easyui-accordion&quot; style=&quot;width:100%;&quot;&gt;
+
+		/* 设置ID，加入手风琴框架，适应宽度 */
+
+			&lt;div title=&quot;BI&quot; data-options=&quot;iconCls:'icon-more',selected:true&quot; class=&quot;xl&quot;&gt;
+
+			/* 设置名字为BI，加入框架属性，提供背景，该面板为选中，套用样式xl */
+
+				&lt;div class=&quot;easyui-linkbutton&quot; onclick=&quot;addTab('冻结库存查询','spgl/djkccx.asp')&quot;&gt;冻结库存查询&lt;/div&gt;
+
+				/* 加入链接按钮框架，点击事件函数 */
+
+			&lt;/div&gt;  
+		&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div data-options=&quot;region:'center',border:false&quot;&gt;
+
+		/* 加入框架属性：布局区域：中区，清除边框 */
+
+		&lt;div id=&quot;tt&quot; class=&quot;easyui-tabs&quot; style=&quot;width:100%; height:100%;&quot;&gt; &lt;div title=&quot;主页&quot;&gt;&lt;/div&gt; &lt;/div&gt;
+
+		/* 设置ID，加入选项卡框架，样式为宽高自适应，创建一个空的主页 */
+
+		&lt;/div&gt;
+		&lt;/body&gt;
+		</pre>
+		<p>总结：</p>
+		<p class="p-blue">布局时应注意<b>区域</b>，是否加入背景，套用的样式规格大小，注意按钮跳转的事件名或文件名是否<b>正确</b>。</p>
+
+		<h3>开发主页的函数事件</h3>
+		<p>代码如下所示：</p>
+		<pre style="color:#060">
+		&lt;script&gt;
+
+		function addTab(title, url)
+		{
+			if ($('#tt').tabs('exists', title))
+			{
+				$('#tt').tabs('select', title);
+			} 
+			else 
+			{
+				var content = '&lt;iframe scrolling=&quot;auto&quot; frameborder=&quot;0&quot;  src=&quot;'+url+'&quot;&gt;&lt;/iframe&gt;';
+				$('#tt').tabs('add',{ title:title, content:content, closable:true });
+			}
+		}
+
+		//如果点击addTab事件，判断当前的tab是否存在，如果存在就 自动选中那个页面并显示 否则 创建新的tab。closable:true是否关闭
+
+		function retab(ti)
+		{
+			var currTab=$('#tt').tabs('getTab',ti);
+
+			//获取标签页的对象
+
+			var src=$(currTab.panel('options').content).attr('src');
+
+			//获取指定标签页的路径
+
+			$('#tt').tabs('update',{ tab:currTab, options:{ content:'&lt;iframe scrolling=&quot;auto&quot; frameborder=&quot;0&quot;  src=&quot;'+src+'&quot;&gt;&lt;/iframe&gt;' } });
+
+			//更新标签页里面的内容
+		}
+
+		//刷新选项卡的内容
+
+		function iftoinclo(na)
+		{
+			$('#tt').tabs('close', na);
+		}
+
+		//给子页面给予关闭，调用关闭是iftoinclo（title）；
+
+		&lt;/script&gt;
+		</pre>
+		<p>总结：</p>
+		<p class="p-blue">注意</p>
+
+
+		<h3>开发分页的页面</h3>
+		<p>代码如下所示：</p>
+		<pre style="color:#060">
+		<!--divz-->
+		&lt;div class="divz"&gt;
+		&lt;div class="easyui-layout" data-options="fit:true"&gt;
+
+		/* 加入布局框架，加入属性：设置该面板尺寸适合于它的父容器。 */
+
+			&lt;div data-options="region:'center',border:false"&gt;
+
+			/* 加入属性：布局区域：中区，清除边框 */
+
+				&lt;div id="dg"&gt;&lt;/div&gt;
+
+				/* 创建一个放表格的div */
+
+				&lt;div id="toolbar"&gt;
+
+			//////&lt;div style="margin:5px"&gt;
+				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newtype()"&gt;新增&lt;/a&gt;
+				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edittype()"&gt;修改&lt;/a&gt;
+				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removetype()"&gt;删除&lt;/a&gt;
+				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="cleardg()"&gt;刷新&lt;/a&gt;
+			&lt;/div&gt;//////
+
+					&lt;div style="margin:5px;"&gt;   
+						&lt;span style="margin-left:5px;"&gt;PO单号:&lt;/span&gt;
+						&lt;input id="mc" class="easyui-textbox"&gt;
+						&lt;span style="margin-left:20px;"&gt;&lt;a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="doSearch()"&gt;查询&lt;/a&gt;&lt;/span&gt;
+						&lt;span style="margin-left:20px;" onclick="update()"&gt;&lt;a href="#" class="easyui-linkbutton"&gt;&nbsp;导&nbsp;入&nbsp;&lt;/a&gt;&lt;/span&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+				
+			&lt;div data-options="region:'south',border:false,split:true" style="height:40%;"&gt;
+				&lt;div id="dgyscm"&gt;&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+				
+		&lt;div style="display:none;"&gt;&lt;iframe id="dowif"&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+
+		&lt;div id="dlg" class="easyui-dialog" style="width:390px; height:244px;" closed="true" modal="true" buttons="#dlg-buttons"&gt;
+		&lt;form id="fm" method="post" novalidate&gt;
+			&lt;input name="YBSKU" type="hidden"&gt;
+			&lt;div class="fitem" style="margin:30px 0px;"&gt;
+			        &lt;span class="text"&gt;文件:&lt;/span&gt;
+			        &lt;input class="easyui-filebox" name="file1" data-options="prompt:'请选择文件...',buttonText:'选择文件'" style="width:260px"&gt;
+			   &lt;/div&gt;
+			&lt;div class="fitem" style="height:50px;line-height:50px;margin-bottom:10px;"&gt;
+			        &lt;a href="#" class="easyui-linkbutton" style="width:100%"&gt;提交文件&lt;/a&gt;
+			   &lt;/div&gt;
+			    
+		&lt;/form&gt;
+		&lt;/div&gt;
+		&lt;div id="dlg-buttons"&gt;
+			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="savetype()"&gt;确定&lt;/a&gt;
+			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')"&gt;取消&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;/div&gt;
+		</pre>
+		<h3>开发分页的函数事件</h3>
+		<p>代码如下所示：</p>
+		<pre style="color:#060;">
+		&lt;script&gt;
+		$(document).ready(function(){ dg(); dgyscm(); });
+
+		function dg()
+		{
+			$('#dg').datagrid({
+				title:'冻结库存',
+				width:'99.9%',
+				height:'100%',
+				//fitColumns:'true',
+				url:'spgl_json_get.asp',
+				toolbar:'#toolbar',
+				singleSelect:'true',
+				method:'post',
+				rownumbers:'true',
+				autoRowHeight:'true',
+				pagination:'true',
+				pageSize:50,
+				pageNumber:1,
+				pageList:[50,100,150,200],
+				onClickRow:function(){
+					var row = $('#dg').datagrid('getSelected');
+					$.post('spgl_if_json_get.asp',{ SPU:row.SPU },function(result){},'json');
+					$('#dgyscm').datagrid('reload');
+		  		},
+				frozenColumns:[[
+					{field:'TPLJ',title:'PO单号',width:150,align:'center'},
+					{field:'SUCode',title:'店铺',width:150,align:'center'},
+					{field:'SPU',title:'条码',width:150,align:'center'},
+					{field:'SP_Name',title:'文件MD5',width:150,align:'center'},
+				]],
+				columns:[[
+					{field:'SPJC',title:'冻结数量',width:100,align:'center'},
+					{field:'JLDW',title:'销售数量',width:100,align:'center'},
+					{field:'JLDW',title:'开始时间',width:150,align:'center'},
+					{field:'modifytime',title:'截止时间',width:150,align:'center'},
+					{field:'JLDW',title:'创建时间',width:150,align:'center'}
+				]]
+			});
+		}
+
+		function dgyscm()
+		{
+			$('#dgyscm').datagrid({
+				title:'库存明细',
+				width:'99.9%',
+				height:'100%',
+				//fitColumns:'true',
+				url:'spgl_if_json_get.asp',
+				singleSelect:'true',
+				method:'post',
+				rownumbers:'true',
+				autoRowHeight:'true',
+				pagination:'true',
+				pageSize:20,
+				pageNumber:1,
+				pageList:[20,30,40,50],
+				queryParams:{ lx:'yscm' },
+				frozenColumns:[[
+					{field:'TPLJ',title:'图片',width:150,align:'center'},
+					{field:'SPU',title:'SPU',width:150,align:'center'},
+					{field:'SKC',title:'SKC',width:150,align:'center'},
+					{field:'SKU',title:'SKU',width:150,align:'center'}
+				]],
+				columns:[[
+					{field:'SKU_FLMC',title:'尺码',width:100,align:'center'},
+					{field:'SKU_NAME',title:'尺码代码',width:100,align:'center'},
+					{field:'所属色系',title:'所属色系',width:100,align:'center'},
+					{field:'SKC_FLMC',title:'颜色',width:100,align:'center'},
+					{field:'SKC_NAME',title:'颜色代码',width:100,align:'center'},
+					{field:'MODIFY_TIME',title:'最后修改时间',width:150,align:'center'}
+				]]
+			});
+		}
+
+		function cleardg()
+		{
+			$('#dg').datagrid('reload');
+			$('#dgyscm').datagrid('loadData', { total: 0, rows: [] });
+		}
+
+		function doSearch()
+		{
+			$('#dg').datagrid('load',{
+				mc: $("#mc").textbox('getValue'),
+				lx:	$("#sellx").combobox('getValue')
+			});
+		}
+
+		function msgshow(lx,cod,msg)
+		{
+			if(lx=='del')
+			{
+				switch(cod)
+				{
+					case 1:
+						$('#dg').datagrid('reload');
+						cleardg();
+						break;
+					case 2:
+						tsshow('SPU不能为空！');
+						break;
+					case 3:
+						tsshow('不存在该SPU！');
+						break;
+					default:
+						tsshow(msg);
+						break;				
+				}
+			}
+		}
+
+		function update()
+		{
+			$('#dlg').dialog({ title:'导入文件' }).dialog('open');
+		}
+		&lt;/script&gt;
+		</pre>
+
+		<!-- 工作总结-begin -->
+		<h1>工作总结</h1>
+		<h3>工作内容：</h3>
+		<ul>
+			<li>开发页面</li>
+			<li>开发按钮事件函数</li>
+			<li>判断按钮函数事件</li>
+			<li>实现事件的数据交互</li>
+		</ul>
+		<p class="p-1">开发页面</p>
+		<ul>		
+			<li class="p-2">主页面</li>
+			<span class="span-margin">布局框架、手风琴、链接按钮、选项卡</span>
+			<li class="p-2">分页面(选项卡)</li>
+			<span class="span-margin">上下双窗口布局、单数据表格显示、数据的增删改查按钮、导入导出按钮显示</span>
+		</ul>
+		<p class="p-1">开发按钮事件函数</p>
+		<ul>
+			<li class="p-2"></li>
+			<span class="span-margin"></span>
+			<li class="p-2">父子窗口函数</li>
+			<span class="span-margin">主页面写关闭，分页面调用关闭window。parent.document.getElemnetByLd('').value;</span>
+		</ul>
+		<p class="p-1">判断按钮函数事件</p>
+		<ul>
+			<li class="p-2"></li>
+			<span class="span-margin"></span>
+			<li class="p-2"></li>
+			<span class="span-margin"></span>
+		</ul>
+		<p class="p-1">实现事件的数据交互</p>
+		<ul>
+			<li class="p-2"></li>
+			<span class="span-margin"></span>
+			<li class="p-2"></li>
+			<span class="span-margin"></span>
+		</ul>
+		<!--  -->
+	</div>
+</body>
+</html>

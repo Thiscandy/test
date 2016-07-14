@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>学习资料</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>页面显示HTML代码</h1>
+		<p>“<”用&lt;表示</p>
+		<p>“>”用&gt;表示</p>
+		<p>“"”用&quot;表示</p>
+		<h1>jQrery EasyUI</h1>
+		<p>jQuery EasyUI 是一个基于 jQuery 的框架，集成了各种用户界面插件。</p>
+		<h1>声明组件</h1>
+		<p>data-options</p>
+		<h1>编写JS代码来创建组件</h1>
+		<p>先用HTML写一个框</p>
+		<pre style="color:#060">
+		&lt;input id="cc" style="width:200px" /&gt;
+
+		效果：<input id="cc" style="width:200px" />
+		</pre>
+		<p>然后用JS获取ID.组合框</p>
+		<pre style="color:#060">
+		$('#cc').combobox({
+			url: ...,
+
+			//数据网页的链接
+
+			required: true,
+
+			//生成字段验证true[必需]false[不必需]默认false	
+
+			valueField: 'id',
+
+			//把该基础数据的值名称绑定到组合下拉框中[value]
+
+			textField: 'text'
+
+			//把该基础数据的字段名称绑定到组合下拉框中[text]
+		});
+		</pre>
+		<h1>EasyUI应用</h1>
+		<h3>使用EasyUI框架实现一个CRUD DataGrid（增删改查数据表格）</h3>
+		<p>我们使用下面的插件：</p>
+		<ul>
+			<li>datagrid：向用户展示列表数据。</li>
+			<li>dialog：创建或编辑一条单一的用户信息。</li>
+			<li>form：用于提交表单数据。</li>
+			<li>messager：显示一些操作信息。</li>
+		</ul>
+		<h3>创建DataGrid来显示用户数据</h3>
+		<p>用框架创建表格：</p>
+		<pre style="color:#006600">
+		&lt;table id="dg" title="My Users"
+
+				class="easyui-datagrid" 
+
+				/*应用easyui框架*/
+
+				style="width:550px;height:250px"
+
+				url="get_users.php"
+
+				/*数据链接地址*/
+
+				toolbar="#toolbar"
+
+				/*添加工具栏*/
+
+				rownumbers="true"
+
+				/*显示行号*/
+
+				fitColumns="true"
+
+				/*自动扩展或收缩列的大小以适应网格宽度和防止水平滚动条*/
+
+				singleSelect="true"
+
+				/*只允许当前选择一行数据*/
+
+				 &gt;
+			&lt;thead&gt;
+
+			/*表头*/
+
+				&lt;tr&gt;
+					&lt;th field="firstname" width="50"&gt;First Name&lt;/th&gt;
+					&lt;th field="lastname" width="50"&gt;Last Name&lt;/th&gt;
+					&lt;th field="phone" width="50"&gt;Phone&lt;/th&gt;
+					&lt;th field="email" width="50"&gt;Email&lt;/th&gt;
+
+					/*field是easyui读取数据库的一个属性名，实际上就是字段名*/
+
+				&lt;/tr&gt;
+			&lt;/thead&gt;
+		&lt;/table&gt;
+		&lt;div id="toolbar"&gt;
+			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()"&gt;New User&lt;/a&gt;
+			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()"&gt;Edit User&lt;/a&gt;
+			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()"&gt;Remove User&lt;/a&gt;
+			
+			/*a链接标签。用easyui链接按钮框架。iconCls:提供一个背景图片作为标题图标。plain：效果显示为普通。*/
+
+		&lt;/div&gt;
+		</pre>
+		<p>效果如下图所示：</p>
+		<img src="images/style1.png">
+		<p>用php获取数据的代码：</p>
+		<pre style="color:#006600">
+		$rs = mysql_query('select * from users');
+
+		/*声明变量等于数据库数据*/
+
+		$result = array();
+
+		/*创建数组*/
+
+		while($row = mysql_fetch_object($rs)){
+
+		/*  while (条件为真) { 要执行的代码; }mysql_fetch_object() 函数从结果集中取得一行作为对象。*/
+
+			array_push($result, $row);
+
+			/* array_push(array,value1) array规定数组  value1规定要添加的值 */
+
+		}
+		
+		echo json_encode($result);
+
+		/*输出数据库一行行数据*/
+		</pre>
+		<h1>创建表单对话框</h1>
+		<p>用DIV和easyui框架搭建对话框：</p>
+		<pre style="color:#006600">
+		&lt;div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"closed="true" buttons="#dlg-buttons"&gt;
+
+		/*用到easyui对话框dialog框架，closed是否可以关闭窗口,buttons表示这个对话框下面的两个确认，取消按钮*/
+
+			&lt;div class="ftitle"&gt;User Information&lt;/div&gt;
+
+			/*重新建一个div框，建立一个标题*/
+
+			&lt;form id="fm" method="post"&gt;
+
+			/*建立一个表单，发送数据模式为post*/
+
+				&lt;div class="fitem"&gt;
+					&lt;label&gt;First Name:&lt;/label&gt;
+					&lt;input name="firstname" class="easyui-validatebox" required="true"&gt;
+				&lt;/div&gt;
+
+				/*label元素不会向用户呈现任何特殊效果。当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+
+				  应用了ValidateBox验证箱框架,如果用户输入无效的值，它将改变背景颜色，显示警告图标和提示消息。
+
+				  required 属性规定必需在提交之前填写输入字段*/
+
+				&lt;div class="fitem"&gt;
+					&lt;label&gt;Last Name:&lt;/label&gt;
+					&lt;input name="lastname" class="easyui-validatebox" required="true"&gt;
+				&lt;/div&gt;
+				&lt;div class="fitem"&gt;
+					&lt;label&gt;Phone:&lt;/label&gt;
+					&lt;input name="phone"&gt;
+				&lt;/div&gt;
+				&lt;div class="fitem"&gt;
+					&lt;label&gt;Email:&lt;/label&gt;
+					&lt;input name="email" class="easyui-validatebox" validType="email"&gt;
+				&lt;/div&gt;
+
+				/*validType框架属性，验证输入字段是否为email格式*/
+
+			&lt;/form&gt;
+		&lt;/div&gt;
+		&lt;div id="dlg-buttons"&gt;
+
+		/*对话框中的两个按钮*/
+
+			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()"&gt;Save&lt;/a&gt;
+			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')"&gt;Cancel&lt;/a&gt;
+
+			/*a链接标签。用easyui链接按钮框架。iconCls：提供一个背景图片作为标题图标。*/
+
+		&lt;/div&gt;
+		</pre>
+		<p>效果图如下所示：</p>
+		<img src="images/style2.png">
+		<h1>实现创建和编辑用户</h1>
+		<p>当创建用户时，打开一个对话框并清空表单数据。</p>
+		<pre style="color:#006600">
+		function newUser(){
+			$('#dlg').dialog('open').dialog('setTitle','New User');
+			$('#fm').form('clear');
+			url = 'save_user.php';
+
+			/*$("#dlg").dialog("open");open是事件的名称，点击按钮时打开dialog了。
+
+			$.dialog('setTitle'."标题");setTitle窗口的标题 
+
+			$('#fm').form('clear');表单id.清空表单数据*/
+
+		}
+		</pre>
+		<p>当编辑用户时，打开一个对话框并从 datagrid 选择的行中加载表单数据。</p>
+		<pre style="color:#006600">
+		var row = $('#dg').datagrid('getSelected');
+		if (row){
+			$('#dlg').dialog('open').dialog('setTitle','Edit User');
+			$('#fm').form('load',row);
+			url = 'update_user.php?id='+row.id;
+
+			/**/
+
+			/*打开编辑数据窗口*/
+
+		}
+		</pre>
+		<p>'url' 存储着当保存用户数据时表单回传的 URL 地址。</p>
+		<h1>保存用户数据</h1>
+		<p>用JS保存用户数据：</p>
+		<pre style="color:#006600">
+		function saveUser(){
+			$('#fm').form('submit',{
+				url: url,
+				onSubmit: function(){
+					return $(this).form('validate');
+				},
+				success: function(result){
+					var result = eval('('+result+')');
+					if (result.errorMsg){
+						$.messager.show({
+							title: 'Error',
+							msg: result.errorMsg
+						});
+					} else {
+						$('#dlg').dialog('close');		// close the dialog 关闭对话框
+						$('#dg').datagrid('reload');	// reload the user data 重新加载用户数据
+					}
+				}
+			});
+		}
+		/*提交表单之前，'onSubmit' 函数将被调用，该函数用来验证表单字段值。当表单字段值提交成功，关闭对话框并重新加载 datagrid 数据。*/
+		</pre>
+		<h1>删除一个用户</h1>
+		<p>使用下面的代码来移除一个用户：</p>
+		<pre style="color:#006600">
+		function destroyUser(){
+			var row = $('#dg').datagrid('getSelected');
+			if (row){
+				$.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
+					if (r){
+						$.post('destroy_user.php',{id:row.id},function(result){
+							if (result.success){
+								$('#dg').datagrid('reload');	// reload the user data
+							} else {
+								$.messager.show({	// show error message
+									title: 'Error',
+									msg: result.errorMsg/*返回的json的错误的内容*/
+								});
+							}
+						},'json');
+					}
+				});
+			}
+		}
+		</pre>
+		<p>移除一行之前,我们将显示一个确认对话框让用户决定是否真的移除该行数据。当移除数据成功之后，调用 'reload' 方法来刷新 datagrid 数据。</p>
+		<p>效果如下所示：</p>
+		<img src="images/style3.png">
+		<h1>最后效果</h1>
+		<p><a href="EasyUI-use/index.html">最后的效果</a></p>
+
+	</div>
+</body>
+</html>

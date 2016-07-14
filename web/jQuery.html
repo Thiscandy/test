@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>jQuery</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>jQuery</h1>
+		<h3>获得内容 - text()、html() 以及 val()</h3>
+		<p class="p-1">三个简单实用的用于 DOM 操作的 jQuery 方法:</p>
+		<ul>		
+			<li class="p-2">text() - 设置或返回所选元素的文本内容</li>
+			<pre class="pre-margin">
+			$("#点击事件的ID").click(function(){
+			    alert("Text: " + $("#显示的标签ID").text());
+			});</pre>
+			<li class="p-2">html() - 设置或返回所选元素的内容（<b>包括 HTML 标记</b>）</li>
+			<pre class="pre-margin">
+			$("#点击事件的ID").click(function(){
+			  alert("HTML: " + $("#显示的标签ID").html());
+			});</pre>
+			<li class="p-2">val() - 设置或返回表单字段的值</li>
+			<pre class="pre-margin">
+			$("#点击事件的ID").click(function(){
+			  alert("Value: " + $("#input的ID").val());
+			});</pre>
+			<li class="p-2">获取属性 - attr()</li>
+			<pre class="pre-margin">
+			$("点击事件的ID").click(function(){
+			  alert($("#标签ID").attr("标签的属性名称"));
+			});</pre>
+		</ul>
+	</div>
+</body>
+</html>
