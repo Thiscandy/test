@@ -81,7 +81,7 @@
 			}
 		}
 
-		//如果点击addTab事件，判断当前的tab是否存在，如果存在就 自动选中那个页面并显示 否则 创建新的tab。closable:true是否关闭
+		//如果点击addTab事件，判断当前的tab是否存在，如果存在就 自动选中那个页面并显示 否则 创建新的tab。closable:true是否可以关闭页面
 
 		function retab(ti)
 		{
@@ -134,44 +134,93 @@
 
 			//////&lt;div style="margin:5px"&gt;
 				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newtype()"&gt;新增&lt;/a&gt;
+
+				/* 外边框5px，a样式的easyui链接按钮，显示图标，显示普通效果，事件 */
+
 				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edittype()"&gt;修改&lt;/a&gt;
 				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removetype()"&gt;删除&lt;/a&gt;
 				&lt;a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="cleardg()"&gt;刷新&lt;/a&gt;
 			&lt;/div&gt;//////
 
-					&lt;div style="margin:5px;"&gt;   
+					&lt;div style="margin:5px;"&gt; 
+
+					/* 创建一个div 外边框5px */ 
+
 						&lt;span style="margin-left:5px;"&gt;PO单号:&lt;/span&gt;
+
+						/* 行内元素，左边距5px */
+
 						&lt;input id="mc" class="easyui-textbox"&gt;
+
+						/* easyui的文本框，id为mc */
+
 						&lt;span style="margin-left:20px;"&gt;&lt;a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="doSearch()"&gt;查询&lt;/a&gt;&lt;/span&gt;
+
+						/* 行内元素，左边距20px。a样式的easyui链接按钮，显示图标，事件 */
+
 						&lt;span style="margin-left:20px;" onclick="update()"&gt;&lt;a href="#" class="easyui-linkbutton"&gt;&nbsp;导&nbsp;入&nbsp;&lt;/a&gt;&lt;/span&gt;
+
+						/* 行内元素，左边距20px。事件，a样式的easyui链接按钮 */
+
 					&lt;/div&gt;
 				&lt;/div&gt;
 			&lt;/div&gt;
 				
 			&lt;div data-options="region:'south',border:false,split:true" style="height:40%;"&gt;
+
+			/* 框架属性：布局区域：南区，不显示边框，显示一个两层界面中间可以滑动分割符以使用户改变面板的尺寸，样式，高为40% */
+
 				&lt;div id="dgyscm"&gt;&lt;/div&gt;
+
+				/* 建立一个表的div，id为dgyscm */
+
 			&lt;/div&gt;
 		&lt;/div&gt;
 				
 		&lt;div style="display:none;"&gt;&lt;iframe id="dowif"&gt;&lt;/iframe&gt;&lt;/div&gt;
 
+		/* 样式为隐藏，行内框架???? */
 
 		&lt;div id="dlg" class="easyui-dialog" style="width:390px; height:244px;" closed="true" modal="true" buttons="#dlg-buttons"&gt;
+
+		/* easyui对话框，样式，初始化为开启状态，生成模态窗口，这个对话框下面有确认，取消按钮 */
+
 		&lt;form id="fm" method="post" novalidate&gt;
+
+		/* 建立表单，传输模式为post，提交表单时不对表单数据输入进行验证 */
+
 			&lt;input name="YBSKU" type="hidden"&gt;
+
+			/* ??? */
+
 			&lt;div class="fitem" style="margin:30px 0px;"&gt;
 			        &lt;span class="text"&gt;文件:&lt;/span&gt;
 			        &lt;input class="easyui-filebox" name="file1" data-options="prompt:'请选择文件...',buttonText:'选择文件'" style="width:260px"&gt;
+
+			        /* easyui文本框，框架属性：输入框提示信息，按钮文本为选择文件 */
+
 			   &lt;/div&gt;
 			&lt;div class="fitem" style="height:50px;line-height:50px;margin-bottom:10px;"&gt;
 			        &lt;a href="#" class="easyui-linkbutton" style="width:100%"&gt;提交文件&lt;/a&gt;
+
+			        /* a样式的easyui链接按钮 */
+
 			   &lt;/div&gt;
 			    
 		&lt;/form&gt;
 		&lt;/div&gt;
 		&lt;div id="dlg-buttons"&gt;
+
+		/* 编写确认和取消按钮 */
+
 			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="savetype()"&gt;确定&lt;/a&gt;
+
+			/* a样式的easyui链接按钮，显示图标，事件 */
+
 			&lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')"&gt;取消&lt;/a&gt;
+
+			/* a样式的easyui链接按钮，显示图标，事件 */
+
 		&lt;/div&gt;
 		&lt;/div&gt;
 		</pre>
@@ -180,6 +229,8 @@
 		<pre style="color:#060;">
 		&lt;script&gt;
 		$(document).ready(function(){ dg(); dgyscm(); });
+
+		/* $(document).ready等页面的文档节点都加载完毕后，再执行后续建表的代码 */
 
 		function dg()
 		{
@@ -219,6 +270,8 @@
 			});
 		}
 
+		/* 建立上面的表 */
+
 		function dgyscm()
 		{
 			$('#dgyscm').datagrid({
@@ -253,6 +306,8 @@
 			});
 		}
 
+		/* 建立下面的表 */
+
 		function cleardg()
 		{
 			$('#dg').datagrid('reload');
@@ -279,6 +334,7 @@
 						break;
 					case 2:
 						tsshow('SPU不能为空！');
+						//tsshow显示提示框
 						break;
 					case 3:
 						tsshow('不存在该SPU！');
@@ -318,7 +374,7 @@
 			<li class="p-2"></li>
 			<span class="span-margin"></span>
 			<li class="p-2">父子窗口函数</li>
-			<span class="span-margin">主页面写关闭，分页面调用关闭window。parent.document.getElemnetByLd('').value;</span>
+			<span class="span-margin">主页面写关闭，分页面调用关闭window.parent.document.getElemnetByLd('').value;</span>
 		</ul>
 		<p class="p-1">判断按钮函数事件</p>
 		<ul>

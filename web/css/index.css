@@ -38,7 +38,7 @@ img {
 	padding-left: 100px;
 }
 
-.p-1,.p-2 {
+.p-1,.p-2,.p-3 {
 	font-family: "微软雅黑";
 	font-weight: bold;
 }
@@ -49,6 +49,11 @@ img {
 }
 
 .p-2 {
+	font-size: 17px;
+}
+
+.p-3 {
+	padding-left: 100px;
 	font-size: 17px;
 }
 
