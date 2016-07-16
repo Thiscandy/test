@@ -179,7 +179,7 @@
 				
 		&lt;div style="display:none;"&gt;&lt;iframe id="dowif"&gt;&lt;/iframe&gt;&lt;/div&gt;
 
-		/* 样式为隐藏，行内框架???? */
+		/* 样式为隐藏的行内框架 */
 
 		&lt;div id="dlg" class="easyui-dialog" style="width:390px; height:244px;" closed="true" modal="true" buttons="#dlg-buttons"&gt;
 
@@ -191,7 +191,7 @@
 
 			&lt;input name="YBSKU" type="hidden"&gt;
 
-			/* ??? */
+			/* 一个用来存值的隐藏域 */
 
 			&lt;div class="fitem" style="margin:30px 0px;"&gt;
 			        &lt;span class="text"&gt;文件:&lt;/span&gt;
@@ -305,20 +305,30 @@
 				]]
 			});
 		}
-
 		/* 建立下面的表 */
 
+		/* 刷新按钮事件 */
 		function cleardg()
 		{
 			$('#dg').datagrid('reload');
+
+			/* 刷新数据表格 */
+
 			$('#dgyscm').datagrid('loadData', { total: 0, rows: [] });
+
+			/* 指定下面的表格id.控件名称('加载数据'，值为空) */
 		}
 
+		/* 查询按钮事件 */
 		function doSearch()
 		{
 			$('#dg').datagrid('load',{
+
+			/*  datagrid 控件名称（载入，传输的参数） */
+
 				mc: $("#mc").textbox('getValue'),
-				lx:	$("#sellx").combobox('getValue')
+
+				/* mc：指定id，控件名称，getValue获取文本框的值 */
 			});
 		}
 
@@ -330,12 +340,15 @@
 				{
 					case 1:
 						$('#dg').datagrid('reload');
+						/* 刷新数据 */
 						cleardg();
+						/* 刷新按钮的事件名 */
 						break;
 					case 2:
 						tsshow('SPU不能为空！');
-						//tsshow显示提示框
+						/* tsshow显示提示框 */
 						break;
+						/* 停止循环 */
 					case 3:
 						tsshow('不存在该SPU！');
 						break;
@@ -346,9 +359,11 @@
 			}
 		}
 
+		/* 导入按钮事件 */
 		function update()
 		{
 			$('#dlg').dialog({ title:'导入文件' }).dialog('open');
+			/* 指定对话框id.对话框('标题').打开窗口 */
 		}
 		&lt;/script&gt;
 		</pre>
@@ -371,17 +386,48 @@
 		</ul>
 		<p class="p-1">开发按钮事件函数</p>
 		<ul>
-			<li class="p-2"></li>
-			<span class="span-margin"></span>
-			<li class="p-2">父子窗口函数</li>
+			<li class="p-2">主页面按钮的事件</li>
+			<li>父子窗口函数</li>
 			<span class="span-margin">主页面写关闭，分页面调用关闭window.parent.document.getElemnetByLd('').value;</span>
+			<li>点击addTab事件</li>
+			<span class="span-margin">如果点击addTab事件，判断当前的tab是否存在，如果存在就 自动选中那个页面并显示 否则 创建新的tab。调用为addTab(title,url);</span>
+			<li>关闭子页面事件</li>
+			<span class="span-margin">调用关闭是iftoinclo（title）;函数内容：指定子页面DIV的id.标签tabs.('关闭close',title)</span>
+			<li class="p-2">分页面按钮的事件</li>
+			<li>新增按钮</li>
+			<span class="span-margin">打开窗口，设置标题，清空表格数据，指定路径</span>
+			<li>修改按钮</li>
+			<span class="span-margin">指定数据表格选中的项，打开窗口，读取标题和参数，载入选中行的数据，指定路径</span>
+			<li>查找按钮</li>
+			<span class="span-margin">指定数据表格id.数据表格('载入','传输文本框的值').</span>
+			<li>删除按钮</li>
+			<span class="span-margin">指定数据表格选中的项，弹窗提示是否删出，是就提交json参数并提示删除成功或失败</span>
+			<li>确定按钮</li>
+			<span class="span-margin">指定表单id，表单('提交submit',参数)，参数指定路径，且不跳转页面。成功后返回的json赋值给一个变量，然后判断这个变量而进行对应的提示成功或失败</span>
+			<li>刷新按钮</li>
+			<span class="span-margin">指定数据表格id.数据表格.('刷新reload')，指定下面表格的id.数据表格.('加载数据loadData'，值为空)</span>
+			<li>导入按钮</li>
+			<span class="span-margin">指定对话框id.对话框.('标题').对话框('打开open')</span>
+			<li>导出按钮</li>
+			<span class="span-margin"></span>
+			<li>复选框按钮</li>
+			<span class="span-margin"></span>
+			<li>时间按钮</li>
+			<span class="span-margin"></span>
+			<li>日历按钮</li>
+			<span class="span-margin"></span>
+			<li>审核按钮</li>
+			<span class="span-margin"></span>
+			<li>反审核按钮</li>
+			<span class="span-margin"></span>
+			<li>作废按钮</li>
+			<span class="span-margin"></span>
+			
 		</ul>
-		<p class="p-1">判断按钮函数事件</p>
+		<p class="p-1">判断函数事件</p>
 		<ul>
-			<li class="p-2"></li>
-			<span class="span-margin"></span>
-			<li class="p-2"></li>
-			<span class="span-margin"></span>
+			<li class="p-2">提示信息</li>
+			<span class="span-margin">msgshow(提示信息类型,后端返回的判断数值,tsshow(后端传输过来的信息名字)判断输出的提示)</span>
 		</ul>
 		<p class="p-1">实现事件的数据交互</p>
 		<ul>

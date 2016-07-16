@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>ASP</h1>
+		<h3>ASP是什么？</h3>
+		<p>asp是指 Active Server Pages （动态服务器页面）</p>
+
+		<h3>在ASP中使用JavaScript</h3>
+		<p>必须在页面的顶端插入一行语言设定：</p>
+		<pre style="color:#060">
+			<% @ language="javascript" %>
+		</pre>
+
+		<h3>ASP语法</h3>
+		<p>向浏览器输出：</p>
+		<pre style="color:#060">
+		第一种方法:<% response.write("输入的文本或值") %>
+		第二种方法:<% ="输入文本或值" %>
+		</pre>
+
+		<h3>声明变量</h3>
+		<pre style="color:#060">
+		<%
+		    dim name
+		    name="Donald Duck"
+		    response.write("My name is: " & name)
+		%>
+
+		运行结果：My name is: Donald Duck
+		</pre>
+
+		<h3>声明数组</h3>
+		<pre style="color:#060">
+		<%
+		    Dim fname(2),i
+		    fname(0) = "George"
+		    fname(1) = "John"
+		    fname(2) = "Thomas"
+
+		    For i = 0 to 2
+		          response.write(fname(i) & "&lt;br />")
+		    Next
+		%>
+
+		运行结果：
+			George
+			John
+			Thomas
+		</pre>
+
+		<h3>循环生成HTML标题</h3>
+		<pre style="color:#060">
+		<%
+		    dim i 
+		    for i=1 to 6
+		       response.write("<h" & i & ">Header " & i & "&lt;/h" & i & ">")
+		    next
+		%>	
+
+		运行结果：
+		&lt;h1>Header&lt;/h1>
+		&lt;h2>Header&lt;/h2>
+		&lt;h3>Header&lt;/h3>
+		&lt;h4>Header&lt;/h4>
+		&lt;h5>Header&lt;/h5>
+		&lt;h6>Header&lt;/h6>
+		</pre>
+
+		<h3>ASP程序</h3>
+		<p>调用使用JavaScript的子程序</p>
+		<pre style="color:#060">
+		
+		<% @ language="javascript" %>
+
+		&lt;html>
+		&lt;head>
+
+		&lt;%
+		function jsproc(num1,num2)
+		{
+		Response.Write(num1*num2)
+		}
+		%>
+
+		&lt;/head>
+		&lt;body>
+
+		&lt;p>结果：&lt;%jsproc(3,4)%>&lt;/p>
+
+		&lt;/body>
+		&lt;/html>
+
+		运行结果：
+		    结果：12	
+		</pre>
+		<p>调用使用JavaScript的子程序</p>
+		<pre style="color:#060">
+		&lt;html>
+		&lt;head>
+
+		&lt;script  language="javascript" runat="server">
+		function jsproc(num1,num2)
+		{
+		Response.Write(num1*num2)
+		}
+		&lt;/script>
+
+		&lt;/head>
+		&lt;body>
+
+		&lt;p>结果：&lt;%call jsproc(3,4)%>&lt;/p>
+
+		&lt;/body>
+		&lt;/html>
+
+		运行结果：
+		    结果：12
+		</pre>
+
+		<h3>ASP表单和用户输入</h3>
+		<p>使用 method="get" 的表单</p>
+		<pre style="color:#060">
+		&lt;form action="/example/aspe/demo_aspe_reqquery.asp" method="get">
+		    您的姓名：&lt;input type="text" name="fname" size="20" />
+		    &lt;input type="submit" value="提交" />
+		&lt;/form>
+
+		&lt;%
+		    dim fname
+		    fname=Request.QueryString("fname")
+		    If fname&lt;>"" Then
+		          Response.Write("你好！" & fname & "！&lt;br />")
+		          Response.Write("今天过得怎么样？")
+		    End If
+		%>
+
+		运行结果：
+			你好！‘输入框的值’！
+			今天过得怎么样？
+		</pre>
+
+		<pre style="color:#060"></pre>
+
+		<pre style="color:#060"></pre>
+	</div>
+</body>
+</html>
