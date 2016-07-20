@@ -57,6 +57,11 @@ img {
 	font-size: 17px;
 }
 
+.p-4 {
+	color:#060;
+	font-family:黑体;
+}
+
 .p-blue {
 	color:#00BFFF;
 	padding-left: 70px;

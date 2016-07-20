@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>问题解决</h1>
+		<pre class="p-4">
+		&lt;script>
+		//等页面的文档节点都加载完毕后，再执行后续的代码
+		$(document).ready(function(){ dg();gettree(); });
+
+		//创建数据表格dg
+		function dg()
+		{	
+			$('#dg').datagrid({
+				title:'角色管理',
+				width:'100%',
+				height:'100%',
+				fitColumns:'true',
+				url:'yhgl_json_get.asp',
+				toolbar:'#toolbar',
+				singleSelect:'true',
+				method:'post',
+				rownumbers:'true',
+				autoRowHeight:'true',
+				pagination:'true',
+				pageSize:20,
+				pageNumber:1,
+				pageList:[20,30,50],
+				columns:[[
+					{field:'JS_ID',title:'角色代码',width:150,align:'center',sortable:true},
+					{field:'JS_NAME',title:'角色名称',width:100,align:'center'},
+					{field:'JS_QX',title:'角色权限',width:300,align:'center'},
+					{field:'JS_BZ',title:'备注',width:150,align:'center'},
+					{field:'MODIFY_TIME',title:'最后修改时间',width:150,align:'center'}
+				]]
+			});
+		}
+
+
+		//定义树
+		function treeys(sj)
+		{
+			$('#tree_ys').tree({
+				animate:'true',
+				//当展开或折叠节点时定义动画效果
+				checkbox:'true',
+				//允许出现复选框
+				//onlyLeafCheck:'false',
+				//只有根节点有复选框
+				lines:'true',
+				//有线
+				data:sj  
+			});
+		}
+
+		//读取树的数据
+		function gettree(js)
+		{
+			$.post('yhgl_tree_json_get.asp',{ JS_ID:js },function(result){
+				treeys(result.树信息);
+			},'json');
+		}
+
+		//控制树的选择和取消
+		function cleantree()
+		{
+			var treeMenu='tree_ys';
+			//treeMenu=树id
+			var roots = $('#' + treeMenu).tree('getRoots');
+			//roots=树的根
+			for ( var i = 0; i &lt; roots.length; i++) {  
+				var node = $('#' + treeMenu).tree('find', roots[i].id);  
+				//node=找到树的根位置
+				$('#' + treeMenu).tree('uncheck', node.target);
+				//取消树节点的目标
+			}
+		}
+
+		//得到后台对应的值
+		function getys()
+		{
+			var nodes = $('#tree_ys').tree('getChecked');
+			//nodes=得到选中的树
+			var s = '';
+			for(var i=0; i&lt;nodes.length; i++){
+				if (s != '') s += ',';
+				s += nodes[i].id;
+			}
+			//循环设置s +=得到选中的树位置的id
+			return s;
+			//返回s
+		}
+
+		//新增按钮
+		var url;
+		function newtype(){
+			$('#dlg').dialog('open').dialog('setTitle','新增角色信息');
+			//打开dig对话窗口，标题为新增角色信息
+			$('#fm').form('clear');
+			//清除fm表单
+			$('#JS_ID').textbox('readonly',false);
+			//角色代码id的文本框（'只读',假）
+			url = 'yhgl_json_add.asp';
+			//指定url
+		}
+
+		//修改按钮
+		function edittype(){
+			var row = $('#dg').datagrid('getSelected');
+			//dg数据表格当选的数据
+			if (row){
+				gettree(row.JS_ID);
+				$('#dlg').dialog('open').dialog('setTitle','修改角色信息');
+				//打开对话框的dlg，标题为修改角色信息
+				$('#fm').form('clear');
+				//清除fm表单
+				$('#fm').form('load',row);
+				//fm表单加载当选行的数据
+				$('#JS_ID').textbox('readonly',true);
+				//角色代码id的文本框('只读',真)
+				
+				//$('#JS_QX').val(row.JS_QX)
+				//JS_QX赋值当前选中的数据
+				//var js=$('#JS_ID').textbox('getValue');
+				//gettree(js);
+				url = 'yhgl_json_edit.asp';
+				//指定url
+			}
+		}
+
+		//确定按钮事件
+		function savetype(){
+			var qx=getys();
+			//qx=后台要的值
+			$('#JS_QX').val(qx);
+			//赋值给端口传输
+			$('#fm').form('submit',{
+			//fm表单提交
+				url: url,
+				//指定的路径
+				onSubmit: function(){
+				//在提交
+					return $(this).form('validate');
+					//返回 此表单验证
+				},
+				success: function(result){
+				//成功：result（结果）
+					var result = eval('('+result+')');
+					//定义结果格式为（结果）
+					if(url=='yhgl_json_add.asp'){ msgshow('add',result.code,result.msg); }else{ msgshow('edit',result.code,result.msg); }
+					//如果路径不=此asp，信息显示结果，不然信息显示结果
+				}
+			});
+		}
+
+		//删除按钮事件
+		function removetype(){
+			var row = $('#dg').datagrid('getSelected');
+			//dg数据表格当选的数据
+			if (row){
+				$.messager.confirm('系统提示','确定删除该角色信息？',function(r){
+				//信息提示确认信息
+					if (r){
+						$.post('yhgl_json_del.asp',{JS_ID:row.JS_ID},function(result){ msgshow('del',result.code,result.msg); },'json');
+					//如果是r（确定）提交删除地址url，指定选中行的id，结果提示信息，传输方法为json
+					}
+				});
+			}
+		}
+
+		//查找按钮事件
+		function doSearch(){
+			$('#dg').datagrid('load',{
+			//dg数据表格加载
+				mc: $("#mc").textbox('getValue')
+				//mc文本框里的值做控件筛选
+			});
+		}
+
+		//提示信息的判断事件
+		function msgshow(lx,cod,msg){
+			if(lx=='add')
+			{
+				switch(cod)
+				{
+					case 1:
+						$('#dlg').dialog('close');
+						$('#dg').datagrid('reload');
+						break;
+					case 2:
+						tsshow('角色ID不能为空！');
+						break;
+					case 3:
+						tsshow('该角色ID已存在！');
+						break;
+					default:
+						tsshow(msg);
+						break;				
+				}
+			}
+			if(lx=='edit')
+			{
+				switch(cod)
+				{
+					case 1:
+						$('#dlg').dialog('close');
+						$('#dg').datagrid('reload');
+						break;
+					case 2:
+						tsshow('角色ID不能为空！');
+						break;
+					case 3:
+						tsshow('角色ID不存在！');
+						break;
+					default:
+						tsshow(msg);
+						break;				
+				}
+			}
+			if(lx=='del')
+			{
+				switch(cod)
+				{
+					case 1:
+						$('#dg').datagrid('reload');
+						break;
+					case 2:
+						tsshow('角色ID不能为空！');
+						break;
+					case 0:
+						tsshow('不存在该角色！');
+						break;
+					default:
+						tsshow(msg);
+						break;				
+				}
+			}
+		}
+		&lt;/script>
+		</pre>
+	</div>
+</body>
+</html>

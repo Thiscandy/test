@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery赋值</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<style>
+		#inputId { 
+			width: 200px;
+			height: 30px;
+			line-height: 30px;
+			padding: 0 5px;
+			font-size: 18px;
+			border: 1px solid #f00;
+			display: block;
+			margin: 50px auto;
+		}
+		#buttonId {
+			background: #f99;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 50px;
+			font-size: 20px;
+			color: #fff;
+			display: block;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>例子：</h1>
+	<input type="text" id="inputId" />
+	<input type="button" value="赋 值" id="buttonId">
+
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$("#buttonId").click(function(){
+				$("#inputId").val("这里是赋值的内容！");
+			});
+		});
+	</script>
+	<div class="header">
+		<h1>错误更正</h1>
+		<h3>原有：新增按钮中的树没有提交选中项</h3>
+		<h3>更正：</h3>
+		<pre class="p-4">
+		var qx=getys();
+		//qx=后台要的值
+		$('#JS_QX').val(qx);
+		//赋值给端口传输
+		</pre>
+		<h1>jQuery怎么给input赋值</h1>
+		<p>代码如下所示：</p>
+		<pre class="p-4"">
+		&lt;input type="text" id="inputId" />
+		&lt;input type="button" value="赋 值" id="buttonId" />
+
+		&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js">&lt;/script>
+		&lt;script>
+			$(function(){
+				$("#buttonId").click(function(){
+					$("#inputId").val("这里是赋值的内容！");
+				});
+			});
+		&lt;/script>
+		</pre>
+		<h1>input赋值的语句为：</h1>
+		<h3>$("文本框的ID").val("赋值内容");</h3>
+		<hr />
+
+		<h1>修改按钮事件中显示当行数据的内容</h1>
+		<h3>读取当行数据，用form的load方法根据名称一起加载</h3>
+		<pre class="p-4"">
+
+		function edittype(){
+			var row = $('#dg').datagrid('getSelected');
+			//dg数据表格当选的数据
+
+			if (row){
+				$('#dlg').dialog('open').dialog('setTitle','修改角色信息');
+				//打开对话框的dlg，标题为修改角色信息
+
+				$('#fm').form('clear');
+				//清除fm表单
+
+				$('#fm').form('load',row);
+				//fm表单加载当选行的数据( <b><em>文本框name要和数据名称一致</em></b> )
+
+				$('#JS_ID').textbox('readonly',true);
+				//角色代码id的文本框('只读',真)
+
+				url = 'yhgl_json_edit.asp';
+				//指定url
+			}
+		}
+
+		</pre>
+		<hr />
+
+		<h1>加载完页面自动执行函数</h1>
+		<p class="p-4"">$(document).ready(function(){   });</p>
+		<p class="p-4"">等页面的文档节点都加载完毕后，再执行后续的代码</p>
+		<hr />
+
+		<h1>对话框事件</h1>
+		<h3>打开对话框，并设置标题设置文本框的值</h3>
+		<p class="p-4">
+		$('#dlgys').dialog('open').dialog('setTitle','选择权限标识');
+		//打开对话框，标题为选择权限标识
+		</p>
+		<hr />
+
+		<h1>请求加载数据</h1>
+		<h3>$.post() 方法使用 HTTP POST 请求从服务器加载数据。</h3>
+		<p class="p-4">$(selector).post(URL,data,function(data,status,xhr),'json')</p>
+		<p class="p-4">URL	必需。规定将请求发送到哪个 URL。</p>
+		<p class="p-4">data	可选。规定连同请求发送到服务器的数据。</p>
+		<p class="p-4">function(data,status,xhr)	可选。规定当请求成功时运行的函数。
+额外的参数：
+data: 包含来自请求的结果数据
+status: 包含请求的状态（"success"、"notmodified"、"error"、"timeout"、"parsererror"）
+xhr: 包含 XMLHttpRequest 对象</p>
+	</div>
+</body>
+</html>
