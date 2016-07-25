@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>新增按钮无法判断为空，无法读取全部后端数据？？？</h1>
+		<pre class="p-4">
+			&lt;script>
+			$(document).ready(function(){ gettree(); initTree(); });
+
+			//读取树的数据
+			function gettree(js)
+			{
+				$.post('gngl_tree_json_get.asp',{ ID:js },function(result){
+					treeys(result.树信息);
+				},'json');
+			}
+
+			//定义树
+			function treeys(sj)
+			{
+				$('#tree_ys').tree({
+					animate:'true',
+					//当展开或折叠节点时定义动画效果
+					//checkbox:'true',
+					//允许出现复选框
+					//onlyLeafCheck:'false',
+					//只有根节点有复选框
+					lines:'true',
+					//有线
+					data:sj  
+				});
+			}
+
+			//点击树的事件
+			function initTree(){
+			    $("#tree_ys").tree({
+					//点击节点获取内容
+			        onClick: function(node){
+						var zt=$('#hidbjzt').val();
+						if(zt=='0')
+						{
+							$('#fm').form('clear');
+							//获取选中节点对象
+							$('#ID').textbox('setValue',node.id);
+							$('#FID').textbox('setValue',node.attributes.FID);
+							$('#QX_Name').textbox('setValue',node.text);
+							$('#ID').textbox('readonly',true);
+							$('#FID').textbox('readonly',true);
+							$('#QX_Name').textbox('readonly',true);
+							document.getElementById("buttons").style.visibility="hidden";
+							document.getElementById("buttons_bj").style.visibility="visible";
+							var id=$('#ID').textbox('getValue');
+							var fid=$('#FID').textbox('getValue');
+							var name=$('#QX_Name').textbox('getValue');
+							$('#hiczid').val(id);
+							$('#hiczfid').val(fid);
+							$('#hiczname').val(name);
+						}
+						else
+						{	
+							var id=$('#ID').textbox('getValue');
+							var name=$('#QX_Name').textbox('getValue');
+							$('#ID').textbox('setValue',id);
+							$('#QX_Name').textbox('setValue',name);
+							$('#FID').textbox('setValue',node.id);
+							$('#FID').textbox('readonly',true);
+						}
+					}
+				});
+			}
+
+			function judeg(){
+				if($('#ID').textbox('getValue')){
+					tsshow('没有填写权限ID！');
+					if($('#QX_Name').textbox('getValue')){
+						tsshow('没有填写功能名称！')
+					}
+				}	
+			}
+
+			//新增按钮
+			var url;
+			function newtype(){
+				var fid=$('#ID').textbox('getValue');
+				if(fid!=0)
+				{
+					
+					document.getElementById("buttons_bj").style.visibility="hidden";
+					$('#hidbjzt').val(1);
+					$('#fm').form('clear');
+					$('#FID').textbox('setValue',fid);
+					$('#ID').textbox('readonly',false);
+					$('#QX_Name').textbox('readonly',false);
+					var mychar = document.getElementById("buttons");
+					mychar.style.visibility="visible";
+				}
+				else
+				{
+					tsshow('没有选中权限树！');
+				}
+				url = 'gngl_json_add.asp';
+				//指定url
+			}
+
+			//编辑按钮
+			function edit() {
+				$('#hidbjzt').val(1);
+				document.getElementById("buttons").style.visibility="visible";
+				document.getElementById("buttons_bj").style.visibility="hidden";
+				$('#FID').textbox('readonly',false);
+				$('#QX_Name').textbox('readonly',false);
+				url = 'gngl_json_edit.asp';
+			}
+
+			//删除按钮事件
+			function removetype(){
+				var row=$('#ID').textbox('getValue');
+				if (row){
+					$.messager.confirm('系统提示','确定删除该角色信息？',function(r){
+					//信息提示确认信息
+						if (r){
+							$.post('gngl_json_del.asp',{ID:row},function(result){ msgshow('del',result.code,result.msg); },'json');
+						//如果是r（确定）提交删除地址url，指定选中行的id，结果提示信息，传输方法为json
+						}
+					});
+				}
+				else
+				{
+					tsshow('没有选中权限树！');
+				}
+			}
+
+			//确定按钮事件
+			function savetype(){
+				//if($('#ID').textbox('getValue')!=null){ alert('1'); } else { alert('2'); }
+				//alert($('#ID').textbox('getValue'));
+				//document.getElementById("buttons").style.visibility="visible";
+				//document.getElementById("buttons").style.visibility="hidden";
+				$('#fm').form('submit',{
+				//fm表单提交
+					url: url,
+					//指定的路径
+					onSubmit: function(){
+					//在提交
+						return $(this).form('validate');
+						//返回 此表单验证
+					},
+					success: function(result){
+					//成功：result（结果）
+						var result = eval('('+result+')');
+						//定义结果格式为（结果）
+						if(url=='gngl_json_add.asp'){ msgshow('add',result.code,result.msg); }else{ msgshow('edit',result.code,result.msg); }
+						//如果路径不=此asp，信息显示结果，不然信息显示结果
+					}
+				});
+			}
+
+			//取消按钮
+			function off()
+			{
+				document.getElementById("buttons").style.visibility="hidden";
+				document.getElementById("buttons_bj").style.visibility="visible";
+				$('#hidbjzt').val(0);
+				var id=$('#hiczid').val();
+				var fid=$('#hiczfid').val();
+				var name=$('#hiczname').val();
+				$('#ID').textbox('setValue',id);
+				$('#FID').textbox('setValue',fid);
+				$('#QX_Name').textbox('setValue',name);
+			}
+
+			//提示信息的判断事件
+			function msgshow(lx,cod,msg){
+				if(lx=='add')
+				{
+					switch(cod)
+					{
+						case 1:
+							$('#fm').form('clear');
+							document.getElementById("buttons").style.visibility="hidden";
+							document.getElementById("buttons_bj").style.visibility="hidden";
+							gettree();
+							break;
+						case 2:
+							tsshow('代码不能为空!');
+							break;
+						case 3:
+							tsshow('上级代码不能为空!');
+							break;
+						case 4:
+							tsshow('权限名称不能为空!');
+							break;
+						case 5:
+							tsshow('新增失败;已存在该权限代码!');
+							break;
+						case 6:
+							tsshow('新增失败;不存在该上级权限代码!');
+							break;
+						default:
+							tsshow(msg);
+							break;				
+					}
+				}
+				if(lx=='edit')
+				{
+					switch(cod)
+					{
+						case 1:
+							$('#fm').form('clear');
+							document.getElementById("buttons").style.visibility="hidden";
+							document.getElementById("buttons_bj").style.visibility="hidden";
+							gettree();
+							break;
+						case 2:
+							tsshow('代码不能为空!');
+							break;
+						case 3:
+							tsshow('上级代码不能为空!');
+							break;
+						case 4:
+							tsshow('权限名称不能为空!');
+							break;
+						case 5:
+							tsshow('修改失败;不存在该权限代码!');
+							break;
+						case 6:
+							tsshow('修改失败;不存在该上级权限代码!');
+							break;
+						default:
+							tsshow(msg);
+							break;				
+					}
+				}
+				if(lx=='del')
+					{
+					switch(cod)
+					{
+						case 1:
+							$('#fm').form('clear');
+							document.getElementById("buttons").style.visibility="hidden";
+							document.getElementById("buttons_bj").style.visibility="hidden";
+							gettree();
+							break;
+						case 2:
+							tsshow('代码不能为空！');
+							break;
+						case 3:
+							tsshow('该分类下仍有子类存在,不可删除！');
+							break;
+						case 5:
+							tsshow('不存在该分类代码！');
+						default:
+							tsshow(msg);
+							break;				
+					}
+				}
+			}
+
+			&lt;/script>
+		</pre>
+	</div>
+
+</body>
+</html>
