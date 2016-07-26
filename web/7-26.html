@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>走势图？？？</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>走势图？什么鬼？南尼？Excuse me？</h1>
+		<pre class="p-4">
+			&lt;script>
+				$(document).ready(function(){ dg(); });
+
+				function dg() {
+					$('#dg').datagrid({
+						title:'流量实时监控',
+						width:'99.9%',
+						height:'100%',
+						url:'lljk_json_get.asp',
+						toolbar:'#toolbar',
+						singleSelect:'true',
+						method:'post',
+						rownumbers:'true',
+						autoRowHeight:'true',
+						pagination:'true',
+						pageSize:20,
+						pageNumber:1,
+						pageList:[20,50,100],
+						//点击某行时激活折线图
+						//onClickRow:function(){
+							//var row = $('#dg').datagrid('getSelected');
+							//$.post('spgl_if_json_get.asp',{ SPU:row.SPU },function(result){},'json');
+							//$('#dgyscm').datagrid('reload');
+				  		//},
+						columns:[[
+							{field:'企业名称',title:'企业名称',width:200,align:'center'},
+							{field:'监控位置',title:'监控位置',width:250,align:'center'},
+							{field:'当前流量',title:'当前流量',width:200,align:'center'},
+							{field:'更新时间',title:'更新时间',width:250,align:'center'}
+						]]
+					});
+				}
+
+				function qst(rxAxis,rdata)
+				{	
+					var json = {};
+					
+					json.title = { text: 'Po单趋势图' };
+					json.xAxis = { categories: rxAxis };
+					json.yAxis = { title: { text: '售卖比 (%)' }, plotLines: [{ value: 0, width: 1, color: '#808080' }] };
+					json.tooltip = { valueSuffix: '%' };
+					json.legend = { layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0 };
+					json.series = [ { name: 'Po单号', data: rdata } ];
+					
+					$('#container').highcharts(json);
+				}
+			&lt;/script>
+		</pre>
+	</div>
+</body>
+</html>
