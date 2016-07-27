@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS随机数带两位小数</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>JS随机十个带两位小数的数</h1>
+		<h3>思路：用for循环十次随机数</h3>
+	</div>
+	<script language="javascript">
+		var myarr=new Array(10);
+		for (i=0;i<10;i++) {
+			var num=(Math.random())*10;
+			myarr[i]=num.toFixed(1);
+		}
+		alert(myarr);
+	</script>
+</body>
+</html>
