@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<div>点击按钮获取JSON数据</div> 
+<input type="button" id="button" value="确定" /> 
+<div id="result"></div> 
+<script>
+	$(document).ready(function(){ 
+	$('#button').click(function(){ 
+	$.getJSON('music.txt',function(data){ 
+	var music="<ul>"; 
+	$.each(data,function(i,n){ 
+	music+="<li>"+n["optionValue"]+"</li>"; 
+	}); 
+	music+="</ul>"; 
+	$('#result').append(music); 
+	}); 
+	return false; 
+	}); 
+	}); 
+</script>
+</body>
+</html>
