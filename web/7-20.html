@@ -25,18 +25,34 @@
 			display: block;
 			margin: 50px auto;
 		}
+		#buttonXS {
+			background: #f99;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 50px;
+			font-size: 20px;
+			color: #fff;
+			display: block;
+			margin: 50px auto;
+		}
 	</style>
 </head>
 <body>
 	<h1>例子：</h1>
 	<input type="text" id="inputId" />
 	<input type="button" value="赋 值" id="buttonId">
+	<input type="button" value="获 取" id="buttonXS">
 
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>
 		$(function(){
 			$("#buttonId").click(function(){
 				$("#inputId").val("这里是赋值的内容！");
+			});
+		});
+		$(document).ready(function(){
+			$("#buttonXS").click(function(){
+				alert($("#inputId").val());
 			});
 		});
 	</script>

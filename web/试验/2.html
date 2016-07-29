@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<p>2113213</p>
+<div id="div"></div>
+<select class="easyui-combobox" id="state" style="width:200px;">
+	<option value="1">需求发起</option>
+	<option value="2">工厂</option>
+</select>
+<input type="button" onclick="quedin()" value="添加">
+<script>
+	document.getElementById("div").innerHTML="<p>这是js输出的</p>";
+	
+	function quedin(){
+		var a=document.getElementById("state").value;
+		alert(a);
+	}
+</script>
+</body>
+</html>
