@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="header">
+	<h1>假json文件.asp</h1>
+	<pre class="p-4">
+		{
+		    "rows":[
+		        {
+		            "ID":"1",
+		            "备注":"1"
+		        },
+		        {
+		            "ID":"2",
+		            "备注":"222222"
+		        }
+		    ]
+		}
+	</pre>
+	<h1>一些按钮</h1>
+	<pre class="p-4">
+		//登记按钮
+		function quedin(b){
+			var row = $('#dg').datagrid('getSelected');
+			if (row) {
+				$('#dlg').dialog('open').dialog('setTitle','登记');
+				$('#cc').combobox({
+				    url:'xpgz_combobox_json.asp',
+				    valueField:'id',
+				    textField:'text'
+				});
+			}else {
+				tsshow('请选择一条数据！');
+			}
+		}
+
+		//确定按钮
+		function savetype() {
+			var row = $('#dg').datagrid('getSelected');
+			$.post('xpgz_json_edit.asp',{ id:row.GZ_SPDM,va:$('#roleID').textbox('getValue') },function(res){ 
+				$('#dlg').dialog('close');
+				$('#dg').datagrid('reload');
+				$('#fm').form('clear');
+			},'json');
+		}
+
+		//查找按钮
+		function doSearch()
+		{
+			$('#dg').datagrid('load',{
+				mc: $("#mc").textbox('getValue')
+			});
+		}
+	</pre>
+
+</div>
+</body>
+</html>
