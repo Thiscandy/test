@@ -1,0 +1,343 @@
+JavaScript函数大集锦
+javascript提供了许多函数供开发人员使用，下面给出一个简单介绍，同时也给出了值得一生典藏的js函数！
+javascript函数一共可分为五类：
+	·常规函数
+	·数组函数
+	·日期函数
+	·数学函数
+	·字符串函数
+1.常规函数
+	javascript常规函数包括以下9个函数：
+		(1)alert函数：显示一个警告对话框，包括一个OK按钮。
+		(2)confirm函数：显示一个确认对话框，包括OK、Cancel按钮。
+		(3)escape函数：将字符转换成Unicode码。
+		(4)eval函数：计算表达式的结果。
+		(5)isNaN函数：测试是(true)否(false)不是一个数字。
+		(6)parseFloat函数：将字符串转换成符点数字形式。
+		(7)parseInt函数：将符串转换成整数数字形式(可指定几进制)。
+		(8)prompt函数：显示一个输入对话框，提示等待用户
+			例如：
+			<script language="javascript">
+			<!--
+			alert("输入错误");
+			prompt("请输入您的姓名","姓名");
+			confirm("确定否！")
+			//-->
+			script>
+		(9)unescape函数：解码由escape函数编码的字符。
+2.数组函数
+	javascript数组函数包括以下4个函数：
+		(1)join函数：转换并连接数组中的所有元素为一个字符串。
+			例:
+			function JoinDemo()
+			{
+			var a, b;
+			a = new Array(0,1,2,3,4);
+			b = a.join("-");//分隔符
+			return(b);//返回的b=="0-1-2-3-4"
+			}
+		(2)length函数：返回数组的长度。
+			例：
+			function LengthDemo()
+			{
+			var a, l;
+			a = new Array(0,1,2,3,4);
+			l = a.length;
+			return(l);//l==5
+			}
+		(3)reverse函数：将数组元素顺序颠倒。
+			例：
+			function ReverseDemo()
+			{
+			var a, l;
+			a = new Array(0,1,2,3,4);
+			l = a.reverse();
+			return(l);
+			}
+		(4)sort函数：将数组元素重新排序。
+			例：
+			function SortDemo()
+			{
+			var a, l;
+			a = new Array("X" ,"y" ,"d", "Z", "v","m","r");
+			l = a.sort();
+			return(l);
+			}  
+3.日期函数  
+	javascript日期函数包括以下20个函数：  
+		(1)getDate函数：返回日期的“日”部分，值为1～31。
+			例：  
+			function DateDemo()  
+			{
+			var d, s = "Today's date is: ";  
+			d = new Date();
+			s += (d.getMonth() + 1) + "/";  
+			s += d.getDate() + "/";  
+			s += d.getYear();  
+			return(s);  
+			}  
+		(2)getDay函数：返回星期几，值为0～6，其中0表示星期日，1表示星期一，...，6表示星期六。
+			例：  
+			function DateDemo()    
+			{
+			var d, day, x, s = "Today is: ";
+			var x = new Array("Sunday", "Monday", "Tuesday");  
+			var x = x.concat("Wednesday","Thursday", "Friday");  
+			var x = x.concat("Saturday");  
+			d = new Date();  
+			day = d.getDay();  
+			return(s += x[day]); 
+			}    
+		(3)getHouse函数：返回日期的“小时”部分，值为0～23。
+			例。    
+			function TimeDemo()    
+			{
+			var d, s = "The current local time is: ";  
+			var c = ":";  
+			d = new Date();     
+			s += d.getHours() + c;     
+			s += d.getMinutes() + c;     
+			s += d.getSeconds() + c;     
+			s += d.getMilliseconds();     
+			return(s);     
+			}     
+		(4)getMinutes函数：返回日期的“分钟”部分，值为0～59。见上例。    
+		(5)getMonth函数：返回日期的“月”部分，值为0～11。其中0表示1月，2表示3月，...，11表示12月。见前面的例子。    
+		(6)getSeconds函数：返回日期的“秒”部分，值为0～59。见前面的例子。   
+		(7)getTime函数：返回系统时间。    
+			function GetTimeTest()    
+			{  
+			var d, s, t;     
+			var MinMilli = 1000 * 60;     
+			var HrMilli = MinMilli * 60;     
+			var DyMilli = HrMilli * 24;  
+			d = new Date();  
+			t = d.getTime();     
+			s = "It's been "  
+			s += Math.round(t / DyMilli) + " days since 1/1/70";     
+			return(s);    
+			}     
+		(8)getTimezoneOffset函数：返回此地区的时差(当地时间与GMT格林威治标准时间的地区时差)，单位为分钟。    
+			function TZDemo()    
+			{  
+			var d, tz, s = "The current local time is ";     
+			d = new Date();  
+			tz = d.getTimezoneOffset();     
+			if (tz < 0)  
+			s += tz / 60 + " hours before GMT";     
+			else if (tz == 0)     
+			s += "GMT";  
+			else  
+			s += tz / 60 + " hours after GMT";     
+			return(s); 
+			}     
+		(9)getYear函数：返回日期的“年”部分。返回值以1900年为基数，例如1999年为99。前面有例子。    
+		(10)parse函数：返回从1970年1月1日零时整算起的毫秒数(当地时间)。    
+			function GetTimeTest(testdate)    
+			{  
+			var d, s, t;  
+			var MinMilli = 1000 * 60;     
+			var HrMilli = MinMilli * 60;     
+			var DyMilli = HrMilli * 24;     
+			d = new Date();     
+			t = Date.parse(testdate);  
+			s = "There are "  
+			s += Math.round(Math.abs(t / DyMilli)) + " days "     
+			s += "between " + testdate + " and 1/1/70";     
+			return(s);     
+			}     
+		(11)setDate函数：设定日期的“日”部分，值为0～31。   
+		(12)setHours函数：设定日期的“小时”部分，值为0～23。    
+		(13)setMinutes函数：设定日期的“分钟”部分，值为0～59。    
+		(14)setMonth函数：设定日期的“月”部分，值为0～11。其中0表示1月，...，11表示12月。    
+		(15)setSeconds函数：设定日期的“秒”部分，值为0～59。    
+		(16)setTime函数：设定时间。时间数值为1970年1月1日零时整算起的毫秒数。   
+		(17)setYear函数：设定日期的“年”部分。    
+		(18)toGMTString函数：转换日期成为字符串，为GMT格林威治标准时间。   
+		(19)setLocaleString函数：转换日期成为字符串，为当地时间。    
+		(20)UTC函数：返回从1970年1月1日零时整算起的毫秒数，以GMT格林威治标准时间计算。    
+4.数学函数    
+	javascript数学函数其实就是Math对象，它包括属性和函数(或称方法)两部分。其中，属性主要有下列内容。    
+	Math.e:e(自然对数)、Math.LN2（2的自然对数)、Math.LN10(10的自然对数)、Math.LOG2E(e的对数，底数为2)、Math.LOG10E(e的对数，底数为10)、Math.PI(π)、Math.SQRT1_2(1/2的平方根值)、Math.SQRT2(2的平方根值)。   
+	函数有以下18个：    
+		(1)abs函数：即Math.abs(以下同)，返回一个数字的绝对值。    
+		(2)acos函数：返回一个数字的反余弦值，结果为0～π弧度(radians)。   
+		(3)asin函数：返回一个数字的反正弦值，结果为-π/2～π/2弧度。   
+		(4)atan函数：返回一个数字的反正切值，结果为-π/2～π/2弧度。   
+		(5)atan2函数：返回一个坐标的极坐标角度值。   
+		(6)ceil函数：返回一个数字的最小整数值(大于或等于)。   
+		(7)cos函数：返回一个数字的余弦值，结果为-1～1。   
+		(8)exp函数：返回e(自然对数)的乘方值。 
+		(9)floor函数：返回一个数字的最大整数值(小于或等于)。   
+		(10)log函数：自然对数函数，返回一个数字的自然对数(e)值。   
+		(11)max函数：返回两个数的最大值。   
+		(12)min函数：返回两个数的最小值。    
+		(13)pow函数：返回一个数字的乘方值。    
+		(14)random函数：返回一个0～1的随机数值。    
+		(15)round函数：返回一个数字的四舍五入值，类型是整数。   
+		(16)sin函数：返回一个数字的正弦值，结果为-1～1。   
+		(17)sqrt函数：返回一个数字的平方根值。   
+		(18)tan函数：返回一个数字的正切值。   
+5.字符串函数    
+	javascript字符串函数完成对字符串的字体大小、颜色、长度和查找等操作，共包括以下20个函数：    
+		(1)anchor函数：产生一个链接点(anchor)以作超级链接用。anchor函数设定的链接点的名称，另一个函数link设定的URL地址。    
+		(2)big函数：将字体加到一号，与...标签结果相同。   
+		(3)blink函数：使字符串闪烁，与...标签结果相同。   
+		(4)bold函数：使字体加粗，与...标签结果相同。   
+		(5)charAt函数：返回字符串中指定的某个字符。    
+		(6)fixed函数：将字体设定为固定宽度字体，与...标签结果相同。   
+		(7)fontcolor函数：设定字体颜色，与标签结果相同。   
+		(8)fontsize函数：设定字体大小，与标签结果相同。    
+		(9)indexOf函数：返回字符串中第一个查找到的下标index，从左边开始查找。   
+		(10)italics函数：使字体成为斜体字，与...标签结果相同。     
+		(11)lastIndexOf函数：返回字符串中第一个查找到的下标index，从右边开始查找。
+		(12)length函数：返回字符串的长度。(不用带括号)
+		(13)link函数：产生一个超级链接，相当于设定的URL地址。
+		(14)small函数：将字体减小一号，与...标签结果相同。
+		(15)strike函数：在文本的中间加一条横线，与...标签结果相同。
+		(16)sub函数：显示字符串为下标字(subscript)。
+		(17)substring函数：返回字符串中指定的几个字符。
+		(18)sup函数：显示字符串为上标字(superscript)。
+		(19)toLowerCase函数：将字符串转换为小写。
+		(20)toUpperCase函数：将字符串转换为大写。
+
+1.document.write(""); 输出语句  
+2.JS中的注释为//  
+3.传统的HTML文档顺序是:document->html->(head,body)  
+4.一个浏览器窗口中的DOM顺序是:window->(navigator,screen,history,location,document) 
+5.得到表单中元素的名称和值:document.getElementById("表单中元素的ID号").name(或value) 
+6.一个小写转大写的JS: document.getElementById("output").value =  document.getElementById("input").value.toUpperCase();  
+7.JS中的值类型:String,Number,Boolean,Null,Object,Function 
+8.JS中的字符型转换成数值型:parseInt(),parseFloat() 
+9.JS中的数字转换成字符型:(""+变量) 
+10.JS中的取字符串长度是:(length) 
+11.JS中的字符与字符相连接使用+号.  
+12.JS中的比较操作符有:==等于,!=不等于,>,>=,<.<= 
+13.JS中声明变量使用:var来进行声明 
+14.JS中的判断语句结构:if(condition){}else{}  
+15.JS中的循环结构:for([initial expression];[condition];[upadte expression]) {inside loop} 
+16.循环中止的命令是:break  
+17.JS中的函数定义:function functionName([parameter],...){statement[s]}  
+18.当文件中出现多个form表单时.可以用document.forms[0],document.forms[1]来代替. 
+19.窗口:打开窗口window.open(), 关闭一个窗口:window.close(), 窗口本身:self 
+20.状态栏的设置:window.status="字符"; 
+21.弹出提示信息:window.alert("字符"); 
+22.弹出确认框:window.confirm(); 
+23.弹出输入提示框:window.prompt();  
+24.指定当前显示链接的位置:window.location.href="URL" 
+25.取出窗体中的所有表单的数量:document.forms.length  
+26.关闭文档的输出流:document.close(); 
+27.字符串追加连接符:+=  
+28.创建一个文档元素:document.createElement(),document.createTextNode() 
+29.得到元素的方法:document.getElementById() 
+30.设置表单中所有文本型的成员的值为空: 
+	var form = window.document.forms[0] 
+	for (var i = 0; i<form.elements.length;i++){
+	if (form.elements[i].type == "text"){
+	form.elements[i].value = "";  
+	} }  
+31.复选按钮在JS中判断是否选中:document.forms[0].checkThis.checked (checked属性代表为是否选中返回TRUE或FALSE)  
+32.单选按钮组(单选按钮的名称必须相同):取单选按钮组的长度document.forms[0].groupName.length  
+33.单选按钮组判断是否被选中也是用checked.  
+34.下拉列表框的值:document.forms[0].selectName.options[n].value (n有时用下拉列表框名称加上.selectedIndex来确定被选中的值)  
+35.字符串的定义:var myString = new String("This is lightsword");  
+36.字符串转成大写:string.toUpperCase(); 字符串转成小写:string.toLowerCase(); 
+37.返回字符串2在字符串1中出现的位置:String1.indexOf("String2")!=-1则说明没找到. 
+38.取字符串中指定位置的一个字符:StringA.charAt(9);  
+39.取出字符串中指定起点和终点的子字符串:stringA.substring(2,6);
+40.数学函数:Math.PI(返回圆周率),Math.SQRT2(返回开方),Math.max(value1,value2)返回两个数中的最在 值,Math.pow(value1,10)返回value1的十次方,Math.round(value1)四舍五入函数,Math.floor (Math.random()*(n+1))返回随机数 
+41.定义日期型变量:var today = new Date();  
+42.日期函数列表:
+	dateObj.getTime()得到时间,
+	dateObj.getYear()得到年份, 
+	dateObj.getFullYear()得到四位的年份,
+	dateObj.getMonth()得到月份,
+	dateObj.getDate()得到 日,
+	dateObj.getDay()得到日期几,
+	dateObj.getHours()得到小时,
+	dateObj.getMinutes()得到分, 
+	dateObj.getSeconds()得到秒,
+	dateObj.setTime(value)设置时间,
+	dateObj.setYear(val)设 置年,
+	dateObj.setMonth(val)设置月,
+	dateObj.setDate(val)设置日,
+	dateObj.setDay(val)设 置星期几,
+	dateObj.setHours设置小时,
+	dateObj.setMinutes(val)设置分,
+	dateObj.setSeconds (val)设置秒   
+	[注意:此日期时间从0开始计] 
+43.FRAME 的 表 示 方 式 :  [window.]frames[n].ObjFuncVarName,frames["frameName"].ObjFuncVarName,frameName.ObjFuncVarName  
+44.parent代表父亲对象,top代表最顶端对象 
+45.打开子窗口的父窗口为:opener  
+46.表示当前所属的位置:this  
+47.当在超链接中调用JS函数时用:(javascript:)来开头后面加函数名 
+48.在老的浏览器中不执行此JS:<!--  //-->  
+49.引用一个文件式的JS:<script type="text/javascript" src="aaa.js"></script> 
+50.指定在不支持脚本的浏览器显示的HTML:<noscript></noscript>  
+51.当超链和ONCLICK事件都有时,则老版本的浏览器转向a.html,否则转向b.html.例:<a href= "a.html" onclick="location.href='b.html';return false">dfsadf</a>  
+52.JS的内建对象有:Array,Boolean,Date,Error,EvalError,Function,Math,Number, Object,RangeError,ReferenceError,RegExp,String,SyntaxError,TypeError,URIError 
+53.JS中的换行:\n 
+54.窗口全屏大小 :
+	<script>
+	function  
+	fullScreen(){  
+	this.moveTo(0,0);  
+	this.outerWidth=screen.availWidth;this.outerHeight=screen.availHeight;
+	}window.maximize=fullScreen;
+	</script>  
+55.JS中的all代表其下层的全部元素     
+56.JS中的焦点顺序:document.getElementByid("表单元素").tabIndex = 1  
+57.innerHTML的值是表单元素的值:如<p id="para">"how are <em>you< /em>"</p>,则innerHTML的值就是:how are <em>you</em>  
+58.innerTEXT的值和上面的一样,只不过不会把<em>这种标记显示出来.  
+59.contentEditable可设置元素是否可被修改,isContentEditable返回是否可修改的状态.
+60.isDisabled判断是否为禁止状态.disabled设置禁止状态 
+61.length取得长度,返回整型数值  
+62.addBehavior()是一种JS调用的外部函数文件其扩展名为.htc 
+63.window.focus()使当前的窗口在所有窗口之前. 
+64.blur()指失去焦点.与FOCUS()相反.  
+65.select()指元素为选中状态.  
+66.防止用户对文本框中输入文本:onfocus="this.blur()"  
+67.取出该元素在页面中出现的数量:document.all.tags("div(或其它HTML标记符)").length 
+68.JS中分为两种窗体输出:模态和非模态.window.showModaldialog(),window.showModeless() 
+69.状态栏文字的设置:window.status='文字',默认的状态栏文字设置:window.defaultStatus = '文字.';  
+70.添加到收藏夹:external.AddFavorite("http://www.dannyg.com","jaskdlf");  
+71.JS中遇到脚本错误时不做任何操作:window.onerror = doNothing; 指定错误句柄的语法为:window.onerror = handleError;  
+72.JS中指定当前打开窗口的父窗口:window.opener,支持opener.opener...的多重继续. 73.JS中的self指的是当前的窗口  
+74.JS中状态栏显示内容:window.status="内容" 
+75.JS中的top指的是框架集中最顶层的框架 
+76.JS中关闭当前的窗口:window.close();  
+77.JS中提出是否确认的框:if(confirm("Are you sure?")){alert("ok");}else{alert("Not Ok");} 
+78.JS中的窗口重定向:window.navigate("http://www.sina.com.cn"); 
+79.JS中的打印:window.print()  
+80.JS中的提示输入框:window.prompt("message","defaultReply"); 
+81.JS中的窗口滚动条:window.scroll(x,y)  
+82.JS中的窗口滚动到位置:window.scrollby  
+83.JS中设置时间间隔:setInterval("expr",msecDelay)或setInterval(funcRef,msecDelay)或setTimeout  
+84.JS中的模态显示在IE4+行,在NN中不行:showModalDialog("URL"[,arguments][,features]); 
+85.JS中的退出之前使用的句柄:function verifyClose(){event.returnValue= "we really like you and hope you will stay longer.";}}   window.onbeforeunload=verifyClose; 
+86.当窗体第一次调用时使用的文件句柄:onload() 
+87.当窗体关闭时调用的文件句柄:onunload() 
+88.window.location的属性:  
+	protocol(http:),hostname(www.example.com),port(80),host(www.example.com:80),pathname("/a/a.html"),hash("#giantGizmo",指跳转到相应的锚记),href(全部的信息) 
+89.window.location.reload()刷新当前页面.  
+89-1.parent.location.reload()刷新父亲对象（用于框架）  
+89-2.opener.location.reload()刷新父窗口对象（用于单开窗口）  
+89-3.top.location.reload()刷新最顶端对象（用于多开窗口） 
+90.window.history.back()返回上一页,window.history.forward()返回下一页,window.history.go(返回第几页,也可以使用访问过的URL)  
+91.document.write()不换行的输出,document.writeln()换行输出 
+92.document.body.noWrap=true;防止链接文字折行.
+93.变量名.charAt(第几位),取该变量的第几位的字符. 
+94."abc".charCodeAt(第几个),返回第几个字符的ASCii码值.  
+95.字符串连接:string.concat(string2),或用+=进行连接  
+96.变量.indexOf("字符",起始位置),返回第一个出现的位置(从0开始计算) 
+97.string.lastIndexOf(searchString[,startIndex])最后一次出现的位置. 
+98.string.match(regExpression),判断字符是否匹配.  
+99.string.replace(regExpression,replaceString)替换现有字符串. 
+100.string.split(分隔符)返回一个数组存储值. 
+101.string.substr(start[,length])取从第几位到指定长度的字符串.
+102.string.toLowerCase()使字符串全部变为小写. 
+103.string.toUpperCase()使全部字符变为大写.  
+104.parseInt(string[,radix(代表进制)])强制转换成整型. 
+105.parseFloat(string[,radix])强制转换成浮点型. 
+106.isNaN(变量):测试是否为数值型.  
+107.定义常量的关键字:const,定义变量的关键字:var

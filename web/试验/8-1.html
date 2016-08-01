@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+	<title>for in</title>
+	<meta charset="utf-8">
+</head>
+<html>
+<body>
+<div style="width: 1000px;margin: 30px auto;padding:40px 50px;background: #F8F8F8;box-shadow: 1px 1px 10px rgba(0,0,0,0.5);">
+<h3>代码如下所示：</h3>
+<pre style="color:#060">
+	function myFunction()
+	{
+	var x;
+	var txt="";
+	var person={fname:"Bill",lname:"Gates",age:56,gew:"Abc"}; 
+
+	for (x in person)
+	{
+	alert(x);
+	txt=txt + person[x]+"、";
+	alert(txt);
+	}
+
+	document.getElementById("demo").innerHTML=txt;
+	}
+
+	function myint()
+	{
+	var x=623;
+	var z=377;
+
+	document.getElementById("abc").innerHTML=x+"   "+z;
+	}
+
+	function myup(){
+	var txt="Hello world!";
+	document.getElementById("abcd").innerHTML=txt.toUpperCase();
+	}
+
+	function time(){
+	document.getElementById("abcde").innerHTML=Date();
+	}
+</pre>
+<p>第一次循环得到x等于【fname】，txt等于【Bill、】</p>
+<p>第二次循环得到x等于【lname】，txt等于【Bill、Gates、】</p>
+<p>以此类推</p>
+<p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
+<button onclick="myFunction()">for in</button>
+<p id="demo"></p>
+<button onclick="myint()">数字</button>
+<p id="abc"></p>
+<button onclick="myup()">英文字母大小写</button>
+<p id="abcd"></p>
+<button onclick="time()">当日的日期</button>
+<p id="abcde"></p>
+<button onclick="day()">如何判断星期几</button>
+<p id="abcdef"></p>
+<button onclick="startTime()">时钟</button>
+<div id="txt"></div>
+
+
+</div>
+
+<script>
+function myFunction()
+{
+var x;
+var txt="";
+var person={fname:"Bill",lname:"Gates",age:56,gew:"Abc"}; 
+
+for (x in person)
+{
+alert(x);
+txt=txt + person[x]+"、";
+alert(txt);
+}
+
+document.getElementById("demo").innerHTML=txt;
+}
+
+function myint()
+{
+var x=623;
+var z=377;
+
+document.getElementById("abc").innerHTML=x+"   "+z;
+}
+
+function myup(){
+var txt="Hello world!";
+document.getElementById("abcd").innerHTML=txt.toUpperCase();
+}
+
+function time(){
+document.getElementById("abcde").innerHTML=Date();
+}
+
+function day(){
+var d=new Date()
+var weekday=new Array(7)
+weekday[0]="星期日"
+weekday[1]="星期一"
+weekday[2]="星期二"
+weekday[3]="星期三"
+weekday[4]="星期四"
+weekday[5]="星期五"
+weekday[6]="星期六"
+
+document.getElementById("abcdef").innerHTML="今天是" + weekday[d.getDay()]
+}
+
+function startTime()
+{
+var today=new Date()
+var h=today.getHours()
+var m=today.getMinutes()
+var s=today.getSeconds()
+m=checkTime(m)
+s=checkTime(s)
+document.getElementById('txt').innerHTML=h+":"+m+":"+s
+t=setTimeout('startTime()',500)
+}
+
+function checkTime(i)
+{
+if (i<10) 
+  {i="0" + i}
+  return i
+}
+</script>
+</body>
+</html>

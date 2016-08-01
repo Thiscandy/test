@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<style>
+		.two-1 { margin-left:100px;background-color: red;width: 100px;height: 100px;border-radius: 10px; }
+		.two-2 { margin-left:100px;background-color: red;width: 100px;height: 100px;border-radius: 5px 4px 3px 2px; }
+		.two-3 { margin-left:100px;height: 50px;width: 100px;background: #9da;border-radius: 50px 50px 0 0; }
+		.two-4 { margin-left:100px;height: 100px;width: 100px;background: #9da;border-radius: 50px; }
+		.two-5 { margin-left:100px;height:100px;width:50px;background:#9da;border-radius:50px 0px 0px 50px; }
+		.three-1 { margin-left:100px;height:100px;width:100px;box-shadow:4px 4px 6px #333333; }
+		.three-2 { margin-left: 100px;height: 100px;width: 100px;box-shadow:4px 2px 6px #333333 inset; }
+		.three-3 { margin-left: 100px;height: 100px;width: 100px;box-shadow: 4px 2px 6px #f00,-4px -2px 6px #000,0px 0px 12px 5px #3c0 inset; }
+		.three-4 { margin-left: 100px;height: 100px;width: 100px;box-shadow: -4px 4px 6px #666; }
+		.three-5 { margin-left: 100px;height: 100px;width: 100px;box-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
+		.three-6 { margin-left: 100px;height: 100px;width: 100px;box-shadow: 4px -4px 6px #666; }
+		.four-1 { margin-left: 100px;height:100px;line-height:100px;text-align:center;font-size:30px;width:450px;border:15px solid #ccc;    border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20; }
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1>第一章 边框</h1>
+		<h3>css样式</h3>
+		<p class="p-2">圆角效果 border-radius</p>
+
+		<p class="p-2">使用的方法：</p>
+		<p class="p-2">圆角矩形</p>
+		<p>border-radius:10px; /* 所有角都使用半径为10px的圆角 */ </p>		
+		<div class="two-1"></div>
+		<p class="p-5">width: 100px;height: 100px;border-radius: 10px;</p>
+
+		<p class="p-2">不规则圆角矩形</p>
+		<p>border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ </p>		
+		<div class="two-2"></div>
+		<p class="p-5">width: 100px;height: 100px;border-radius: 5px 4px 3px 2px;</p>
+
+		<p class="p-2">实心上半圆</p>
+		<p>把高度(height)设为宽度（width）的一半，并且只设置左上角和右上角的半径与元素的高度一致（大于也是可以的）。</p>
+		<div class="two-3"></div>
+		<p class="p-5">height: 50px;width: 100px;border-radius: 50px 50px 0 0;</p>
+
+		<p class="p-2">实心圆</p>
+		<p>把宽度（width）与高度(height)值设置为一致（也就是正方形），并且四个圆角值都设置为它们值的一半。</p>
+		<div class="two-4"></div>
+		<p class="p-5">height: 100px;width: 100px;background: #9da;border-radius: 50px;</p>
+
+		<p class="p-2">左半圆形</p>
+		<p>把宽度（width）与高度(height)值设置为一致（也就是正方形），并且左上角和左下角都设置为它们值的一半。</p>
+		<div class="two-5"></div>
+		<p class="p-5">height:100px;width:50px;background:#9da;border-radius:50px 0px 0px 50px;</p>
+
+		<h3>阴影 box-shadow（一）</h3>
+		<p class="p-2">box-shadow是向盒子添加阴影。支持添加一个或者多个。</p>
+		<p class="p-2">语法：</p>
+		<p class="p-4">box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];</p>
+		<img src="images/css2-2.jpg">
+		<p style="color:red;">注意：inset 可以写在参数的第一个或最后一个，其它位置是无效的。</p>
+
+		<p class="p-2">外阴影</p>
+		<div class="three-1"></div>
+		<p class="p-5">height:100px;width:100px;box-shadow:4px 4px 6px #333333;</p>
+
+		<p class="p-2">内阴影</p>
+		<div class="three-2"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:4px 2px 6px #333333 inset;</p>
+
+		<p class="p-2">添加多个阴影</p>
+		<p>以上的语法的介绍，就这么简单，如果添加多个阴影，只需用逗号隔开即可。</p>
+		<div class="three-3"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow: 4px 2px 6px #f00,-4px -2px 6px #000,0px 0px 12px 5px #3c0 inset;</p>
+
+		<p class="p-2">周围都有阴影</p>
+		<div class="three-5"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:1px 1px 10px rgba(0,0,0,0.5);</p>
+
+		<h3>阴影 box-shadow（二）</h3>
+		<p class="p-2">1、阴影模糊半径与阴影扩展半径的区别</p>
+		<p>阴影模糊半径：此参数可选，其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊；</p>
+		<p>阴影扩展半径：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值时，则缩小；</p>
+		<p class="p-2">2、X轴偏移量和Y轴偏移量值可以设置为负数</p>
+		<p>语法：</p>
+		<p class="p-4">box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];</p>
+
+		<p class="p-2">X轴为负数实例</p>
+		<div class="three-4"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:-4px 4px 6px #666;</p>
+
+		<p class="p-2">Y轴为负数实例</p>
+		<div class="three-6"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:4px -4px 6px #666;</p>
+
+		<h3>为边框应用图片 border-image</h3>
+		<img src="images/css2-4.jpg">
+		<p class="p-2">实例</p>
+		<div class="four-1">外边框</div>
+		<p class="p-5">height:100px;line-height:100px;text-align:center;font-size:30px;width:450px;border:15px solid #ccc;    border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20;</p>
+
+		<h1>第二章 颜色相关</h1>
+		<h3>颜色之RGBA</h3>
+		<p class="p-2">语法：</p>
+		<p class="p-4">color：rgba(R,G,B,A)</p>
+		<p class="p-2">以上R、G、B三个参数，正整数值的取值范围为：0 - 255。A为透明度参数，取值在0~1之间，不可为负值。</p class="p-2">
+
+		<h3>渐变色彩(渐变背景)</h3>
+		<p class="p-2">CSS3 Gradient 分为线性渐变(linear)和径向渐变(radial)。</p>
+		<img src="images/css3-2.jpg">
+		<p class="p-2">参数：</p>
+		<img src="images/css3-2-1.jpg">
+
+		<h1>第三章 文字和字体</h1>
+	</div>
+</body>
+</html>
