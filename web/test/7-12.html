@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../demo.css">
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	<style type="text/css">.blue { color:blue;background-color: red; }</style>
 </head>
 <body>
 	<h2>Multiple ComboTree</h2>
@@ -17,6 +18,20 @@
 		<input type="checkbox" checked onclick="$('#cc').combotree({cascadeCheck:$(this).is(':checked')})">
 	</div>
 	<select id="cc" class="easyui-combotree" data-options="url:'tree_data1.json',method:'get'" multiple style="width:200px;"></select>
+	<div id="div"></div>
+	<div id="a"></div>
+
+	<script>
+		$('#div').html("<p>这是jQ输出的</p>");
+		$('#div').append("<b>hello!这是jQ输出的</b>");
+		$('#div').append("<spen>这是jQ输出的</spen>")
+
+		$('#a').html("<p>加格式</p>");
+		$("p").css("background-color","yellow");
+
+		$("#div").addClass("blue");
+		$("#a").addClass("blue");
+	</script>
  
 </body>
 </html>

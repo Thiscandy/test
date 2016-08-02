@@ -16,7 +16,12 @@
 		.three-4 { margin-left: 100px;height: 100px;width: 100px;box-shadow: -4px 4px 6px #666; }
 		.three-5 { margin-left: 100px;height: 100px;width: 100px;box-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
 		.three-6 { margin-left: 100px;height: 100px;width: 100px;box-shadow: 4px -4px 6px #666; }
-		.four-1 { margin-left: 100px;height:100px;line-height:100px;text-align:center;font-size:30px;width:450px;border:15px solid #ccc;    border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20; }
+		.four-1 { margin-left: 100px;height:100px;line-height:100px;text-align:center;font-size:30px;width:450px;border:15px solid #ccc;border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20; }
+		.test_demo { margin-left: 100px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 200px;background: #C5DFF8; }
+		.test_demo2 { margin-left: 100px;width: 200px;background: #C5DFF8;word-wrap: break-word; }
+		@font-face { font-family: "MOOC Font";src: url("http://www.imooc.com/Amaranth-BoldItalic.otf"); }
+		.test_demo3 { margin-left: 100px; width: 150px; text-align: center;color: #566F89;background: #C5DFF8;font-size:35px;font-family: "MOOC Font"; }
+		.test_demo4 { margin-left: 100px;width: 150px;text-align: center;font-size:35px;background: #C5DFF8;text-shadow: 2px 2px 10px red; }
 	</style>
 </head>
 <body>
@@ -98,6 +103,7 @@
 		<p class="p-5">height:100px;line-height:100px;text-align:center;font-size:30px;width:450px;border:15px solid #ccc;    border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20;</p>
 
 		<h1>第二章 颜色相关</h1>
+
 		<h3>颜色之RGBA</h3>
 		<p class="p-2">语法：</p>
 		<p class="p-4">color：rgba(R,G,B,A)</p>
@@ -109,7 +115,81 @@
 		<p class="p-2">参数：</p>
 		<img src="images/css3-2-1.jpg">
 
-		<h1>第三章 文字和字体</h1>
+		<h1>第三章 文字与字体</h1>
+
+		<h3>text-overflow</h3>
+		<p class="p-2">用来设置是否使用一个省略标记(...)标示对象内文本的溢出。</p>
+		<p class="p-2">语法：</p>
+		<img src="images/css4-1.jpg">
+		<p>但是text-overflow只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，还须定义强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示省略号的效果。</p>
+		<ul>
+			<li>text-overflow:ellipsis; </li>
+			<li>overflow:hidden; </li>
+			<li>white-space:nowrap; </li>
+		</ul>
+		<div class="test_demo">这是一个DIV（我是省略号）</div>
+		<br />
+
+		<h3>word-wrap</h3>
+		<p class="p-2">用来设置文本行为，当前行超过指定容器的边界时是否断开转行。</p>
+		<p class="p-2">语法：</p>
+		<img src="images/css4-2.jpg">
+		<p>normal为浏览器默认值，break-word设置在长单词或 URL地址内部进行换行，此属性不常用，用浏览器默认值即可。</p>
+		<div class="test_demo2">这是一个DIV（我是省略号）</div>
+		<br />
+
+		<h3>嵌入字体@font-face</h3>
+		<p class="p-2">@font-face能够加载服务器端的字体文件，让浏览器端可以显示用户电脑里没有安装的字体。</p>
+		<p class="p-2">语法：</p>
+		<pre class="p-4">
+		@font-face {
+			font-family : "MOOC Font"; //字体名称
+			src : url("http://www.imooc.com/Amaranth-BoldItalic.otf"); //字体文件在服务器上的相对或绝对路径
+		}
+		p {
+			font-size :12px;
+			font-family : "My Font"; //必须项，设置@font-face中font-family同样的值
+		}
+		</pre>
+		<div class="test_demo3">啊嘞嘞</div>
+		<br />
+
+		<h3>文本阴影text-shadow</h3>
+		<p class="p-2">用来设置文本的阴影效果。</p>
+		<p class="p-2">语法：</p>
+		<pre class="p-4">
+		text-shadow: X-Offset Y-Offset blur color;
+		</pre>
+		<ul>
+			<li>X-Offset：表示阴影的水平偏移距离，其值为正值时阴影向右偏移，反之向左偏移；      </li>
+			<li>Y-Offset：是指阴影的垂直偏移距离，如果其值是正值时，阴影向下偏移，反之向上偏移；</li>
+			<li>Blur：是指阴影的模糊程度，其值不能是负值，如果值越大，阴影越模糊，反之阴影越清晰，如果不需要阴影模糊可以将Blur值设置为0；</li>
+			<li>Color：是指阴影的颜色，其可以使用rgba色。</li>
+		</ul>
+		<div class="test_demo4">啊嘞嘞</div>
+		<br />
+
+		<h1>第四章 背景相关的样式</h1>
+
+		<h3>元素背景图片的原始起始位置</h3>
+		<p class="p-2">语法：</p>
+		<pre class="p-4">
+		background-origin ： border-box | padding-box | content-box;
+
+		参数分别表示背景图片是从边框，还是内边距（默认值），或者是内容区域开始显示。
+
+		<img src="images/css5-1.jpg">
+		</pre>
+		<p style="margin-left: 50px; color:red;">需要注意的是，如果背景不是no-repeat，这个属性无效，它会从边框开始显示。</p>
+		<br />
+
+		<h3>将背景图片做适当的裁剪以适应实际需要</h3>
+		<p class="p-2">语法：</p>
+		<pre class="p-4">
+		background-clip ： border-box | padding-box | content-box | no-clip	
+			
+		</pre>
+
 	</div>
 </body>
 </html>
