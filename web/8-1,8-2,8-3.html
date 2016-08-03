@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS3</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/css3.css">
+</head>
+<body>
+	<div class="header">
+		<h1>第一章 边框</h1>
+		<h3>css样式</h3>
+		<p class="p-2">圆角效果 border-radius</p>
+
+		<p class="p-2">使用的方法：</p>
+		<p class="p-2">圆角矩形</p>
+		<p>border-radius:10px; /* 所有角都使用半径为10px的圆角 */ </p>		
+		<div class="two-1"></div>
+		<p class="p-5">width: 100px;height: 100px;border-radius: 10px;</p>
+
+		<p class="p-2">不规则圆角矩形</p>
+		<p>border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ </p>		
+		<div class="two-2"></div>
+		<p class="p-5">width: 100px;height: 100px;border-radius: 5px 4px 3px 2px;</p>
+
+		<p class="p-2">实心上半圆</p>
+		<p>把高度(height)设为宽度（width）的一半，并且只设置左上角和右上角的半径与元素的高度一致（大于也是可以的）。</p>
+		<div class="two-3"></div>
+		<p class="p-5">height: 50px;width: 100px;border-radius: 50px 50px 0 0;</p>
+
+		<p class="p-2">实心圆</p>
+		<p>把宽度（width）与高度(height)值设置为一致（也就是正方形），并且四个圆角值都设置为它们值的一半。</p>
+		<div class="two-4"></div>
+		<p class="p-5">height: 100px;width: 100px;background: #9da;border-radius: 50px;</p>
+
+		<p class="p-2">左半圆形</p>
+		<p>把宽度（width）与高度(height)值设置为一致（也就是正方形），并且左上角和左下角都设置为它们值的一半。</p>
+		<div class="two-5"></div>
+		<p class="p-5">height:100px;width:50px;background:#9da;border-radius:50px 0px 0px 50px;</p>
+
+		<h3>阴影 box-shadow（一）</h3>
+		<p class="p-2">box-shadow是向盒子添加阴影。支持添加一个或者多个。</p>
+		<p class="p-2">语法：</p>
+		<p class="p-4">box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];</p>
+		<img src="images/css2-2.jpg">
+		<p style="color:red;">注意：inset 可以写在参数的第一个或最后一个，其它位置是无效的。</p>
+
+		<p class="p-2">外阴影</p>
+		<div class="three-1"></div>
+		<p class="p-5">height:100px;width:100px;box-shadow:4px 4px 6px #333333;</p>
+
+		<p class="p-2">内阴影</p>
+		<div class="three-2"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:4px 2px 6px #333333 inset;</p>
+
+		<p class="p-2">添加多个阴影</p>
+		<p>以上的语法的介绍，就这么简单，如果添加多个阴影，只需用逗号隔开即可。</p>
+		<div class="three-3"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow: 4px 2px 6px #f00,-4px -2px 6px #000,0px 0px 12px 5px #3c0 inset;</p>
+
+		<p class="p-2">周围都有阴影</p>
+		<div class="three-5"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:1px 1px 10px rgba(0,0,0,0.5);</p>
+
+		<h3>阴影 box-shadow（二）</h3>
+		<p class="p-2">1、阴影模糊半径与阴影扩展半径的区别</p>
+		<p>阴影模糊半径：此参数可选，其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊；</p>
+		<p>阴影扩展半径：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值时，则缩小；</p>
+		<p class="p-2">2、X轴偏移量和Y轴偏移量值可以设置为负数</p>
+		<p>语法：</p>
+		<p class="p-4">box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];</p>
+
+		<p class="p-2">X轴为负数实例</p>
+		<div class="three-4"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:-4px 4px 6px #666;</p>
+
+		<p class="p-2">Y轴为负数实例</p>
+		<div class="three-6"></div>
+		<p class="p-5">height: 100px;width: 100px;box-shadow:4px -4px 6px #666;</p>
+
+		<h3>为边框应用图片 border-image</h3>
+		<img src="images/css2-4.jpg">
+		<p class="p-2">实例</p>
+		<div class="four-1">外边框</div>
+		<p class="p-5">height:100px;line-height:100px;text-align:center;font-size:30px;width:450px;border:15px solid #ccc;    border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20;</p>
+
+		<h1>第二章 颜色相关</h1>
+
+		<h3>颜色之RGBA</h3>
+		<p class="p-2">语法：</p>
+		<p class="p-4">color：rgba(R,G,B,A)</p>
+		<p class="p-2">以上R、G、B三个参数，正整数值的取值范围为：0 - 255。A为透明度参数，取值在0~1之间，不可为负值。</p class="p-2">
+
+		<h3>渐变色彩(渐变背景)</h3>
+		<p class="p-2">CSS3 Gradient 分为线性渐变(linear)和径向渐变(radial)。</p>
+		<img src="images/css3-2.jpg">
+		<p class="p-2">参数：</p>
+		<img src="images/css3-2-1.jpg">
+
+		<h1>第三章 文字与字体</h1>
+
+		<h3>text-overflow</h3>
+		<p class="p-2">用来设置是否使用一个省略标记(...)标示对象内文本的溢出。</p>
+		<p class="p-2">语法：</p>
+		<img src="images/css4-1.jpg">
+		<p>但是text-overflow只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，还须定义强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示省略号的效果。</p>
+		<ul>
+			<li>text-overflow:ellipsis; </li>
+			<li>overflow:hidden; </li>
+			<li>white-space:nowrap; </li>
+		</ul>
+		<div class="test_demo">这是一个DIV（我是省略号）</div>
+		<br />
+
+		<h3>word-wrap</h3>
+		<p class="p-2">用来设置文本行为，当前行超过指定容器的边界时是否断开转行。</p>
+		<p class="p-2">语法：</p>
+		<img src="images/css4-2.jpg">
+		<p>normal为浏览器默认值，break-word设置在长单词或 URL地址内部进行换行，此属性不常用，用浏览器默认值即可。</p>
+		<div class="test_demo2">这是一个DIV（我是省略号）</div>
+		<br />
+
+		<h3>嵌入字体@font-face</h3>
+		<p class="p-2">@font-face能够加载服务器端的字体文件，让浏览器端可以显示用户电脑里没有安装的字体。</p>
+		<p class="p-2">语法：</p>
+		<pre class="p-4">
+		@font-face {
+			font-family : "MOOC Font"; //字体名称
+			src : url("http://www.imooc.com/Amaranth-BoldItalic.otf"); //字体文件在服务器上的相对或绝对路径
+		}
+		p {
+			font-size :12px;
+			font-family : "My Font"; //必须项，设置@font-face中font-family同样的值
+		}
+		</pre>
+		<div class="test_demo3">啊嘞嘞</div>
+		<br />
+
+		<h3>文本阴影text-shadow</h3>
+		<p class="p-2">用来设置文本的阴影效果。</p>
+		<p class="p-2">语法：</p>
+		<pre class="p-4">
+		text-shadow: X-Offset Y-Offset blur color;
+		</pre>
+		<ul>
+			<li>X-Offset：表示阴影的水平偏移距离，其值为正值时阴影向右偏移，反之向左偏移；      </li>
+			<li>Y-Offset：是指阴影的垂直偏移距离，如果其值是正值时，阴影向下偏移，反之向上偏移；</li>
+			<li>Blur：是指阴影的模糊程度，其值不能是负值，如果值越大，阴影越模糊，反之阴影越清晰，如果不需要阴影模糊可以将Blur值设置为0；</li>
+			<li>Color：是指阴影的颜色，其可以使用rgba色。</li>
+		</ul>
+		<div class="test_demo4">啊嘞嘞</div>
+		<br />
+
+		<h1>第四章 背景相关的样式</h1>
+
+		<h3>1、元素背景图片的原始起始位置</h3>
+		<p class="p-2">语法：</p>
+		<p class="p-3">background-origin ： border-box | padding-box | content-box;</p>
+		<pre class="p-4">		
+		参数分别表示背景图片是从边框，还是内边距（默认值），或者是内容区域开始显示。
+
+		<img src="images/css5-1.jpg">
+		</pre>
+		<p style="margin-left: 50px; color:red;">需要注意的是，如果背景不是no-repeat，这个属性无效，它会从边框开始显示。</p>
+		<br />
+
+		<h3>2、将背景图片做适当的裁剪以适应实际需要</h3>
+		<p class="p-2">语法：</p>
+		<p class="p-3">background-clip ： border-box | padding-box | content-box | no-clip	</p>
+		<pre class="p-4">
+		参数分别表示从边框、或内填充，或者内容区域向外裁剪背景。no-clip表示不裁切，和参数border-box显示同样
+	    的效果。默认值为border-box。
+		
+		<img src="images/css5-2.jpg">
+		</pre>
+		<br />
+
+		<h3>3、以长度值或百分比显示</h3>
+		<p class="p-2">语法：</p>
+		<p class="p-3">background-size: auto | <长度值> | <百分比> | cover | contain</p>
+		<p class="p-2">取值说明：</p>
+		<ul>
+			<li>1、auto：默认值，不改变背景图片的原始高度和宽度；</li>
+
+			<li>2、<长度值>：成对出现如200px 50px，将背景图片宽高依次设置为前面两个值，当设置一个值时，将其作为图片宽度值来等比缩放；</li>
+
+			<li>3、<百分比>：0％~100％之间的任何值，将背景图片宽高依次设置为所在元素宽高乘以前面百分比得出的数值，当设置一个值时同上；</li>
+
+			<li>4、cover：顾名思义为覆盖，即将背景图片等比缩放以填满整个容器；</li>
+
+			<li>5、contain：容纳，即将背景图片等比缩放至某一边紧贴容器边缘为止。</li>
+		</ul>
+		<br />
+
+		<h3>4、多重背景</h3>
+		<div class="test_demo5"></div>
+		<pre class="p-4">
+		.demo{
+		    width: 300px;
+		    height: 140px;
+		    border: 1px solid #999;
+		 
+		    background-image: url(http://img.mukewang.com/54cf2365000140e600740095.jpg),
+		                      url(http://img.mukewang.com/54cf238a0001728d00740095.jpg),
+		                      url(http://img.mukewang.com/54cf23b60001fd9700740096.jpg);
+		    background-position: left top, 100px 0, 200px 0;
+		    background-repeat: no-repeat, no-repeat, no-repeat;
+		    
+		    margin:0 0 20px 0;
+		}
+		</pre>
+		<p class="p-2">注意：</p>
+		<ul>
+			<li>用逗号隔开每组 background 的缩写值；</li>
+			<li>如果有 size 值，需要紧跟 position 并且用 "/" 隔开；</li>
+			<li>如果有多个背景图片，而其他属性只有一个（例如 background-repeat 只有一个），表明所有背景图片应用该属性值。</li>
+			<li>background-color 只能设置一个。</li>
+		</ul>
+		<br />
+
+		<h3>制作导航栏菜单综合练习题</h3>
+		<ul class="nav">
+			<li style="margin-left:0px"><a href="">Home</a></li>
+			<li style="margin-left:0px"><a href="">About Me</a></li>
+			<li style="margin-left:0px"><a href="">Portfolio</a></li>
+			<li style="margin-left:0px"><a href="">Blog</a></li>
+			<li style="margin-left:0px"><a href="">Resources</a></li>
+			<li style="margin-left:0px"><a href="">Contact Me</a></li>
+		</ul>
+		<p class="p-2">原CSS样式如下：</p>
+		<pre class="p-4">
+		.nav{
+		  width:560px;
+		  height: 50px;
+		  font:bold 0/50px Arial;
+		  text-align:center;
+		  margin:40px auto 0;
+		  background: #f65f57;
+
+		  /*制作圆*/
+		  border-radius:10px;
+
+		  /*制作导航立体风格*/
+		  box-shadow:0px 5px 0px #b64b41;
+		}
+		.nav a{
+		  display: inline-block;
+		  -webkit-transition: all 0.2s ease-in;
+		  -moz-transition: all 0.2s ease-in;
+		  -o-transition: all 0.2s ease-in;
+		  -ms-transition: all 0.2s ease-in;
+		  transition: all 0.2s ease-in;
+		}
+		.nav a:hover{
+		  -webkit-transform:rotate(10deg);
+		  -moz-transform:rotate(10deg);
+		  -o-transform:rotate(10deg);
+		  -ms-transform:rotate(10deg);
+		  transform:rotate(10deg);
+		}
+
+		.nav li{
+		  position:relative;
+		  display:inline-block;
+		  padding:0 16px;
+		  font-size: 13px;
+		  text-shadow:1px 2px 4px rgba(0,0,0,.5);
+		  list-style: none outside none;
+		}
+
+		/*使用伪元素制作导航列表项分隔线*/
+		.nav li{
+		  background: #f65f57 no-repeat right/ 1px 15px linear-gradient(to right, #dd2926,#a82724);
+		}
+
+		/*删除第一项和最后一项导航分隔线*/
+		.nav li:last-child {
+		  background:none;
+		}
+		
+		.nav a,
+		.nav a:hover{
+		  color:#fff;
+		  text-decoration: none;
+		}
+		</pre>
+		<br />
+
+		<h1>第五章 CSS3选择器</h1>
+		<br />
+
+		<h3>1、属性选择器</h3>
+		<p class="p-2">在HTML中，通过各种各样的属性可以给元素增加很多附加的信息。例如，通过id属性可以将不同div元素进行区分。</p>
+		<p class="p-3">属性选择器如下表所示：</p>
+		<img src="images/css6-1.jpg">
+		<p class="p-3">例子：</p>
+
+		<a href="##" class="columnNews">我的背景想变成红色</a>
+		<a href="##" class="columnVideo">我的背景想变成红色</a><br />
+		<a href="1.doc">我的背景想变成绿色</a>
+		<a href="2.doc">我的背景想变成绿色</a><br/>
+		<a href="##" title="this is a box">我的背景想变成蓝色</a>
+		<a href="##" title="box1">我的背景想变成蓝色</a>
+
+		<pre class="p-4">
+	链接按钮是：
+		&lt;a href="##" class="columnNews">我的背景想变成红色&lt;/a>
+		&lt;a href="##" class="columnVideo">我的背景想变成红色&lt;/a>&lt;br />
+		&lt;a href="1.doc">我的背景想变成绿色&lt;/a>
+		&lt;a href="2.doc">我的背景想变成绿色&lt;/a>&lt;br/>
+		&lt;a href="##" title="this is a box">我的背景想变成蓝色&lt;/a>
+		&lt;a href="##" title="box1">我的背景想变成蓝色&lt;/a>
+
+	用属性选择器的CSS样式：
+		a[class^=column]{
+		  background: #FF0000;
+		  margin-left: 100px;
+		  color: #000;
+		}
+		a[href$=doc]{
+		  background: #7FFF00;
+		  margin-left: 100px;
+		  color: #000;
+		}
+		a[title*=box]{
+		  background: #00FFFF;
+		  margin-left: 100px;
+		  color: #000;
+		}
+		</pre>
+
+		<h3>2、结构性伪类选择器1</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">:root 选择器</b>，从字面上我们就可以很清楚的理解是根选择器，他的意思就是匹配元素E所在文档的根元素。<b>在HTML文档中，根元素始终是&lt;html>。</b></p>
+		<pre class="p-4">
+		“:root”选择器等同于<html>元素，简单点说：
+
+			:root{background:orange}
+
+			html {background:orange;}
+
+		 得到的效果等同。
+		</pre>
+		<br />
+
+		<h3>3、结构性伪类选择器2</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">:not 选择器</b>称为否定选择器，和jQuery中的:not选择器一模一样，可以选择除某个元素之外的所有元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div id="header">页头&lt;/div>
+			&lt;div id="page">页体&lt;/div>
+			&lt;div id="footer">页脚&lt;/div>
+
+		除页脚”div#footer”之外的所有div设置css代码：	
+			div:not([id="footer"]){
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-3.jpg">
+		</pre>
+		<br />
+
+		<h3>4、结构性伪类选择器3</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">:empty 选择器</b>表示的就是空。用来选择没有任何内容的元素，这里没有内容指的是一点内容都没有，哪怕是一个空格。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div>我这里有内容&lt;/div>
+			&lt;div> &lt;!-- 我这里有一个空格 -->&lt;/div>
+			&lt;div>&lt;/div>&lt;!-- 我这里任何内容都没有 -->
+
+		给空的div元素添加1px的绿色边框css代码：
+			div:empty {
+			  border: 1px solid green;
+			}
+
+		结果：
+
+	<img src="images/css6-4.jpg">
+		</pre>
+		<br />
+
+		<h3>5、结构性伪类选择器4</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">:target 选择器</b>称为目标选择器，用来匹配文档(页面)的url的某个标志符的目标元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;h2>&lt;a href="#brand">Brand&lt;/a>&lt;/h2>
+			&lt;p>content for Brand&lt;/p>
+
+		当你点击链接后，段落p将添加橙色背景和白色文字css代码：
+			:target p {
+			  background: orange;
+			  color: #fff;
+			}
+
+		结果：
+
+	<img src="images/css6-5.jpg">
+		</pre>
+		<br />
+
+		<h3>6、结构性伪类选择器5</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">“:first-child” 选择器</b>表示的是选择父元素的第一个子元素的元素E。简单点理解就是选择元素中的第一个子元素，记住是子元素，而不是后代元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;ul>
+			  &lt;li>&lt;a href="##">Link1&lt;/a>&lt;/li>
+			  &lt;li>&lt;a href="##">Link2&lt;/a>&lt;/li>
+			  &lt;li>&lt;a href="##">Link3&lt;/a>&lt;/li>
+			&lt;/ul>
+
+		将无序列表的第一个项目符号设置为红色css代码：
+			ul > li:first-child {
+			 color: red;
+			}
+
+		结果：
+	<img src="images/css6-6.jpg">		
+		</pre>
+		<br />
+
+		<h3>7、结构性伪类选择器6</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">“:last-child”选择器</b>与“:first-child”选择器作用类似，不同的是“:last-child”选择器选择的是元素的最后一个子元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;ul>
+			  &lt;li>Item1&lt;/li>
+			  &lt;li>Item2&lt;/li>
+			  &lt;li>Item3&lt;/li>
+			  &lt;li>Item5&lt;/li>
+			  &lt;li>Item6&lt;/li>
+			&lt;/ul>
+
+		删除列表中最后一个列表项的底部边框css代码：
+			ul {
+			  border: 1px solid #ccc;
+			  list-style: none outside none;
+			  width: 220px;
+			  margin: 20px auto;
+			  padding: 0;
+			}
+			ul > li {
+			  list-style: none outside none;
+			  margin:0;
+			  padding: 10px;
+			  border-bottom: 3px solid #ccc;
+			}
+			ul > li:last-child {
+			  border-bottom: none;
+			}
+
+		结果：
+
+	<img src="images/css6-7.jpg">
+		</pre>
+		<br />
+
+		<h3>8、结构性伪类选择器7</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">“:nth-child(n)”选择器</b>用来定位某个父元素的一个或多个特定的子元素。其中“n”是其参数，而且可以是整数值(1,2,3,4)，也可以是表达式(2n+1、-n+5)和关键词(odd、even)，但参数n的起始值始终是1，而不是0。也就是说，参数n的值为0时，选择器将选择不到任何匹配的元素。</p>
+		<p><b>经验与技巧:</b>当“:nth-child(n)”选择器中的n为一个表达式时，其中n是从0开始计算，当表达式的值为0或小于0的时候，不选择任何匹配的元素。如下表所示：</p>
+		<img src="images/css6-8.jpg">
+		<pre class="p-4">
+		HTML代码：
+			&lt;ol>
+			  &lt;li>item1&lt;/li>
+			  &lt;li>item2&lt;/li>
+			  &lt;li>item3&lt;/li>
+			  &lt;li>item4&lt;/li>
+			  &lt;li>item5&lt;/li>
+			&lt;/ol>
+
+		让奇数行背景色变成绿色css代码：
+			ol > li:nth-child(2n-1){
+			  background: #7FFF00;
+			}
+
+		结果：
+
+	<img src="images/css6-2.jpg">
+		</pre>
+		<br />
+
+		<h3>9、结构性伪类选择器8</h3>
+		<p class="p-2"><b style="color:	#8A2BE2">“:nth-last-child(n)”选择器</b>和前面的“:nth-child(n)”选择器非常的相似，只是这里多了一个“last”，所起的作用和“:nth-child(n)”选择器有所区别，从某父元素的最后一个子元素开始计算，来选择特定的元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;ol>
+			  &lt;li>item1&lt;/li>
+			  &lt;li>item2&lt;/li>
+			  &lt;li>item3&lt;/li>
+			  &lt;li>item4&lt;/li>
+			  &lt;li>item5&lt;/li>
+			  &lt;li>item6&lt;/li>
+			  &lt;li>item7&lt;/li>
+			  &lt;li>item8&lt;/li>
+			  &lt;li>item9&lt;/li>
+			  &lt;li>item10&lt;/li>
+			&lt;/ol>
+
+		修改列表<b>倒数</b>第五项的背景色为橙色css代码：
+			ol > li:nth-last-child(5){
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-9.jpg">
+		</pre>
+		<br />
+
+		<h3>10、first-of-type选择器</h3>
+		<p class="p-2">“:first-of-type”选择器类似于“:first-child”选择器，不同之处就是指定了元素的类型,其主要用来定位一个父元素下的某个类型的第一个子元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+				&lt;p>我是第一个段落&lt;/p>
+				&lt;p>我是第二个段落&lt;/p>
+				&lt;div>我是第一个Div元素&lt;/div>
+				&lt;div>我是第二个Div元素&lt;/div>
+				&lt;p>我是第三个段落&lt;/p>
+				&lt;p>我是第四个段落&lt;/p>
+				&lt;div>我是第三个Div元素&lt;/div>
+				&lt;div>我是第四个Div元素&lt;/div>
+			&lt;/div>
+
+		将容器“div.wrapper”中的第一个div元素背景设置为橙色css代码：
+			.wrapper {
+			  border: 1px solid #ccc;
+			  padding: 10px;
+			  width: 200px;
+			  margin: 20px auto;
+			}
+
+			.wrapper > p,
+			.wrapper > div {
+			  margin: 10px 0;
+			  background: green;
+			  color: #fff;
+			  padding: 5px;
+			}
+
+			.wrapper > div:first-of-type {
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-10.jpg">
+		</pre>
+		<br />
+
+		<h3>11、nth-of-type(n)选择器</h3>
+		<p class="p-2">“:nth-of-type(n)”选择器和“:nth-child(n)”选择器非常类似，不同的是它只计算父元素中指定的某种类型的子元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落元素&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			&lt;/div>
+
+		将容器“div.wrapper”中的第一个div元素背景设置为橙色css代码：
+			.wrapper {
+			  border: 1px solid #ccc;
+			  padding: 10px;
+			  width: 200px;
+			  margin: 20px auto;
+			}
+
+			.wrapper > div:nth-of-type(2n-1),
+			.wrapper > p:nth-of-type(2n){
+			  background: orange;
+			}
+
+			/*或者*/
+			.wrapper > div:nth-of-type(odd),
+			.wrapper > p:nth-of-type(even){
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-11.jpg">
+		</pre>
+		<br />
+
+		<h3>11、last-of-type选择器</h3>
+		<p class="p-2">“:last-of-type”选择器和“:first-of-type”选择器功能是一样的，不同的是他选择是父元素下的某个类型的最后一个子元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			  &lt;div>我是第一个Div元素&lt;/div>
+			  &lt;div>我是第二个Div元素&lt;/div>
+			  &lt;div>我是第三个Div元素&lt;/div>
+			  &lt;p>我是第一个段落&lt;/p>
+			  &lt;p>我是第二个段落&lt;/p>
+			  &lt;p>我是第三个段落&lt;/p>
+			&lt;/div>
+
+		将容器“div.wrapper”中最后一个Div元素背景设置为橙色css代码：
+			.wrapper {
+			  border: 1px solid #ccc;
+			  padding: 10px;
+			  width: 200px;
+			  margin: 20px auto;
+			}
+
+			.wrapper > div:last-of-type{
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-12.jpg">
+		</pre>
+		<br />
+
+		<h3>12、nth-last-of-type(n)选择器</h3>
+		<p class="p-2">“:nth-last-of-type(n)”选择器和“:nth-of-type(n)”选择器是一样的，选择父元素中指定的某种子元素类型，但它的起始方向是从最后一个子元素开始，而且它的使用方法类似于上节中介绍的“:nth-last-child(n)”选择器一样。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			  &lt;p>我是第一个段落&lt;/p>
+			  &lt;p>我是第二个段落&lt;/p>
+			  &lt;div>我是第一个Div元素&lt;/div>
+			  &lt;div>我是第二个Div元素&lt;/div>
+			  &lt;div>我是第三个Div元素&lt;/div>
+			  &lt;p>我是第三个段落&lt;/p>
+			  &lt;p>我是第四个段落&lt;/p>
+			  &lt;p>我是第五个段落&lt;/p>
+			  &lt;div>我是第四个Div元素&lt;/div>
+			  &lt;div>我是第五个Div元素&lt;/div>
+			  &lt;p>我是第六个段落&lt;/p>
+			&lt;/div>
+
+		将容器“div.wrapper”中倒数第五个Div元素背景设置为橙色css代码：
+			.wrapper {
+			  border: 1px solid #ccc;
+			  padding: 10px;
+			  width: 200px;
+			  margin: 20px auto;
+			}
+
+			.wrapper > div:nth-last-of-type(5){
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-13.jpg">
+		</pre>
+		<br />
+
+		<h3>13、only-child选择器</h3>
+		<p class="p-2">“:only-child”选择器选择的是父元素中只有一个子元素，而且只有唯一的一个子元素。也就是说，匹配的元素的父元素中仅有一个子元素，而且是一个唯一的子元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;ul>
+			  &lt;li>我是多个li&lt;/li>
+			  &lt;li>我是多个li&lt;/li>
+			  &lt;li>我是多个li&lt;/li>
+			&lt;/ul>
+			&lt;ul>
+			  &lt;li>我是一个li&lt;/li>
+			&lt;/ul>
+			&lt;ol>
+			  &lt;li>我是一个li&lt;/li>
+			&lt;/ol>
+			&lt;ol>
+			  &lt;li>我是多个li&lt;/li>
+			  &lt;li>我是多个li&lt;/li>
+			  &lt;li>我是多个li&lt;/li>
+			&lt;/ol>
+
+		通过“:only-child”选择器，改变只有一个列表项的背景色为橙色css代码：
+			ol,ul {
+				width: 200px;
+				margin: 1px auto;
+			}
+			li {
+			  background: green;
+			  padding: 10px;
+			  margin-bottom: 5px;
+			}
+			li:only-child {
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-14.jpg">
+		</pre>
+		<br />
+
+		<h3>13、only-of-type选择器</h3>
+		<p class="p-2">“:only-of-type”选择器用来选择一个元素是它的父元素的唯一一个相同类型的子元素。这样说或许不太好理解，换一种说法。“:only-of-type”是表示一个元素他有很多个子元素，而其中只有一种类型的子元素是唯一的，使用“:only-of-type”选择器就可以选中这个元素中的唯一一个类型子元素。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;p>我是一个段落&lt;/p>
+			&lt;/div>
+
+			&lt;div class="wrapper">
+			  &lt;p>我是一个段落&lt;/p>
+			&lt;/div>
+
+			&lt;div class="wrapper">
+			  &lt;div>我是一个Div元素&lt;/div>
+			  &lt;p>我是一个段落&lt;/p>
+			  &lt;div>我是一个Div元素&lt;/div>
+			&lt;/div>
+
+		将仅有一个P元素的背景修改为橙色css代码：
+			.wrapper {
+			  border: 1px solid #ccc;
+			  padding: 10px;
+			  width: 200px;
+			  margin: 10px auto;
+			}
+
+			.wrapper p:only-of-type{
+			  background: orange;
+			}
+
+		结果：
+
+	<img src="images/css6-15.jpg">
+		</pre>
+		<br />
+
+
+	</div>
+</body>
+</html>

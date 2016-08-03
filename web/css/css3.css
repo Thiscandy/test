@@ -1,0 +1,189 @@
+.two-1 {
+	margin-left:100px;
+	background-color:red;
+	width: 100px;
+	height: 100px;
+	border-radius: 10px; 
+}
+.two-2 {
+	margin-left:100px;
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	border-radius: 5px 4px 3px 2px; 
+}
+.two-3 { 
+	margin-left:100px;
+	height: 50px;
+	width: 100px;
+	background: #9da;
+	border-radius: 50px 50px 0 0; 
+}
+.two-4 { 
+	margin-left:100px;
+	height: 100px;
+	width: 100px;
+	background: #9da;
+	border-radius: 50px;
+}
+.two-5 { 
+	margin-left:100px;
+	height:100px;
+	width:50px;
+	background:#9da;
+	border-radius:50px 0px 0px 50px;
+}
+.three-1 { 
+	margin-left:100px;
+	height:100px;
+	width:100px;
+	box-shadow:4px 4px 6px #333333;
+}
+.three-2 { 
+	margin-left: 100px;
+	height: 100px;
+	width: 100px;
+	box-shadow:4px 2px 6px #333333 inset;
+}
+.three-3 { 
+	margin-left: 100px;
+	height: 100px;
+	width: 100px;
+	box-shadow: 4px 2px 6px #f00,-4px -2px 6px #000,0px 0px 12px 5px #3c0 inset;
+}
+.three-4 { 
+	margin-left: 100px;
+	height: 100px;
+	width: 100px;
+	box-shadow: -4px 4px 6px #666;
+}
+.three-5 { 
+	margin-left: 100px;
+	height: 100px;
+	width: 100px;
+	box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+ }
+.three-6 { 
+	margin-left: 100px;
+	height: 100px;
+	width: 100px;
+	box-shadow: 4px -4px 6px #666;
+ }
+.four-1 { 
+	margin-left: 100px;
+	height:100px;
+	line-height:100px;
+	text-align:center;
+	font-size:30px;
+	width:450px;
+	border:15px solid #ccc;
+	border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20;
+}
+.test_demo { 
+	margin-left: 100px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 200px;
+	background: #C5DFF8;
+}
+.test_demo2 { 
+	margin-left: 100px;
+	width: 200px;
+	background: #C5DFF8;
+	word-wrap: break-word;
+}
+@font-face { 
+	font-family: "MOOC Font";
+	src: url("http://www.imooc.com/Amaranth-BoldItalic.otf");
+}
+.test_demo3 { 
+	margin-left: 100px;
+	 width: 150px;
+	 text-align: center;
+	 color: #566F89;
+	background: #C5DFF8;
+	font-size:35px;
+	font-family: "MOOC Font";
+}
+.test_demo4 { 
+	margin-left: 100px;
+	width: 150px;
+	text-align: center;
+	font-size:35px;
+	background: #C5DFF8;
+	text-shadow: 2px 2px 10px red;
+}
+.test_demo5 { 
+	width: 300px;height: 140px;border: 1px solid #999;
+	background-image: url(http://img.mukewang.com/54cf2365000140e600740095.jpg),
+                      url(http://img.mukewang.com/54cf238a0001728d00740095.jpg),
+                      url(http://img.mukewang.com/54cf23b60001fd9700740096.jpg);
+   	background-position: left top, 100px 0, 200px 0;
+   	background-repeat: no-repeat, no-repeat, no-repeat;
+   
+   	margin:0 0 20px 100px;
+} 
+.nav {
+  	width:560px;
+ 	height: 50px;
+ 	font:bold 0/50px Arial;
+ 	text-align:center;
+  	margin:40px auto 0;
+  	background: #f65f57;
+  	/*制作圆*/
+  	border-radius:10px;
+    /*制作导航立体风格*/
+    box-shadow:0px 5px 0px #b64b41;
+}
+.nav a {
+	display: inline-block;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.nav a:hover {
+	-webkit-transform:rotate(10deg);
+	-moz-transform:rotate(10deg);
+	-o-transform:rotate(10deg);
+	-ms-transform:rotate(10deg);
+	transform:rotate(10deg);
+}
+.nav li {
+	position:relative;
+	display:inline-block;
+	padding:0 16px;
+	font-size: 13px;
+	text-shadow:1px 2px 4px rgba(0,0,0,.5);
+	list-style: none outside none;
+}
+/*使用伪元素制作导航列表项分隔线*/
+.nav li {
+    background: #f65f57 no-repeat right/ 1px 15px linear-gradient(to right, #dd2926,#a82724);
+}
+/*删除第一项和最后一项导航分隔线*/
+.nav li:last-child {
+	background:none;
+}
+.nav a,
+.nav a:hover{
+	color:#fff;
+	text-decoration: none;
+}
+a[class^=column]{
+	background: #FF0000;
+	margin-left: 100px;
+	color: #000;
+}
+a[href$=doc]{
+	background: #7FFF00;
+	margin-left: 100px;
+	color: #000;
+}
+a[title*=box]{
+	background: #00FFFF;
+	margin-left: 100px;
+	color: #000;
+}
