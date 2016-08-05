@@ -1,0 +1,78 @@
+.wrapper {
+	font-family: 微软雅黑;
+	font-size: 50px;
+	padding: 20px;
+	margin-top: -50px;
+	color:#fff;
+	position:absolute;
+	top:50%;
+	left:50%;
+	border-radius: 5px;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+}
+.wrapper_x {
+	width: 120px;
+	height: 2px;
+	background:#fff;
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+}
+.wrapper_z {
+	margin-top: 50px;
+	font-family: 黑体;
+	font-size: 18px;
+	text-align: center;
+	color:#fff;
+	position:absolute;
+	top:50%;
+	left:50%;
+	border-radius: 5px;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+}
+@media screen and (max-width: 1000px){
+	.wrapper {
+		font-size: 40px;
+	}
+	.wrapper_x {
+		width: 110px;
+	}
+	.wrapper_z {
+		font-size: 16px;
+	}
+}
+@media screen and (max-width: 820px){
+	.wrapper {
+		font-size: 30px;
+		margin-top: -40px;
+	}
+	.wrapper_x {
+		width: 90px;
+		height: 1px;
+	}
+	.wrapper_z {
+		font-size: 14px;
+		margin-top: 40px;
+	}
+}
+@media screen and (max-width: 640px){
+	.wrapper {
+		font-size: 20px;
+		margin-top: -30px;
+	}
+	.wrapper_x {
+		width: 70px;
+		height: 1px;
+	}
+	.wrapper_z {
+		font-size: 11px;
+		margin-top: 30px;
+	}
+}

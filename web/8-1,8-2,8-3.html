@@ -169,7 +169,7 @@
 		<p class="p-3">background-clip ： border-box | padding-box | content-box | no-clip	</p>
 		<pre class="p-4">
 		参数分别表示从边框、或内填充，或者内容区域向外裁剪背景。no-clip表示不裁切，和参数border-box显示同样
-	    的效果。默认值为border-box。
+		 的效果。默认值为border-box。
 		
 		<img src="images/css5-2.jpg">
 		</pre>
@@ -287,7 +287,6 @@
 		<br />
 
 		<h1>第五章 CSS3选择器</h1>
-		<br />
 
 		<h3>1、属性选择器</h3>
 		<p class="p-2">在HTML中，通过各种各样的属性可以给元素增加很多附加的信息。例如，通过id属性可以将不同div元素进行区分。</p>
@@ -743,6 +742,447 @@
 		</pre>
 		<br />
 
+		<h1>第六章 CSS3中的变形与动画</h1>
+
+		<h3>1、变形--旋转 rotate()</h3>
+		<p class="p-2">旋转rotate()函数通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。</p>
+		<pre class="p-4">
+		HTML代码:
+			&lt;div class="wrapper">
+			  &lt;div>&lt;/div>
+			&lt;/div>
+
+		旋转45°的css代码：
+			.wrapper {
+			  width: 200px;
+			  height: 200px;
+			  border: 1px dotted red;
+			  margin: 100px auto;
+			}
+			.wrapper div {
+			  width: 200px;
+			  height: 200px;
+			  background: orange;
+			  <b style="color:red">-webkit-transform: rotate(45deg);
+			  transform: rotate(45deg);</b>
+			}
+
+		结果：
+		<img src="images/css8-1.jpg">
+		</pre>
+
+		<h3>2、变形--扭曲 skew()</h3>
+		<p class="p-2">扭曲skew()函数能够让元素倾斜显示。它可以将一个对象以其中心位置围绕着X轴和Y轴按照一定的角度倾斜。这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变元素的形状。skew()函数不会旋转，而只会改变元素的形状。</p>
+		<p class="p-2">Skew()具有三种情况：</p>
+		<ol>
+			<li>skew(x,y)使元素在水平和垂直方向同时扭曲</li>
+			<li>skewX(x)仅使元素在水平方向扭曲变形</li>
+			<li>skewY(y)仅使元素在垂直方向扭曲变形</li>
+		</ol>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			  &lt;div>&lt;span>背景扭曲了(●—●)&lt;/span>&lt;/div>
+			&lt;/div>
+
+		变成扭曲的平形四边形css代码：
+			.wrapper {
+			  width: 300px;
+			  height: 100px;
+			  border: 2px dotted red;
+			  margin: 30px auto;
+			}
+
+			.wrapper div {
+			  width: 300px;
+			  height: 100px;
+			  line-height: 100px;
+			  text-align: center;
+			  color: #fff;
+			  background: orange;
+			  <b style="color:red">-webkit-transform: skew(45deg);
+			  -moz-transform: skew(45deg);
+			  transform:skew(45deg,-10deg);</b>
+			}
+
+			.wrapper span {
+			  display:block;
+			  <b style="color:red">-webkit-transform: skew(-45deg);
+			  -moz-transform: skew(-45deg);
+			  transform:skew(-45deg,10deg);</b>
+			}
+
+		结果：
+		<img src="images/css8-2.jpg">
+		</pre>
+
+		<h3>3、变形--缩放 scale()</h3>
+		<p class="p-2">缩放 scale()函数 让元素根据中心原点对对象进行缩放。</p>
+		<p class="p-2">缩放 scale 具有三种情况：</p>
+		<ol>
+			<li>scale(X,Y)使元素水平方向和垂直方向同时缩放</li>
+			<li>scaleX(x)元素仅水平方向缩放</li>
+			<li>scaleY(y)元素仅垂直方向缩放</li>
+		</ol>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			  &lt;div>我将缩小0.8&lt;/div>
+			&lt;/div>
+
+		让容器的鼠标滑过时的状态缩小0.8倍css代码：
+			.wrapper {
+			  width: 200px;
+			  height: 200px;
+			  border:2px dashed red;
+			  margin: 100px auto;
+			}
+
+			.wrapper div {
+			  width: 200px;
+			  height: 200px;
+			  line-height: 200px;
+			  background: orange;
+			  text-align: center;
+			  color: #fff;
+			}
+
+			.wrapper div:hover {
+			  opacity: .5;
+			  -webkit-transform: scale(0.8);
+			  -moz-transform: scale(0.8);
+			  transform: scale(0.8);
+			}
+
+		结果：
+		<img src="images/css8-3.jpg">
+		</pre>
+
+		<h3>4、位移，水平居中</h3>
+		<p class="p-2">translate()函数可以将元素向指定的方向移动，类似于position中的relative。或以简单的理解为，使用translate()函数，可以把元素从原来的位置移动，而不影响在X、Y轴上的任何Web组件。</p>
+		<p class="p-2">translate我们分为三种情况：</p>
+		<ol>
+			<li>translate(x,y)水平方向和垂直方向同时移动</li>
+			<li>translateX(x)仅水平方向移动</li>
+			<li>translateY(Y)仅垂直方向移动</li>
+		</ol>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			我要实现水平垂直居中    
+			&lt;/div>
+
+		让元素实现水平、垂直居中css代码：
+			.wrapper {
+			  padding: 20px;
+			  background:orange;
+			  color:#fff;
+			  position:absolute;
+			  top:50%;
+			  left:50%;
+			  border-radius: 5px;
+			  -webkit-transform:translate(-50%,-50%);
+			  -moz-transform:translate(-50%,-50%);
+			  transform:translate(-50%,-50%);
+			}
+
+		结果：
+		<img src="images/css8-4.jpg">
+		</pre>
+
+		<h3>5、矩阵 matrix()</h3>
+		<p class="p-2">matrix() 是一个含六个值的(a,b,c,d,e,f)变换矩阵，用来指定一个2D变换，相当于直接应用一个[a b c d e f]变换矩阵。就是基于水平方向（X轴）和垂直方向（Y轴）重新定位元素,此属性值使用涉及到数学中的矩阵，我在这里只是简单的说一下CSS3中的transform有这么一个属性值，如果需要深入了解，需要对数学矩阵有一定的知识。</p>
+
+		<h3>6、原点 transform-origin</h3>
+		<p class="p-2">在没有重置transform-origin改变元素原点位置的情况下，CSS变形进行的旋转、位移、缩放，扭曲等操作都是以元素自己中心位置进行变形。但很多时候，我们可以通过transform-origin来对元素进行原点位置改变，使元素原点不在元素的中心位置，以达到需要的原点位置。</p>
+		<p class="p-3">transform-origin取值如下表所示:</p>
+		<img src="images/css8-6.jpg">
+
+		<h3>7、过渡属性 transition-property</h3>
+		<p class="p-2">在CSS中创建简单的过渡效果可以从以下几个步骤来实现：</p>
+		<ul>
+			<li>第一，在默认样式中声明元素的初始状态样式；</li>
+			<li>第二，声明过渡元素最终状态样式，比如悬浮状态；</li>
+			<li>第三，在默认样式中通过添加过渡函数，添加一些不同的样式。</li>
+		</ul>
+		<p class="p-3">CSS3的过度transition属性是一个复合属性，主要包括以下几个子属性：</p>
+		<ul>
+			<li>transition-property:指定过渡或动态模拟的CSS属性</li>
+			<li>transition-duration:指定完成过渡所需的时间</li>
+			<li>transition-timing-function:指定过渡函数</li>
+			<li>transition-delay:指定开始出现的延迟时间</li>
+		</ul>
+		<p class="p-2">transition-property用来指定过渡动画的CSS属性名称，而这个过渡属性只有具备一个中点值的属性（需要产生动画的属性）才能具备过渡效果，其对应具有过渡的CSS属性主要有：</p>
+		<img src="images/css8-7.jpg">
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="aa">&lt;/div>
+		让容器在hover状态下宽度从200px慢慢过渡到400px样子的css代码：
+			.aa {
+			  width: 200px;
+			  height: 200px;
+			  background: red;
+			  margin: 20px auto;
+			  -webkit-transition-property: width;
+			transition-property: width;
+			  -webkit-transition-duration:.5s;
+			  transition-duration:.5s;
+			  -webkit-transition-timing-function: ease-in;
+			  transition-timing-function: ease-in;
+			  -webkit-transition-delay: .18s;
+			  	transition-delay:.18s;
+			}
+			.aa:hover {
+			  width: 400px;
+			}
+		结果：
+			<div class="aa"></div>
+		</pre>
+		<p class="p-2">特别注意：当“transition-property”属性设置为all时，表示的是所有中点值的属性。</p>
+
+		<h3>8、过渡所需时间 transition-duration</h3>
+		<p class="p-2">transition-duration属性主要用来设置一个属性过渡到另一个属性所需的时间，也就是从旧属性过渡到新属性花费的时间长度，俗称持续时间。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="bb">&lt;/div>
+
+		让容器高度从200px慢慢过渡到100px，并且整个过渡持续1s的CSS代码：
+			.bb {
+			  width: 300px;
+			  height: 200px;
+			  background-color: orange;
+			  margin: 20px auto;
+			  -webkit-transition-property: height;
+			  transition-property: height;
+			  -webkit-transition-duration: 1s;
+			  transition-duration: 1s;
+			  -webkit-transition-timing-function: ease-out;
+			  transition-timing-function: ease-out;
+			  -webkit-transition-delay: .2s;
+			  transition-delay: .2s;
+			}
+			.bb:hover {
+			  height: 100px;
+			}
+		结果：
+			<div class="bb"></div>
+		</pre>
+
+		<h3>9、过渡函数 transition-timing-function</h3>
+		<p class="p-2">transition-timing-function属性指的是过渡的“缓动函数”。主要用来指定浏览器的过渡速度，以及过渡期间的操作进展情况，其中要包括以下几种函数：</p>
+		<img src="images/css8-9.jpg">
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="cc">&lt;/div>
+		让容器在hover状态下，从圆形慢慢过渡到矩形，而且过渡动画速度是恒速，也就是linear的css代码：
+			.cc {
+			  width: 200px;
+			  height: 200px;
+			  background-color: orange;
+			  margin: 20px auto;
+			  border-radius: 100%;
+			  -webkit-transition-property: -webkit-border-radius;
+			  transition-property: border-radius;
+			  -webkit-transition-duration: 1s;
+			  transition-duration: 1s;
+			  -webkit-transition-timing-function:linear;
+			  transition-timing-function:linear;
+			  -webkit-transition-delay: .2s;
+			  transition-delay: .2s;
+			}
+			.cc:hover {
+			  border-radius: 0px;
+			}
+		结果：
+			<div class="cc"></div>
+		</pre>
+
+		<h3>10、过渡延迟时间 transition-delay</h3>
+		<p class="p-2">transition-delay属性和transition-duration属性极其类似，不同的是transition-duration是用来设置过渡动画的持续时间，而transition-delay主要用来指定一个动画开始执行的时间，也就是说当改变元素属性值后多长时间开始执行。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="wrapper">
+			  &lt;div>鼠标放到我的身上来&lt;/div>
+			&lt;/div>
+		让容器从正方形渐显效果慢慢过渡到圆角的css代码：
+			.dd {
+			  width: 400px;
+			  height: 200px;
+			  margin: 20px auto;
+			  border: 2px dotted red;
+			  position:relative;
+			}
+
+			.dd div {
+			  padding: 15px 20px;
+			  color: #fff;
+			  background-color: orange;
+			  position: absolute;
+			  top: 50%;
+			  left:50%;
+			  -webkit-transform: translate(-50%,-50%);
+			  transform: translate(-50%,-50%);
+			  -webkit-transition: all .5s ease-in .2s;
+			  transition: all .5s ease-in .2s;
+			}
+
+			.dd div:hover {
+			  background-color: red;
+			  border-radius: 10px;
+			}
+		结果：
+			<div class="dd">
+			  <div>鼠标放到我的身上来</div>
+			</div>
+		</pre>
+
+		<h3>11、Keyframes介绍</h3>
+		<p class="p-2">Keyframes被称为关键帧，其类似于Flash中的关键帧。在CSS3中其主要以“@keyframes”开头，后面紧跟着是动画名称加上一对花括号“{…}”，括号中就是一些不同时间段样式规则。</p>
+		<p class="p-2">在一个“@keyframes”中的样式规则可以由多个百分比构成的，如在“0%”到“100%”之间创建更多个百分比，分别给每个百分比中给需要有动画效果的元素加上不同的样式，从而达到一种在不断变化的效果。</p>
+		<p class="p-2"><b>经验与技巧：</b>在@keyframes中定义动画名称时，其中0%和100%还可以使用关键词from和to来代表，其中0%对应的是from，100%对应的是to。</p>
+		<pre class="p-4">
+		HTML代码：
+			&lt;div class="ee">鼠标放在我身上&lt;/div>
+		创建一个动画名叫“changecolor”，在“0%”时背景色为red,在20%时背景色为blue，在40%背景色为orange，在60%背景色
+		为green，在80%时背景色yellow，在100%处时背景色为red的css代码：
+			@keyframes changecolor{
+			  0%{
+			    background: red;
+			  }
+			  20%{
+			    background:blue;
+			  }
+			  40%{
+			    background:orange;
+			  }
+			  60%{
+			    background:green;
+			  }
+			  80%{
+			    background:yellow;
+			  }
+			  100%{
+			    background: red;
+			  }
+			}
+			div {
+			  width: 300px;
+			  height: 200px;
+			  background: red;
+			  color:#fff;
+			  margin: 20px auto;
+			}
+			div:hover {
+			  animation: changecolor 5s ease-out .2s;
+			}
+		结果：
+			<div class="ee">鼠标放在我身上</div>
+		</pre>
+
+		<h3>12、调用动画</h3>
+		<p class="p-2">animation-name属性主要是用来调用 @keyframes 定义好的动画。需要特别注意: animation-name 调用的动画名需要和“@keyframes”定义的动画名称完全一致（区分大小写），如果不一致将不具有任何动画效果。</p>
+		<p class="p-2">语法：</p>
+		<pre class="p-4">
+		animation-name: none | IDENT[,none|DENT]*;
+
+		1、IDENT是由 @keyframes 创建的动画名，上面已经讲过了（animation-name 调用的动画名需要和“@keyframes”定义
+		的动画名称完全一致）；
+
+		2、none为默认值，当值为 none 时，将没有任何动画效果,这可以用于覆盖任何动画。
+
+		注意：需要在 Chrome 和 Safari 上面的基础上加上-webkit-前缀，Firefox加上-moz-。
+
+		HTML代码：
+			&lt;div>&lt;span>&lt;/span>&lt;/div>
+
+		调用定义的动画“around”的css代码：
+			@keyframes around{
+			  0% {
+			    transform: translateX(0);
+			  }
+			  25%{
+			    transform: translateX(180px);
+			  }
+			  50%{
+			     transform: translate(180px, 180px); 
+			  }
+			  75%{
+			    transform:translate(0,180px);
+			  }
+			  100%{
+			    transform: translateY(0);
+			  }
+			}
+			.ff {
+			  width: 200px;
+			  height: 200px;
+			  border: 1px solid red;
+			  margin: 20px auto;
+			}
+			.ff span {
+			  display: inline-block;
+			  width: 20px;
+			  height: 20px;
+			  background: orange;
+			  border-radius: 100%;
+			  animation-name:around;
+			  animation-duration: 10s;
+			  animation-timing-function: ease;
+			  animation-delay: 1s;
+			  animation-iteration-count:infinite;
+			}
+
+		结果：
+			<div class="ff"><span></span></div>
+		</pre>
+
+		<h3>13、设置动画播放时间</h3>
+		<p class="p-2">animation-duration主要用来设置CSS3动画播放时间，其使用方法和transition-duration类似，是用来指定元素播放动画所持续的时间长，也就是完成从0%到100%一次动画所需时间。单位：S秒</p>
+		<p class="p-2">语法规则：</p>
+		<pre class="p-4">
+		animation-duration: &lt;time>[,&lt;time>]*
+
+		取值&lt;time>为数值，单位为秒，其默认值为“0”，这意味着动画周期为“0”，也就是没有动画效果（如果值为负值会被视为“0”）。
+
+		HTML代码：
+			&lt;div class="gg">Hover Me&lt;/div>
+
+		让元素从红色变化到绿色，整个变化过程持续5s时间css代码：
+			@keyframes changeColor {
+			  from {
+			    background: red;
+			  }
+			  to {
+			    background:green;
+			  }
+			}
+			.gg {
+			  width: 200px;
+			  height: 200px;
+			  background: red;
+			  text-align:center;
+			  margin: 20px auto;
+			  line-height: 200px;
+			  color: #fff;
+			}
+			.gg:hover {
+			  animation-name: changeColor;
+			  animation-duration: 5s;
+			  animation-timing-function: ease-out;
+			  animation-delay: .1s;
+			}
+		结果：
+			<div class="gg">Hover Me</div>
+		</pre>
+
+		<h3>14、设置动画播放方式</h3>
+		<p class="p-2">animation-timing-function属性主要用来设置动画播放方式。主要让元素根据时间的推进来改变属性值的变换速率，简单点说就是动画的播放方式。</p>
+
+		<h1>第七章 布局样式相关</h1>
+
+		<h1>第八章 Media Queries 与Responsive 设计</h1>
+
+		<h1>第九章 用户界面与其它重要属性</h1>
 
 	</div>
 </body>

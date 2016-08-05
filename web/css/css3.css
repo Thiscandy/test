@@ -187,3 +187,187 @@ a[title*=box]{
 	margin-left: 100px;
 	color: #000;
 }
+.aa {
+  width: 200px;
+  height: 200px;
+  background: red;
+  margin: 20px auto;
+  -webkit-transition-property: width;
+transition-property: width;
+  -webkit-transition-duration:.5s;
+  transition-duration:.5s;
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: .18s;
+  	transition-delay:.18s;
+}
+.aa:hover {
+  width: 400px;
+}
+.bb {
+  width: 300px;
+  height: 200px;
+  background-color: orange;
+  margin: 20px auto;
+  -webkit-transition-property: height;
+  transition-property: height;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-delay: .2s;
+  transition-delay: .2s;
+}
+.bb:hover {
+  height: 100px;
+}
+.cc {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  margin: 20px auto;
+  border-radius: 100%;
+  -webkit-transition-property: -webkit-border-radius;
+  transition-property: border-radius;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function:linear;
+  transition-timing-function:linear;
+  -webkit-transition-delay: .2s;
+  transition-delay: .2s;
+}
+.cc:hover {
+  border-radius: 0px;
+}
+.dd {
+  width: 400px;
+  height: 200px;
+  margin: 20px auto;
+  border: 2px dotted red;
+  position:relative;
+}
+
+.dd div {
+  padding: 15px 20px;
+  color: #fff;
+  background-color: orange;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all .5s ease-in .2s;
+  transition: all .5s ease-in .2s;
+}
+.dd div:hover {
+  background-color: red;
+  border-radius: 10px;
+}
+@-moz-keyframes changecolor{
+  0%{
+    background: red;
+  }
+  20%{
+    background:blue;
+  }
+  40%{
+    background:orange;
+  }
+  60%{
+    background:green;
+  }
+  80%{
+    background:yellow;
+  }
+  100%{
+    background: red;
+  }
+}
+@keyframes changecolor{
+  0%{
+    background: red;
+  }
+  20%{
+    background:blue;
+  }
+  40%{
+    background:orange;
+  }
+  60%{
+    background:green;
+  }
+  80%{
+    background:yellow;
+  }
+  100%{
+    background: red;
+  }
+}
+.ee {
+  width: 300px;
+  height: 200px;
+  background: red;
+  color:#fff;
+  margin: 20px auto;
+}
+.ee:hover {
+  animation: changecolor 5s ease-out .2s;
+}
+@keyframes around{
+  0% {
+    transform: translateX(0);
+  }
+  25%{
+    transform: translateX(180px);
+  }
+  50%{
+     transform: translate(180px, 180px); 
+  }
+  75%{
+    transform:translate(0,180px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+.ff {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+.ff span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: orange;
+  border-radius: 100%;
+  animation-name:around;
+  animation-duration: 10s;
+  animation-timing-function: ease;
+  animation-delay: 1s;
+  animation-iteration-count:infinite;
+}
+@keyframes changeColor {
+  from {
+    background: red;
+  }
+  to {
+    background:green;
+  }
+}
+.gg {
+  width: 200px;
+  height: 200px;
+  background: red;
+  text-align:center;
+  margin: 20px auto;
+  line-height: 200px;
+  color: #fff;
+}
+.gg:hover {
+  animation-name: changeColor;
+  animation-duration: 5s;
+  animation-timing-function: ease-out;
+  animation-delay: .1s;
+}
