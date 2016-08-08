@@ -371,3 +371,269 @@ transition-property: width;
   animation-timing-function: ease-out;
   animation-delay: .1s;
 }
+
+.hh {
+  width: 500px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+.hh span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: green;
+  border-radius: 100%;
+  animation-name:hh;
+  animation-duration: 10s;
+  animation-timing-function:ease;
+  animation-delay:.1s;
+  animation-iteration-count:infinite;
+}
+@keyframes hh {
+  0%{
+    transform: translate(0);
+  }
+  15%{
+    transform: translate(100px,180px);
+  }
+  30%{
+    transform: translate(150px,0);
+  }
+  45%{
+    transform: translate(250px,180px);
+  }
+  60%{
+    transform:translate(300px,0);
+  }
+  75%{
+    transform: translate(450px,180px);
+  }
+  100%{
+    transfrom: translate(480px,0);
+  }
+}
+
+.ii {
+  width: 500px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+.ii span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: green;
+  border-radius: 100%;
+  animation-name:ii;
+  animation-duration: 10s;
+  animation-timing-function:ease;
+  animation-delay:3s;
+  animation-iteration-count:infinite;
+}
+@keyframes ii {
+  0%{
+    transform: translate(0);
+  }
+  15%{
+    transform: translate(100px,180px);
+  }
+  30%{
+    transform: translate(150px,0);
+  }
+  45%{
+    transform: translate(250px,180px);
+  }
+  60%{
+    transform:translate(300px,0);
+  }
+  75%{
+    transform: translate(450px,180px);
+  }
+  100%{
+    transfrom: translate(480px,0);
+  }
+}
+.jj {
+  width: 500px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+.jj span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: green;
+  border-radius: 100%;
+  animation-name:jj;
+  animation-duration: 10s;
+  animation-timing-function:ease;
+  animation-delay:.1s;
+  animation-iteration-count:infinite;
+}
+@keyframes jj {
+  0%{
+    transform: translate(0);
+  }
+  15%{
+    transform: translate(100px,180px);
+  }
+  30%{
+    transform: translate(150px,0);
+  }
+  45%{
+    transform: translate(250px,180px);
+  }
+  60%{
+    transform:translate(300px,0);
+  }
+  75%{
+    transform: translate(450px,180px);
+  }
+  100%{
+    transfrom: translate(480px,0);
+  }
+}
+
+.kk {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+.kk span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: orange;
+  transform: translateY(90px);
+  animation-name: kk;
+  animation-duration: 10s;
+  animation-timing-function: ease-in;
+  animation-delay: .2s;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+}
+@keyframes kk {
+  0%{
+    transform: translateY(90px);
+  }
+  15%{
+    transform: translate(90px,90px);
+  }
+  30%{
+    transform: translate(180px,90px);
+  }
+  45%{
+    transform: translate(90px,90px);
+  }
+  60%{
+    transform: translate(90px,0);
+  }
+  75%{
+    transform: translate(90px,90px);
+  }
+  90%{
+    transform: translate(90px,180px);
+  }
+  100%{
+    transform: translate(90px,90px);
+  }
+}
+
+.ll {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+.ll span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: orange;
+  transform: translateY(90px);
+  animation-name: move;
+  animation-duration: 10s;
+  animation-timing-function: ease-in;
+  animation-delay: .2s;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+  animation-play-state:paused;
+}
+.ll:hover span {
+  animation-play-state:running;
+}
+@keyframes move {
+  0%{
+    transform: translateY(90px);
+  }
+  15%{
+    transform: translate(90px,90px);
+  }
+  30%{
+    transform: translate(180px,90px);
+  }
+  45%{
+    transform: translate(90px,90px);
+  }
+  60%{
+    transform: translate(90px,0);
+  }
+  75%{
+    transform: translate(90px,90px);
+  }
+  90%{
+    transform: translate(90px,180px);
+  }
+  100%{
+    transform: translate(90px,90px);
+  }
+}
+
+.mm {
+  width: 200px;
+  height: 200px;
+  background: red;
+  margin: 20px auto;
+  animation-name:redToBlue;
+  animation-duration: 20s;
+  animation-timing-function: ease;
+  animation-delay: 1s;
+  animation-fill-mode: both; 
+}
+@keyframes redToBlue{
+  from{
+    background: red;
+  }
+  20%{
+      background:green;
+  }
+  40%{
+      background:lime;
+  }
+  60%{
+      background:yellow;
+  }
+  to{
+    background:blue;
+  }
+}
+
+.nn {
+  width: 500px;
+  padding: 5px;
+  border: 1px solid green;
+  margin: 20px auto; 
+  -webkit-columns: 150px 3;
+  -moz-columns: 150px 3;
+  -o-columns:150px 3;
+  -ms-columns: 150px 3;
+  columns: 150px 3;
+}
+.nn p {
+  margin: 0;
+  padding: 0;
+}
