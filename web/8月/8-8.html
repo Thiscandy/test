@@ -363,6 +363,9 @@
 
 		</pre>
 
+		<h3>20、3D旋转导航练习</h3>
+		<a href="3D-dhl.html" style="padding-left:100px;">这是一个萌萌哒的链接★</a>
+
 		<h1>第七章 布局样式相关</h1>
 
 		<h3>1、多列布局</h3>
@@ -403,6 +406,7 @@
 		  <p>这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字，这是一段文字。</p>
 		</div>
 
+
 		<h3>2、多列布局</h3>
 		<p class="p-2">column-width属性在定义元素列宽的时候，既可以单独使用，也可以和多列属性中其他属性配合使用。</p>
 		<p class="p-2">语法：</p>
@@ -415,6 +419,7 @@
 		</ol>
 		<p class="p-2">例子：</p>
 		<p class="p-3">column-width:200px;</p>
+
 
 		<h3>3、多列布局</h3>
 		<p class="p-2">column-count属性主要用来给元素指定想要的列数和允许的最大列数。</p>
@@ -429,6 +434,7 @@
 		<p class="p-2">例子：</p>
 		<p class="p-3">column-count：2</p>
 
+
 		<h3>4、列间距</h3>
 		<p class="p-2">column-gap主要用来设置列与列之间的间距</p>
 		<p class="p-2">语法：</p>
@@ -442,11 +448,91 @@
 		<p class="p-2">例子:</p>
 		<p class="p-3">column-gap: 2em;</p>
 
-		<h3>5、列表边框</h3>
+
+		<h3>5、列表边框(分隔线)</h3>
+		<p class="p-2">column-rule主要是用来定义列与列之间的边框宽度、边框样式和边框颜色。简单点说，就有点类似于常用的border属性。但column-rule是不占用任何空间位置的，在列与列之间改变其宽度不会改变任何列的位置。</p>
+		<p class="p-2">语法：</p>
+		<p class="p-3">column-rule:&lt;column-rule-width>|&lt;column-rule-style>|&lt;column-rule-color></p>
+		<p class="p-2">取值说明：</p>
+		<ul>
+			<li>column-rule-width</li>
+				<p>类似于border-width属性，主要用来定义列边框的宽度，其默认值为“medium”，column-rule-width属性接受任意浮点数，但不接收负值。但也像border-width属性一样，可以使用关键词：medium、thick和thin。</p>
+			<li>column-rule-style</li>
+				<p>类似于border-style属性，主要用来定义列边框样式，其默认值为“none”。column-rule-style属性值与border-style属值相同，包括none、hidden、dotted、dashed、solid、double、groove、ridge、inset、outset。</p>
+			<li>column-rule-color</li>
+				<p>类似于border-color属性，主要用来定义列边框颜色，其默认值为前景色color的值，使用时相当于border-color。column-rule-color接受所有的颜色。如果不希望显示颜色，也可以将其设置为transparent(透明色)</p>
+		</ul>
+		<p class="p-2">例子：</p>
+		<p class="p-3">column-rule: 2px dotted green;</p>
+
+
+		<h3>6、跨列设置</h3>
+		<p class="p-2">column-span主要用来定义一个分列元素中的子元素能跨列多少。column-width、column-count等属性能让一元素分成多列，不管里面元素如何排放顺序，他们都是从左向右的放置内容，但有时我们需要基中一段内容或一个标题不进行分列，也就是横跨所有列，此时column-span就可以轻松实现。</p>
+		<p class="p-2">语法：</p>
+		<p class="p-3">column-span: none | all</p>
+		<p class="p-2">取值说明：</p>
+		<ul>
+			<li>none</li>
+				<p>此值为column-span的默认值，表示不跨越任何列。</p>
+			<li>all</li>
+				<p>这个值跟none值刚好相反，表示的是元素跨越所有列，并定位在列的Ｚ轴之上。</p>
+		</ul>
+		<p class="p-2">例子：</p>
+		<p class="p-3">column-span:all;</p>
+
+
+		<h3>7、盒子模型</h3>
+		<p class="p-2">在CSS3中新增加了box-sizing属性，能够事先定义盒模型的尺寸解析方式。</p>
+		<p class="p-2">语法：</p>
+		<p class="p-3">box-sizing: content-box | border-box | inherit</p>
+		<ul>
+			<li>content-box</li>
+				<p>默认值，其让元素维持W3C的标准盒模型，也就是说元素的宽度和高度（width/height）等于元素边框宽度（border）加上元素内距（padding）加上元素内容宽度或高度（content width/ height），也就是element width/height = border + padding + content width / height</p>
+			<li>border-box</li>
+				<p>重新定义CSS2.1中盒模型组成的模式，让元素维持IE传统的盒模型（IE6以下版本和IE6-7怪异模式），也就是说元素的宽度或高度等于元素内容的宽度或高度。从上面盒模型介绍可知，这里的内容宽度或高度包含了元素的border、padding、内容的宽度或高度（此处的内容宽度或高度＝盒子的宽度或高度—边框—内距）。</p>
+			<li>inherit</li>
+				<p>使元素继承父元素的盒模型模式</p>
+		</ul>
+		<p class="p-2">例子：</p>
+		<p class="p-3">box-sizing:border-box;</p>
+
+
+		<h3>8、伸缩布局</h3>
+		<p class="p-2">CSS3引入了一种新的布局模式——Flexbox布局，即伸缩布局盒模型（Flexible Box），用来提供一个更加有效的方式制定、调整和分布一个容器里项目布局，即使它们的大小是未知或者动态的，这里简称为Flex。</p>
+		<ol>
+			<li>创建一个flex容器</li>
+			<li>Flex项目显示</li>
+			<li>Flex项目列显示</li>
+			<li>Flex项目移动到顶部</li>
+			<li>Flex项目移到左边</li>
+			<li>Flex项目移动右边</li>
+			<li>水平垂直居中</li>
+				<p>display:flex;</p>
+				<p>align-items: center;</p>
+				<p>justify-content:center;</p>
+			<li>Flex项目实现自动伸缩</li>
+		</ol>
+
 
 
 
 		<h1>第八章 Media Queries 与Responsive 设计</h1>
+
+		<h3>Responsive设计——不同设备的分辨率设置</h3>
+		<p class="p-2">大家可以把这些样式加到你的样式文件中，或者单独创建一个名为“responsive.css”文件，并在相应的条件中写上你的样式，让他适合你的设计需求</p>
+		<p class="p-2">1、1024px显屏</p>
+		<p class="p-3">@media screen and (max-width : 1024px) { /* 样式写在这里 */ }  </p>
+
+		<p class="p-2">2、iPad横板显屏</p>
+		<p class="p-3">@media screen and (max-device-width: 1024px) and (orientation: landscape) {/* 样式写在这 */} </p>
+
+		<p class="p-2">3、iPad竖板显屏</p>
+		<p class="p-3">@media screen and (max-device-width: 768px) and (orientation: portrait) {/* 样式写在这 */}   </p>
+
+		<p class="p-2">4、iPhone 和 Smartphones</p>
+		<p class="p-3">@media screen and (min-device-width: 320px) and (min-device-width: 480px) {              
+		<p class="p-3">/* 样式写在这 */</p>         
+		<p class="p-3">}</p>
 
 		<h1>第九章 用户界面与其它重要属性</h1>
 

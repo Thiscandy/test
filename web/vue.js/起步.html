@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue起步</title>
+	<meta charset="utf-8">
+	<script src="vue/vue.js"></script>
+	<style>
+		div {
+			padding: 30px 80px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		{{ message }}
+	</div>
+	<div id="aa">
+		<p>{{ message }}</p>
+		<input v-model="message">
+	</div>
+	<div id="bb">
+		<ul>
+			<li v-for="todo in todos">
+				{{ todo.text }}
+			</li>
+		</ul>
+	</div>
+	<div id="cc">
+	  <p>{{ message }}</p>
+	  <button v-on:click="reverseMessage">让文字翻转过来</button>
+	</div>
+	<div id="dd">
+	  <input v-model="newTodo" v-on:keyup.enter="addTodo">
+	  <ul>
+	    <li v-for="todo in todos">
+	      <span>{{ todo.text }}</span>
+	      <button v-on:click="removeTodo($index)">X</button>
+	    </li>
+	  </ul>
+	</div>
+</body>
+<script>
+	new Vue({
+		el:'#app',
+		data:{
+			message:'Hello Vue.js!'
+		}
+	})
+
+	//文本框和显示P是一样的message
+	new Vue({
+		el:'#aa',
+		data:{
+			message:'可随框内容改变!'
+		}
+	})
+
+	//这是一个ul列表，显示的li由vue控制
+	new Vue({
+		el:'#bb',
+		data:{
+			todos:[
+				{ text:'Learn Javascript' },
+				{ text:'Learn Vue.js' },
+				{ text:'Learn Something Awesome' }
+			]
+		}
+	})
+
+	//按钮可以控制message翻转显示
+	new Vue({
+	  el: '#cc',
+	  data: {
+	    message: 'Hello Vue.js!'
+	  },
+	  methods: {
+	    reverseMessage: function () {
+	      this.message = this.message.split('').reverse().join('')
+	    }
+	  }
+	})
+
+	//输入框回车后显示在下面，且有个删除按钮可以删除掉
+	new Vue({
+	  el: '#dd',
+	  data: {
+	    newTodo: '',
+	    todos: [
+	      { text: '可以一直通过框添加哟！' }
+	    ]
+	  },
+	  methods: {
+	    addTodo: function () {
+	      var text = this.newTodo.trim()
+	      if (text) {
+	        this.todos.push({ text: text })
+	        this.newTodo = ''
+	      }
+	    },
+	    removeTodo: function (index) {
+	      this.todos.splice(index, 1)
+	    }
+	  }
+	})
+</script>
+
+</html>
