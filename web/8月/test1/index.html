@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>厂家登录</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--#include file="class/headconfig.asp"-->
+</head>
+<body class="login">
+	<div class="login-header" style="background-color:#fff;height:214px;">
+		<div class="logo">
+			<a href="#" style="background: url(images/login2.png) no-repeat;"></a>
+		</div>
+	</div>
+	<div class="login-body">
+		<div class="float">
+			<div class="left" style="background: url(images/login_tp1.jpg) no-repeat;"></div>
+			<div class="right">
+				<div class="form_body">
+					<div class="form_header">
+						<span>厂 家 登 录</span>
+					</div>
+					<div class="form_body_body">
+						<div class="form_body_up">
+							<form id="form1">
+								<p><span style="margin-right:10px;">帐号：</span><input type="text" name="login" value="" placeholder="帐号" autofocus required></p>
+								<p><span style="margin-right:10px;">密码：</span><input type="password" name="password" value="" placeholder="密码" required></p>
+							</form>
+						</div>
+						<div class="form_body_off">
+							<input type="checkbox" id="chkRemember1"  />
+							<label>记住密码</label>
+							<input type="submit" value="登    录">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="login-footer">
+		<div class="wrapper">
+			@2016 湃沃电商 版权所有
+		</div>
+	</div>
+<script>
+function yhdl()
+{
+	document.getElementById('form1').submit();
+}
+<%
+fh=request("fh")
+if fh="mmyw" then
+%>
+	tsshow('账号与密码不匹配，请检查后重试');
+<% end if %>
+</script>
+</body>
+<script>
+
+</script>
+</html>
