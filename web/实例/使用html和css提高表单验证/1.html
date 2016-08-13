@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/1.css">
+</head>
+<body style="
+  background-image: url(images/2.jpg); 
+  background-repeat: no-repeat;
+  background-size:100%;">
+<div style="margin-top:250px;">
+  <form action="#0">
+
+    <div>
+      <input type="text" id="first_name" name="first_name" required placeholder=" " />
+      <label for="first_name">First Name</label>
+    </div>
+    
+    <div>
+      <input type="text" id="last_name" name="last_name" required placeholder=" " />
+      <label for="last_name">Last Name</label>
+    </div>
+    
+    <div>
+      <input type="email" id="email" name="email" required placeholder=" " />
+      <label for="email">Email Address</label>
+      <div class="requirements">
+        Must be a valid email address.
+      </div>
+    </div>
+    
+    <div>
+      <input type="password" id="password" name="password" required placeholder=" " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
+      <label for="password">Password</label>
+      <div class="requirements">
+        Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.
+      </div>
+    </div>
+    
+    <input type="submit" value="Sign Up" />
+  </form>
+  <div id="container" style=" 
+    background-image: url(images/2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%; ">
+        Some text...
+    </div>
+</div>
+</body>
+</html>

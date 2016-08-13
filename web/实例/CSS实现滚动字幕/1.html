@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/1.css">
+	<link rel="stylesheet" type="text/css" href="js/js.js">
+</head>
+<body>
+<div id="marquee">
+    <div><span>STAY INDOORS: ZOMBIE OUTBREAK</span></div>
+    <div aria-hidden="true"><span>STAY INDOORS: ZOMBIE OUTBREAK</span></div>
+</div>
+<form onsubmit="setText(event)">
+  <label for="textsource">Source text</label>
+<input type="text" id="textsource" value="STAY INDOORS: ZOMBIE OUTBREAK" autocapitalize="characters" pattern=".{5,30}" title="Text must be 5 to 30 characters in length">
+<input type="submit" value="Use">
+</form>
+</body>
+</html>
