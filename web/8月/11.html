@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="http://www.daixiaorui.com/Public/js/jquery.min.js"></script>
+</head>
+ <body>
+  <div id="aa" style="width: 200px;height: 100px;overflow:auto;-o-transition: height 2s;">
+		<input type="button" onclick="scrollWindow()" value="Scroll" />
+		<p class="scroll_bottom">滑到底部</p>
+		<p>SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL</p>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<p>SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL</p>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<p>SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL SCROLL</p>
+  </div>
+
+
+  <div id='d1' style='height:200px;width:100px;overflow:auto;background:blue;-o-transition: height 2s;'>
+  	 <input type="button" value="点击" onclick="scroll()">
+     <div style='height:500px;width:500px;background:yellow'>2222</div>
+  </div>
+
+</body>
+
+<script>
+function scroll(){
+  document.getElementById('d1').scrollTop=100;//通过scrollTop设置滚动到100位置
+  document.getElementById('d1').scrollLeft=200;//通过scrollTop设置滚动到200位置
+}
+
+function scrollWindow()
+  {
+  	document.getElementById('aa').scrollTop=600;
+  }
+
+jQuery(document).ready(function($){
+		$('.scroll_bottom').click(function(){$('html,body').animate({scrollTop:$('#d1').offset().top}, 800);});
+	});
+</script>
+
+</html>
