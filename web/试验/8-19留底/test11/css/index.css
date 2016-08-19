@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+
+iframe{ width:100%;height:99%; }
+.divle{ width:200px; }
+.divle .xl{ padding:10px; }
+.divle .xl div{ width:99%; height:30px; margin-top:5px; margin-bottom:5px; }
