@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div class="header">
+		<h1>缩减成一个json文件</h1>
+		<h2>在表单里创建一个隐藏域</h2>
+		<p>id为cmd或者czlx</p>
+		<h2>script 里申明cmd或者czlx</h2>
+		<h2>新增函数add</h2>
+		<h3>给隐藏域赋值，cmd或者czlx='add'</h3>
+		<h2>修改函数edit</h2>
+		<h3>给隐藏域赋值，cmd或者czlx='edit'</h3>
+		<h2>提交函数</h2>
+		<h3>判断cmd或者czlx是新增还是修改，都返回msgshow</h3>
+		<h2>删除函数</h2>
+		<h3>判断是否选择，是否删除，post(url,{带的值id，cmd或者czlx='del'},返回的函数带入msgshow)</h3>
+		<h2>msgshow</h2>
+		<ul>
+			<li>为1</li>
+			<p>是新增修改还是删除，然后刷新表格和关闭对话框</p>
+			<li>否则</li>
+			<p>输出提示</p>
+		</ul>
+	</div>
+</body>
+</html>
