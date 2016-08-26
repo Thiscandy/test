@@ -1,0 +1,9 @@
+/*全局参数*/
+body{ font-family:'黑体' }
+
+/*顶部样式*/
+.hd .page_title{ color:#225fba; font-size:34px; text-align:center; font-weight:400; margin:0 15%; }
+
+.top_le{ position:fixed; left:20px; font-size:36px; color:#ccc; }
+.cz_inp{ height:50px; }
+.lab{ width:90px; }
