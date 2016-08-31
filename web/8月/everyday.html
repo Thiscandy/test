@@ -33,6 +33,23 @@
 		<pre class="p-4">
 		$('#fm').form('clear');
 		</pre>
+
+		<h1>对话框</h1>
+		<pre class="p-4">
+	&lt;div id="dlg" class="easyui-dialog" style="width:880px; height:550px;" closed="true" modal="true" buttons="#dlg-buttons">&lt;/div>
+	&lt;div id="dlg-buttons">
+		&lt;a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="">确认&lt;/a>
+		&lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close');">取消&lt;/a>
+	&lt;/div>
+		</pre>
+
+		<h1>打开对话框</h1>
+		<pre class="p-4">
+	function dialog()
+	{
+		$('#dlg').dialog('open').dialog('setTitle','标题');
+	}
+		</pre>
 	</div>
 </body>
 </html>
