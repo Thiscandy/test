@@ -50,6 +50,25 @@
 		$('#dlg').dialog('open').dialog('setTitle','标题');
 	}
 		</pre>
+
+		<h1>查找事件</h1>
+		<pre class="p-4">
+	function doSearch()
+	{
+		$('#dg_api').datagrid('load',{
+			mc:$('#mc').textbox('getValue')
+			//重新加载，并把输入框的值给后端
+		});
+	}
+		</pre>
+
+		<h1>刷新事件</h1>
+		<pre class="p-4">
+	function reload()
+	{
+		$('#数据表格ID').datagrid('reload');
+	}
+		</pre>
 	</div>
 </body>
 </html>
