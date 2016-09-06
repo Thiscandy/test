@@ -87,8 +87,33 @@
 
 		<h1>表格线条和弧度</h1>
 		<pre class="p-4">
-			border:1px solid #d1d1d1;
-			border-radius: 5px;
+	border:1px solid #d1d1d1;
+	border-radius: 5px;
+		</pre>
+
+		<h1>easyui里面网页跳转</h1>
+		<pre class="p-4">
+	index.asp主页面上写创建分页
+
+	function addTab(title, url)
+	{
+		if ($('#tt').tabs('exists', title))
+		{
+			$('#tt').tabs('select', title);
+		} 
+		else 
+		{
+			var content = '&lt;iframe scrolling="auto" frameborder="0"  src="'+url+'">&lt;/iframe>';
+			$('#tt').tabs('add',{ title:title, content:content, closable:true });
+		}
+	}
+
+	分页上写跳转函数(skip跳转)
+
+	function onskip()
+	{
+		window.parent.addTab('标题', 'api/csmx.asp');
+	}
 		</pre>
 	</div>
 </body>
