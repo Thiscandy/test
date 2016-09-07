@@ -115,6 +115,16 @@
 		window.parent.addTab('标题', 'api/csmx.asp');
 	}
 		</pre>
+
+		<h1>主页防止无登录就进入</h1>
+		<pre class="p-4">
+	<% 
+	if session("CZY_NAME")="" then 
+		response.Redirect("login.asp")
+		response.End
+	end if
+	%>
+		</pre>
 	</div>
 </body>
 </html>
