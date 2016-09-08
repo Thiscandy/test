@@ -125,6 +125,57 @@
 	end if
 	%>
 		</pre>
+
+		<h1>登录login_ck.asp</h1>
+		<pre class="p-4">
+	&lt;api.asp链接>
+	&lt;md5.asp链接>
+	<%
+	Session.Codepage=65001
+
+	name=request("name")
+	pw=request("password")
+	ck=request("ckjzmm")
+
+	response.Cookies("useryt2016")=name
+	response.Cookies("useryt2016").Expires=DateAdd("m",60,now())
+
+	if (name="") or (pw="") then
+		response.Redirect("login.asp?fh=btx")
+		response.End
+	end if
+
+	if ck="jzmm" then
+		response.Cookies("pwyt2016")=pw
+		response.Cookies("pwyt2016").Expires=DateAdd("m",60,now())
+		response.Cookies("jzmmyt2016")=ck
+		response.Cookies("jzmmyt2016").Expires=DateAdd("m",60,now())
+	else
+		response.Cookies("pwyt2016")=""
+		response.Cookies("jzmmyt2016")=""
+	end if
+
+	Set API = New Yiten_API
+	ParaTemp = Array()
+	ParaTemp=ADD_Array(ParaTemp,"method","YHQDL_SYS_LOGIN")
+	ParaTemp=ADD_Array(ParaTemp,"CZY_ID",name)
+	ParaTemp=ADD_Array(ParaTemp,"CZY_MM",md5(pw,"UTF-8"))
+	sHtml = API.Post(ParaTemp)
+	set API = nothing
+
+	set obj=parseJSON(sHtml)
+
+	if obj.code="1" then
+		session("DEP")=obj.DEP
+		session("JS_NAME")=obj.CZY_ID
+		session("CZY_ID")=obj.CZY_ID
+		session("CZY_NAME")=obj.CZY_NAME
+		response.Redirect("index.asp")
+	else
+		response.Redirect("login.asp?fh=dlsb")
+	end if
+	%>
+		</pre>
 	</div>
 </body>
 </html>
