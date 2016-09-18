@@ -219,6 +219,14 @@
 	&lt;div id="toolbar" style="overflow:auto;">
 	&lt;form id="form" style="min-width:1100px;margin-left:10px;margin-bottom:10px;">
 		</pre>
+
+		<h1>消除数据表格多余的一个DIV(消除竖滚动条)</h1>
+		<pre class="p-4">
+	原理：div的css样式overflow=hidder
+	解决方案：消除这个css样式
+	在页面CSS样式加上
+	.datagrid-body { overflow: inherit; }
+		</pre>
 	</div>
 </body>
 </html>
