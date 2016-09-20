@@ -42,6 +42,18 @@
 	&lt;/div>
 		</pre>
 
+		<h1>直接用按钮onclick的js代码跳转指定网页</h1>
+		<pre class="p-4">
+	onclick="javascript:window.location.href='index2.asp';"
+		</pre>
+
+		<h1>如何让背景图片撑满整个DIV？</h1>
+		<pre class="p-4">
+	background-image: url(); 
+	background-repeat: no-repeat;
+	background-size:100%;
+		</pre>
+
 		<h1>打开对话框</h1>
 		<pre class="p-4">
 	function dialog()
@@ -227,6 +239,159 @@
 	在页面CSS样式加上
 	.datagrid-body { overflow: inherit; }
 		</pre>
+
+		<h1>可操作的数据表格</h1>
+		<pre class="p-4">
+	按钮：
+	&lt;a href="#" class="easyui-linkbutton" iconCls="icon-more" onclick="zdyzd()">自定义字段&lt;/a>
+
+	提示框：
+	&lt;div id="dlg_zdy" class="easyui-dialog" style="width:725px; height:420px;" closed="true" modal="true" buttons="#dlg-buttons_zdy">
+		&lt;div id="zdy">&lt;/div>
+	&lt;/div>
+	&lt;div id="dlg-buttons_zdy">
+	    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg_zdy').dialog('close');">取消&lt;/a>
+	&lt;/div>
+
+	事件：
+	&lt;script>
+		function zdyzd()
+		{
+			$('#dlg_zdy').dialog('open').dialog('setTitle','自定义字段');
+			zdydate();
+		}
+
+		function zdydate()
+		{
+			$('#zdy').datagrid({
+				width:'100%',
+				height:'100%',
+				url:'rwgl_json.asp',
+				queryParams:{ czlx:'zdy' },
+				toolbar:'#toolbar',
+				singleSelect:'true',
+				method:'post',
+				rownumbers:'true',
+				autoRowHeight:'true',
+				//编辑之前、之后、关闭编辑触发，判断行的编辑状态，更新行
+				onBeforeEdit:function(index,row){
+					row.editing = true;
+					updateActions_zdy(index);
+				},
+				onAfterEdit:function(index,row){
+					row.editing = false;
+					updateActions_zdy(index);
+				},
+				onCancelEdit:function(index,row){
+					row.editing = false;
+					updateActions_zdy(index);
+				},
+				frozenColumns:[[
+					{field:'action',title:'操作',width:130,align:'center',
+						formatter:function(value,row,index){
+						//格式化
+							if (row.editing){
+								var s = '&lt;a href="#" onclick="saverow_zdy(this)">保存&lt;/a> ';
+								var c = '&lt;a href="#" onclick="cancelrow_zdy(this)">取消&lt;/a>';
+								return s+c;
+							} else {
+								var d = '&lt;a href="#" onclick="deleterow_zdy(this)">删除&lt;/a>';
+								var e = '&lt;a href="#" onclick="editrow_zdy(this)">修改&lt;/a> ';
+								return e;
+							}
+						}
+					},
+					{field:'sx',title:'顺序',width:100,align:'center',editor:'text'},
+					{field:'bm',title:'字段名',width:150,align:'center',editor:'text'},
+					{field:'kd',title:'别名',width:100,align:'center',editor:'text'},
+					{field:'kd',title:'宽度',width:100,align:'center',editor:'text'},
+					{field:'kd',title:'显示',width:100,align:'center',editor:'text'}
+				]]
+			});
+		}
+
+		//更新这一行
+		function updateActions_zdy(index)
+		{
+			$('#zdy').datagrid('updateRow',{
+				index: index,
+				row:{}
+			});
+		}
+		
+		//获取该行的索引
+		function getRowIndex_zdy(target)
+		{
+			var tr = $(target).closest('tr.datagrid-row');
+			return parseInt(tr.attr('datagrid-row-index'));
+		}
+		
+		//修改
+		function editrow_zdy(target)
+		{
+			var ta=getRowIndex_zdgl(target)
+			$('#zdy').datagrid('beginEdit', ta);
+			$('#zdy').datagrid('selectRow', ta);
+		}
+		
+		//保存
+		function saverow_zdy(target)
+		{
+			$('#zdy').datagrid('endEdit', getRowIndex_zdy(target));
+			getChanges_zdy(1);
+		}
+
+		//删除
+		function deleterow_zdy(target)
+		{
+			$.messager.confirm('系统提示','确定删除该字段？',function(r){
+				if (r)
+				{
+					
+					$('#zdy').datagrid('deleteRow', getRowIndex_zdy(target));
+					getChanges_zdy(0);
+				}
+			});
+		}
+		
+		//取消
+		function cancelrow_zdy(target)
+		{
+			$('#zdy').datagrid('cancelEdit', getRowIndex_zdy(target));
+		}
+		
+		//提交
+		function getChanges_zdy(zero)
+		{
+			if (zero==1)
+			{
+				var rows = $('#zdgl').datagrid('getChanges','updated');
+				//getChanges获取改变的行，updated更新状态的行
+				if (rows.length > 0) 
+				{
+					$.post('rwgl_json.asp',{
+						//传值
+					},function(res){ 
+						if(res.code!=1){ tsshow(res.msg); }
+						else{ $('#zdgl').datagrid('reload'); }
+					},'json');
+				}
+			}
+			else
+			{
+				var rows = $('#zdgl').datagrid('getChanges','deleted');
+				alert(rows[0].zd);
+				$.post('rwgl_json.asp',{
+					//传ID
+				},function(res){
+					if (res.code!=1) { tsshow(res.msg); }
+					else { $('#zdgl').datagrid('reload'); }
+				},'json');
+			}
+		}
+	&lt;/script>	
+		</pre>
+
 
 		<h1>各种网站</h1>
 		<pre class="p-4">
