@@ -392,6 +392,26 @@
 	&lt;/script>	
 		</pre>
 
+		<h1>高级收索(隐藏/自动拉动滚动条)</h1>
+		<pre class="p-4">
+	<b>HTML代码：</b>
+
+	&lt;a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="seek()">高级查找</a>
+
+	<b>scrpit：</b>
+
+	function seek() {
+		var oDiv = document.getElementById("gj");
+		oDiv.style.display=oDiv.style.display=='none'?'block':'none';
+		document.getElementById('p').scrollTop=600;
+	}
+		</pre>
+
+		<h1>重置表单</h1>
+		<pre class="p-4">
+	onclick="javascript:$('#form').form('clear')"
+		</pre>
+
 
 		<h1>各种网站</h1>
 		<pre class="p-4">
@@ -402,6 +422,7 @@
 	案例网站：
 		1、站酷
 		2、UI中国
+		3、千广网(广告设计)
 		</pre>
 	</div>
 </body>
