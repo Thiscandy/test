@@ -79,7 +79,44 @@
 		    alert("必须为6位数字!");  
 		    return false;  
 		}
-	}  
+	} 
+
+	persone = new Object();
+	persone.firstname = "Ygz";
+	persone.lastname = "Get";
+	persone.age = 19;
+	persone.eyecolor = "blue";
+	document.write(persone.firstname+" is "+persone.age+" years old.<br />"+persone.lastname+"<br />"+persone.eyecolor+"<br />");
+
+	var sage = "Hello Ygz!";
+	document.write(sage+"<br />");
+	document.write(sage.length+"<br />");
+
+	function chen()
+	{
+		var a = document.getElementById("t_1").value;
+		var b = document.getElementById("t_2").value;
+		var c = a*b;
+		alert(c);
+	}
+	document.write('<input type="text" id="t_1">*<input type="text" id="t_2"> <input type="button" onclick="chen()" value="提交"><br />');
+
+	function abc(){
+		var x = "";
+		for (var i = 0; i < 5; i++) {
+			x=x+"第"+i+"次<br />";
+		}
+		document.getElementById("d_div").innerHTML=x;
+	}
+	document.write('<button onclick="abc()">循环5次</button><br /><div id="d_div"></div><br />');
+
+	cary=["Ygz","length","left","right"];
+	for (var i=0,l=cary.length; i<l; i++)
+	{
+	document.write(cary[i] + "<br>");
+	}
+
+	
 </script>
 </body>
 </html>
