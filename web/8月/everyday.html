@@ -463,6 +463,78 @@
 	} 
 		</pre>
 
+		<h1>曲线图</h1>
+		<pre class="p-4">
+	//xAxis日期、rdata到货数量、bdata实质到货数
+	function qst(xAxis,rdata,bdata){
+		var chart = {
+		  type: 'spline'
+	   }; 
+	   var title = {
+		  text: '发货计划明细'   
+	   };
+	   var xAxis = {
+		  categories: xAxis
+	   };
+	   var yAxis = {
+		  title: {
+			 text: '到货数量'
+		  },
+		  lineWidth: 2
+	   };
+	   var tooltip = {
+		  crosshairs: true,
+		  shared: true,
+	   };
+	   var plotOptions = {
+		  spline: {
+			 marker: {
+				radius: 4,
+				lineColor: '#666666',
+				lineWidth: 1
+			 }
+		  }
+	   };
+	   var series= [{
+			 name: '到货数量',
+			 marker: {
+				symbol: 'square'
+			 },
+			 data: rdata
+		  },{
+	         name: '实质到货数',
+	         marker: {
+				symbol: 'square'
+			 },
+	         marker: {
+	            symbol: 'diamond'
+	         },
+	         data: bdata
+	      }
+	   ];
+
+	   var json = {};
+
+		json.chart = chart;
+		json.title = title;
+		json.tooltip = tooltip;
+		json.xAxis = xAxis;
+		json.yAxis = yAxis;  
+		json.series = series;
+		json.legend = { layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0 };
+	   json.plotOptions = plotOptions;
+	   $('#container').highcharts(json);
+	}
+
+	//载入走势图数据
+	function zstdata(podh){
+		$.post('xx_json.asp',{ PO_DH:podh,cmd:'zzt' },function(res){
+			qst(res.xAxis,res.rdata,res.bdata);
+			//返回显示值
+		},'json');
+	}
+		</pre>
+
 
 		<h1>各种网站</h1>
 		<pre class="p-4">
