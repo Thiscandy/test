@@ -537,17 +537,59 @@
 
 		<h1>上面数据表格链接到下面的数据表格</h1>
 		<pre class="p-4">
-			
+	用url和传输的值控制
+	onClickRow:function(){
+		var row=$('#xz').datagrid('getSelected');
+		$('#xx').datagrid({ url:'spxz_json.asp',queryParams:{ PC:row.PC } });
+	},
 		</pre>
 
-		<h1>面板上的数据添加到页面上</h1>
+		<h1>面板上的数据添加到另一个数据表格上</h1>
 		<pre class="p-4">
-			
+	$('#dg').datagrid('appendRow',{
+		SPDM: rows.SPDM,
+		SPGGDM: rows.GGDM,
+		SPMC: rows.SPMC,
+		SPJC:rows.JC
+	});
 		</pre>
 
 		<h1>面板布局左上中下</h1>
 		<pre class="p-4">
-			
+	&lt;div id="dlg" class="easyui-dialog" style="width:920px; height:560px;" closed="true" modal="true" buttons="#dlg-buttons">
+		&lt;div class="easyui-layout" data-options="fit:true">
+			&lt;!-- 左侧 -->
+			&lt;div data-options="region:'west'" title="商品类别" style="width:150px;">
+				&lt;ul id="tree_tree">&lt;/ul>
+			&lt;/div>
+			&lt;div data-options="region:'center'">
+				&lt;div id="pl" class="easyui-panel" style="width:100%;height:20%;padding:5px;">
+					&lt;div style="margin-left:10px;margin-top:5px;">
+						&lt;a href="#" class="easyui-linkbutton width" onclick="">搜索&lt;/a>
+						&lt;a href="#" class="easyui-linkbutton width left" onclick="javascript:$('#ss_form').form('clear')">重置条件&lt;/a>
+					&lt;/div>
+					&lt;form id="ss_form" style="margin-top:5px;">
+						&lt;div class="fitem_div">
+							&lt;label>商品代码&lt;/label>
+							&lt;input id="bh_zymc" class="easyui-textbox" style="width:122px;">
+						&lt;/div>
+						&lt;div class="fitem_div">
+							&lt;label>商品名称&lt;/label>
+							&lt;input id="bh_zymc" class="easyui-textbox" style="width:122px;">
+						&lt;/div>
+						&lt;div class="fitem_div">
+							&lt;label>规格代码&lt;/label>
+							&lt;input id="bh_zymc" class="easyui-textbox" style="width:122px;">
+						&lt;/div>
+					&lt;/form>
+				&lt;/div>
+				&lt;div id="xz">&lt;/div>
+				&lt;div id="ttt" class="easyui-tabs" style="width:100%; height:40%;">
+					&lt;div title="库存明细">&lt;div id="xx">&lt;/div>&lt;/div>
+				&lt;/div>
+			&lt;/div>
+		&lt;/div>
+	&lt;/div>
 		</pre>
 
 		<h1></h1>
