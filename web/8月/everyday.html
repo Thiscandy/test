@@ -599,9 +599,41 @@
 	</ul>
 		</pre>
 
-		<h1></h1>
+		<h1>组建一个JSON</h1>
 		<pre class="p-4">
-			
+		// json 封装     【有关表格控件ID】
+		function Preservation()
+		{
+			//订单信息的字段
+			var ddxx = {};
+			var DPMC = $('#DPMC').combobox('getValue');
+			ddxx.店铺名称 = DPMC;
+	 
+	 		//收货地址的字段
+			var shdz = {};
+			var SJR = $('#SJR').textbox('getValue');
+			shdz.收件人 = SJR;
+
+			//展示表格的总数据
+			var spmx = $('#dg').datagrid('getData');
+
+			//支付明细的总数据
+			var zfmx = $('#zfmx').datagrid('getData');
+
+			//创建json
+			var json = {};
+			json.订单信息 = ddxx;
+			json.收货地址 = shdz;
+			json.商品明细 = spmx.rows;
+			json.支付明细 = zfmx.rows;
+
+			//测试所有json是否正确
+			var vaa=JSON.stringify(json);
+			alert(vaa);  
+
+			//可以提交
+			//$.post(url,{ json:json },'json');
+		}	
 		</pre>
 
 
