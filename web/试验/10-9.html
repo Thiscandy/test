@@ -58,6 +58,34 @@
 <div style="margin:0 auto;width:1000px;">
 	<div id="yin-yang"></div>
 	<div id="cross"></div>
+	<textarea>标签有自带的属性可以设置其大小,可以不用CSS..<textarea>具有cols和rows属性.cols和rows属性分别用来设置文本框的列数和行数,这里列与行大小是以字符数为单位的.<textarea cols="30" rows="15"></textarea>
+	<br />
+	<a id="bbb" onclick="ceshi()">点击测试</a>
+<script>
+	function yuan(r,pi)
+	{
+		var d=(r*r);
+		var s;
+		if(pi)
+		{
+		  s=pi*d;
+		}
+		else
+		{
+		  s=d*3.14;
+		}
+		return s;
+	}
+
+	function ceshi()
+	{
+		if (yuan(2) === 12.56 && yuan(2, 3.1416) === 12.5664) {
+		    alert('测试通过');
+		} else {
+		    alert('测试失败');
+		}
+	}
+</script>
 </div>
 </body>
 </html>
