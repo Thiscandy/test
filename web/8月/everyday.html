@@ -636,7 +636,7 @@
 		}	
 		</pre>
 
-		<h1></h1>
+		<h1>可集合调用到js文件头部的方法</h1>
 		<pre class="p-4">
 	var xzsp = $('#xz');
 	var spmx = $('#xx'); 
@@ -653,6 +653,40 @@
 		});
 	}
 		</pre>
+
+		<h1>遍历汇总到数据表格底部显示一行</h1>
+		<pre class="p-4">
+	//遍历过程
+	function huizong() {
+		var rew = $('#dg').datagrid('getRows');
+		var badbad = rew.length;
+		var sum = 0;
+		for (var i = 0; i < badbad; i++)
+		{
+			sum=sum+rew[i]['ZJ'];
+		}
+		footer(sum);
+	}
+
+	function footer(zongjia){
+		if (zongjia) 
+		{
+			var ZJ = zongjia;
+			//添加和更新脚注行
+			$('#dg').datagrid('reloadFooter',[
+				{DJ: '总共', ZJ: ZJ }
+			]);
+		}
+		else
+		{
+			$('#dg').datagrid('reloadFooter',[
+				{DJ: '总共', ZJ: '0' }
+			]);
+		}
+	}
+		</pre>
+
+
 
 
 		<h1>各种网站</h1>

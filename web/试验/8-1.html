@@ -2,9 +2,52 @@
 <head>
 	<title>for in</title>
 	<meta charset="utf-8">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 </head>
+<style>
+	body{
+		margin:0;
+	}
+	#progress {
+		position:fixed;
+		height: 2px;
+		background:#2085c5;
+		transition:opacity 500ms linear
+	}
+	#progress.done {
+		opacity:0
+	}
+	#progress span {
+		position:absolute;
+		height:2px;
+		-webkit-box-shadow:#2085c5 1px 0 6px 1px;
+		-webkit-border-radius:100%;
+		opacity:1;
+		width:150px;
+		right:-10px;
+		-webkit-animation:pulse 2s ease-out 0s infinite;
+	}
+
+	@-webkit-keyframes pulse {
+		30% {
+		    opacity:.6
+		}
+		60% {
+		    opacity:0;
+		}
+		100% {
+		    opacity:.6
+		}
+	}
+</style>
 <html>
 <body>
+<div id="progress">
+            <span></span>
+</div>
 <div style="width: 1000px;margin: 30px auto;padding:40px 50px;background: #F8F8F8;box-shadow: 1px 1px 10px rgba(0,0,0,0.5);">
 <h3>代码如下所示：</h3>
 <pre style="color:#060">
@@ -127,6 +170,19 @@ if (i<10)
   {i="0" + i}
   return i
 }
+
+$({property: 0}).animate({property: 100}, {
+                duration: 110,
+                step: function() {
+                    var percentage = Math.round(this.property);
+
+                    $('#progress').css('width',  percentage+"%");
+
+                     if(percentage == 100) {
+                            $("#progress").addClass("done");//完成，隐藏进度条
+                        }
+                }
+});
 </script>
 </body>
 </html>
