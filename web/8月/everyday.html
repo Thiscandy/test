@@ -721,6 +721,28 @@
 	index	必需。表示字符串中某个位置的数字，即字符在字符串中的下标。
 		</pre>
 
+		<h1>指定方法组成后的新数组</h1>
+		<pre class="p-4">
+	语法：
+	array.map(callback[, thisArg])
+	参数：
+	callback  原数组中的元素经过该方法后返回一个新的元素。
+	thisArg  执行 callback 函数时 this 指向的对象。
+	示例：
+	function fuzzyPlural(single) {
+	  var result = single.replace(/o/g, 'e');  
+	  if( single === 'kangaroo'){
+	    result += 'se';
+	  }
+	  return result; 
+	}
+
+	var words = ["foot", "goose", "moose", "kangaroo"];
+	console.log(words.map(fuzzyPlural));
+
+	// ["feet", "geese", "meese", "kangareese"]
+		</pre>
+
 
 		<h1>各种网站</h1>
 		<pre class="p-4">
