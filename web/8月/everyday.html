@@ -743,6 +743,31 @@
 	// ["feet", "geese", "meese", "kangareese"]
 		</pre>
 
+		<h1>返回在数组中找到的第一个索引值，否则返回-1</h1>
+		<pre class="p-4">
+	arr.indexOf(searchElement[, fromIndex = 0])
+
+	searchElement	要查找的元素
+
+	var array = [2, 5, 9];
+	array.indexOf(2);     // 0
+	array.indexOf(7);     // -1
+	array.indexOf(9, 2);  // 2
+	array.indexOf(2, -1); // -1
+	array.indexOf(2, -3); // 0
+		</pre>
+
+		<h1>easyui文本框回车事件</h1>
+		<pre class="p-4">
+	$(document).ready(function (){
+		$('#ID').textbox('textbox').keydown(function (e) {
+			if (e.keyCode == 13) {
+				//调用的函数事件
+			}
+		});
+	});
+		</pre>
+
 
 		<h1>各种网站</h1>
 		<pre class="p-4">
