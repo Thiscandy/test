@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>支付</title>
+	<meta charset="utf-8">
+	<style>
+		body { margin: 0;padding: 0;background: #ededed;font-size: 18px; }
+		.div { width:450px;height:400px;background:#fff;margin:0 auto;position: absolute;top: 50%;left: 50%;margin-left: -225px;margin-top: -200px; }
+		.main { margin-top:40px;overflow-y: auto;height: 300px; }
+		.fatem { width:330px;margin-bottom: 30px;margin-left: 65px; }
+		.ysze { font-size: 25px;display:inline-block;width:140px; }
+		.je { color:red;font-size:30px;display: inline-block; }
+		.font { width: 140px;text-align: left;display: inline-block; }
+		.money { width: 180px;text-align: left;display: inline-block; }
+		.money input { border:1px solid #dadada;height: 25px; }
+		.hui { width:100%;height:60px;position: absolute;bottom: 0px;background:#e2e2e2; }
+		.din { position: absolute;bottom: 15px;right: 20px; }
+		.a { text-decoration:none;border:2px solid #bce3ff;color: #fff; width: 80px;height: 25px;line-height: 25px;text-align: center; display: inline-block;margin: 0 10px;background: #1ea0ff; }
+		.a:hover { background: #168ee5;color: #fff; }
+	</style>
+</head>
+<body>
+	<div class="div">
+		<div class="main">
+			<div class="fatem">
+				<div class="ysze">应收总额</div>
+				<div id="ysze" class="je"></div>
+			</div>
+			<div id="zf0" class="fatem"></div>
+			<div id="zf1" class="fatem"></div>
+			<div id="zf2" class="fatem"></div>
+			<div id="zf3" class="fatem"></div>
+			<div id="zf4" class="fatem"></div>
+		</div>
+		<div class="hui">
+			<div class="din">
+				<a href="#" class="a" onclick="bb();">确认</a>
+				<a href="#" class="a" onclick="tt()">取消</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		window.onload = function() { aa(); };
+
+		var ysze = 900;														//应收总额  			####需要导入#####
+		var str = '现金支付,支付宝支付,微信支付';							//文本框前面的字		####需要导入#####
+		var sz=str.split(",");												//把字符串拆成数组
+
+
+		document.getElementById('ysze').innerHTML=ysze;						//显示应收总额
+		
+		function aa ()														//循环输出字和文本框
+		{
+			for(i=0;i<sz.length;i++)
+			{
+				document.getElementById('zf'+i).innerHTML=('<div class="font">'+sz[i]+'</div><div class="money"><input id="je'+i+'" value="0"></div>');
+			}
+		}
+
+		
+		function bb ()														//确认按钮事件
+		{
+			var zj = 0;
+			var cc = new Array();
+			for (var i = 0; i < sz.length; i++)								//循环得出文本框的输入总额和对应的数据字符串
+			{
+				var text = document.getElementById('je'+i).value;
+				if (text == "") 											//获取字符串判断是否为空，为空赋值为0，不为空转换为数字进行相加
+				{
+					text=0;
+					zj = zj + text;
+					cc[i]=sz[i]+'='+document.getElementById('je'+i).value;
+				}
+				else
+				{
+					zj = zj + parseInt(text);
+					cc[i]=sz[i]+'='+document.getElementById('je'+i).value;
+				}
+			}
+			if (zj < ysze+1)												//如果输入总额大于应收总额则提示，否则提交
+			{
+				window.location.href='result.html?cs='+cc;					//跳转到指定页面，且cs值等于传输值
+			}
+			else
+			{
+				alert('输入金额不能大于应用总额！');
+			}
+		}
+
+		document.onkeydown=keyDownSearch;  									//键盘回车监听事件
+		     
+		function keyDownSearch(e) {    
+		    // 兼容FF和IE和Opera    
+		    var theEvent = e || window.event;
+		    var code = theEvent.keyCode || theEvent.which || theEvent.charCode;    
+		    if (code == 13) {    
+		        bb();   													//按下回车执行的函数 
+		        return false;    
+		    }    
+		    return true;    
+		}
+
+	</script>
+</body>
+</html>
