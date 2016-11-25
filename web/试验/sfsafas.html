@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<ul id="source">
+  <li>北京空气质量：<b>90</b></li>
+  <li>上海空气质量：<b>70</b></li>
+  <li>天津空气质量：<b>80</b></li>
+  <li>广州空气质量：<b>50</b></li>
+  <li>深圳空气质量：<b>40</b></li>
+  <li>福州空气质量：<b>32</b></li>
+  <li>成都空气质量：<b>90</b></li>
+</ul>
+<button onclick="getData()">显示</button>
+
+<script>
+function getData() {
+
+    var data = new Array;
+    var ul = document.getElementById("source");
+    var li = ul.getElementsByTagName("li");
+    var b  = document.getElementsByTagName("b");
+    for(var i=0;i<li.length;i++){
+        data[i] = [];
+        data[i].push(li[i].innerHTML.substr(0,2));
+        data[i].push(parseInt(b[i].innerHTML));
+    }
+
+  alert(data);
+}
+
+</script>
+
+</body>
+</html>
