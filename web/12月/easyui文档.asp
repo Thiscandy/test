@@ -77,8 +77,8 @@ end if
 	<div data-options="region:'north',border:false" title="工作日志-登记" style="height:115px;width:100%;overflow:hidden;">
 		<div id="p" class="easyui-panel" style="width:100%; height:100%; min-width:910px;padding:5px;">
 			<div style="margin:5px 0;">
-				<a href="#" class="easyui-linkbutton width left" iconCls="icon-search" onclick="searchc()">搜索</a></span>
-				<a href="#" class="easyui-linkbutton width left" iconCls="icon-tip" onclick="javascript:$('#form').form('clear')">重置</a></span>
+				<a href="#" class="easyui-linkbutton width left" iconCls="icon-search" onclick="searchc()">搜索</a> 
+				<a href="#" class="easyui-linkbutton width left" iconCls="icon-tip" onclick="javascript:$('#form').form('clear')">重置</a> 
 			</div>
 			<form id="form" style="margin-top:10px;width:900px;height:35px;margin-left:10px;">
 
@@ -164,8 +164,8 @@ end if
 	<div data-options="region:'north',border:false" style="height:120px;">
 		<div id="p" class="easyui-panel" title="操作员管理" style="width:100%; height:100%; min-width:1100px; padding:5px;">
 			<div style="margin:5px; margin-bottom:15px;">
-				<a href="#" class="easyui-linkbutton width left" iconCls="icon-search" onclick="searchc()">搜索</a></span>
-				<a href="#" class="easyui-linkbutton width left" iconCls="icon-tip" onclick="javascript:$('#form').form('clear')">重置</a></span>
+				<a href="#" class="easyui-linkbutton width left" iconCls="icon-search" onclick="searchc()">搜索</a> 
+				<a href="#" class="easyui-linkbutton width left" iconCls="icon-tip" onclick="javascript:$('#form').form('clear')">重置</a> 
 			</div>
 			<form id="form" style="margin-top:10px;width:900px;height:35px;margin-left:10px;">
 
@@ -187,7 +187,6 @@ end if
 		$('#dlg').dialog('open').dialog('setTitle','新增');
 		$('#id').textbox('setValue','<%=session("UserName")%>');  //赋值全局变量
 		$('#id').combobox('readonly',false);
-		var row = $('#dg').datagrid('getSelected');
 		czlx='add';
 	}
 
@@ -197,11 +196,10 @@ end if
 		var row = $('#dg').datagrid('getSelected');
 		if (row) 
 		{
-
 			$('#dlg').dialog('open').dialog('setTitle','修改');
 			$('#id').textbox('setValue','<%=session("UserName")%>');
 			$('#id').datebox('readonly',true);
-			$('#if').textbox('setValue',row.Note);
+			$('#id').textbox('setValue',row.Note);
 			czlx='edit';
 
 		} else {
@@ -324,5 +322,17 @@ end if
 
 	ParaTemp=ADD_Array(ParaTemp,"Collect","""CollectType=2"",""CollectField=第一个字段,YW_JG,YW_XJ""")
 
+
+	// 上传文件点击上传后触发的事件、把路径字符串剥离成文件名和后缀
+	<input class="easyui-filebox" id="wjlj" data-options="onChange:function(){},prompt:'选择文件路径...',buttonText:'选择文件'" style="width:250px;">"
+	//路径框的值
+	var wjlj = $('#wjlj').filebox('getValue');
+	//获取文件路径
+	var pap  = wjlj.replace(/\\/g,'/');
+	//截取文件名
+	var wjljz = pap.substring(pap.lastIndexOf("/")+1,pap.length);
+
+	// 查找提示错误信息
+	$('#dg').datagrid({ url:url,queryParams:{ czlx:'get',SKU:sku,OrderID:cgdh,gys_code:cjmc,ZT:zt,BDATE:bdate,EDATE:edate },onLoadSuccess:function(data){ if(data.code!=1){ tsshow(data.msg); } }, });
 
 </script>
