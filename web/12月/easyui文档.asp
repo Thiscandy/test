@@ -335,4 +335,9 @@ end if
 	// 查找提示错误信息
 	$('#dg').datagrid({ url:url,queryParams:{ czlx:'get',SKU:sku,OrderID:cgdh,gys_code:cjmc,ZT:zt,BDATE:bdate,EDATE:edate },onLoadSuccess:function(data){ if(data.code!=1){ tsshow(data.msg); } }, });
 
+	//单击行带数据事件
+	onClickRow:function(rowIndex,rowData){
+		$('#wc').datagrid({ url:url,queryParams:{ czlx:'mx_LogID',LogID:rowData.LogID,PlanType:'完成' } });
+	}
+
 </script>

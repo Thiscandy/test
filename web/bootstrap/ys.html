@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<h1>h1. 主标题<small>副标题</small></h1>
+	<h2>h2. 主标题<small>副标题</small></h2>
+	<h3>h3. 主标题<small>副标题</small></h3>
+	<h4>h4. 主标题<small>副标题</small></h4>
+	<h5>h5. 主标题<small>副标题</small></h5>
+	<h6>h6. 主标题<small>副标题</small></h6>
+	<p>正常 p 文本<mark>内联文本用mark元素</mark>.</p>
+	<p class="lead">中心内容的文本加样式 .lead <mark>内联文本用mark元素</mark>.</p>
+	<del>对于被删除的文本使用 del 标签</del>
+	<br />
+	<s>对于没用的文本使用 s 标签</s>
+	<br />
+	<ins>额外插入的文本使用 ins 标签。</ins>
+	<br />
+	<u>为文本添加下划线，使用 u 标签</u>
+	<br />
+	<small>想让字体变小为行内元素赋予 .small 类以代替任何 small 元素</small>
+	<br />
+	<strong>通过增加 strong元素 强调一段文本</strong>
+	<br />
+	<em>用 em元素 斜体强调一段文本</em>
+	<br />
+	<p class="text-lowercase">text-lowercase . 通过这几个类可以改变文本的大小写</p>
+	<p class="text-uppercase">text-uppercase . 通过这几个类可以改变文本的大小写</p>
+	<p class="text-capitalize">text-capitalize . 通过这几个类可以改变文本的大小写</p>
+	<abbr title="但需要为 <abbr> 元素设置 title属性">如想看完整的内容可把鼠标悬停在缩略语上</abbr>
+	<br />
+	<abbr title="为缩略语添加 .initialism 类，可以让 font-size 变得稍微小些" class="initialism">HTML</abbr>
+	<blockquote style="margin-left:20px;">
+	  <p>左边有灰色条的标题.</p>
+	  <footer>小标题<em>字体倾斜</em></footer>
+	</blockquote>
+	<blockquote class="blockquote-reverse" style="margin-right:20px;">
+	  <p>左边有灰色条的标题.</p>
+	  <footer>小标题<em>字体倾斜</em></footer>
+	</blockquote>
+	<ul>
+		<li>ul li 1</li>
+		<li>ul li 2</li>
+		<li>ul li 3
+			<ul>
+				<li>ul li 1</li>
+			</ul>
+		</li>
+	</ul>
+	<ol>
+		<li>ol li 1</li>
+		<li>ol li 2</li>
+	</ol>
+	<ul class="list-unstyled">
+		<li>ul li 1 无样式</li>
+	</ul>
+	<ul class="list-inline">
+		<li>ul li</li>
+		<li>把</li>
+		<li>所</li>
+		<li>有</li>
+		<li>元</li>
+		<li>素</li>
+		<li>放</li>
+		<li>一</li>
+		<li>行</li>
+	</ul>
+	<dl>
+		<dt>dl  dt主题</dt>
+		<dd>dd内容</dd>
+	</dl>
+	<dl class="dl-horizontal">
+	  <dt>dl dt 主题和内容同一行</dt>
+	  <dd>dl 加上class="dl-horizontal"</dd>
+	</dl>
+	<p>内联代码可通过<code>&lt;code&gt;</code>标签包裹内联样式的代码片段</p>
+	<p>用户输入可通过<kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd><code>&lt;kod&gt;</code> 标签包裹内联样式的代码片段</p>
+	<pre>代码块.用&lt;pre&gt;</pre>
+	<table class="table table-striped">
+	  ...
+	</table>
+
+	<div style="width:900px;height:500px;">
+		<div id="myCarousel" class="carousel slide">
+		    <!-- 轮播（Carousel）指标 -->
+		    <ol class="carousel-indicators">
+		        <li data-target="#myCarousel" data-slide-to="0" 
+		            class="active"></li>
+		        <li data-target="#myCarousel" data-slide-to="1"></li>
+		        <li data-target="#myCarousel" data-slide-to="2"></li>
+		    </ol>   
+		    <!-- 轮播（Carousel）项目 -->
+		    <div class="carousel-inner">
+		        <div class="item active">
+		            <img src="image/1.png" alt="First slide">
+		        </div>
+		        <div class="item">
+		            <img src="image/2.png" alt="Second slide">
+		        </div>
+		        <div class="item">
+		            <img src="image/3.png" alt="Third slide">
+		        </div>
+		    </div>
+		    <!-- 轮播（Carousel）导航 -->
+		    <a class="carousel-control left" href="#myCarousel" 
+		        data-slide="prev">&lsaquo;</a>
+		    <a class="carousel-control right" href="#myCarousel" 
+		        data-slide="next">&rsaquo;</a>
+		    <!-- 控制按钮 -->
+		    <div style="text-align:center;">
+		        <input type="button" class="btn start-slide" value="Start">
+		        <input type="button" class="btn pause-slide" value="Pause">
+		        <input type="button" class="btn prev-slide" value="Previous Slide">
+		        <input type="button" class="btn next-slide" value="Next Slide">
+		        <input type="button" class="btn slide-one" value="Slide 1">
+		        <input type="button" class="btn slide-two" value="Slide 2">            
+		        <input type="button" class="btn slide-three" value="Slide 3">
+		    </div>
+		</div>
+	</div>
+	<script>
+	$(function(){
+	        // 初始化轮播
+	        $(".start-slide").click(function(){
+	            $("#myCarousel").carousel('cycle');
+	        });
+	        // 停止轮播
+	        $(".pause-slide").click(function(){
+	            $("#myCarousel").carousel('pause');
+	        });
+	        // 循环轮播到上一个项目
+	        $(".prev-slide").click(function(){
+	            $("#myCarousel").carousel('prev');
+	        });
+	        // 循环轮播到下一个项目
+	        $(".next-slide").click(function(){
+	            $("#myCarousel").carousel('next');
+	        });
+	        // 循环轮播到某个特定的帧 
+	        $(".slide-one").click(function(){
+	            $("#myCarousel").carousel(0);
+	        });
+	        $(".slide-two").click(function(){
+	            $("#myCarousel").carousel(1);
+	        });
+	        $(".slide-three").click(function(){
+	            $("#myCarousel").carousel(2);
+	        });
+	    });
+	</script>
+
+	<div style="margin-top:50px;">
+		<!-- Large modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+	
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      ...
+		    </div>
+		  </div>
+		</div>
+	
+		<!-- Small modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+	
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+		      ...
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+
+	<div style="width:100px;height:100px;display: inline-block; background: #428bca;margin-top: 20px; "></div>
+	<div style="width:100px;height:100px;display: inline-block; background: #5cb85c; "></div>
+	<div style="width:100px;height:100px;display: inline-block; background: #5bc0de; "></div>
+	<div style="width:100px;height:100px;display: inline-block; background: #f0ad4e; "></div>
+	<div style="width:100px;height:100px;display: inline-block; background: #d9534f; "></div>
+
+	<br />
+
+	<button type="button" class="btn btn-default" aria-label="Left Align">
+	  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+	</button>
+
+	<button type="button" class="btn btn-default btn-lg">
+	  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+	</button>
+
+	<div class="alert alert-danger" role="alert">
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		<span class="sr-only">辅助设备知道这条提示所要表达的意思</span>
+		错误提示
+	</div>
+
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			下拉式
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			<li class="dropdown-header">选择项</li>
+			<li><a href="#">选择1</a></li>
+			<li><a href="#">选择2</a></li>
+			<li role="separator" class="divider"></li>
+			<li class="dropdown-header">副选项</li>
+			<li class="disabled"><a href="#">禁用的按钮</a></li>
+			<li><a href="#">选择3</a></li>
+		</ul>
+	</div>
+
+	<div class="btn-group" role="group" aria-label="按钮组">
+		<button type="button" class="btn btn-default">左按钮</button>
+		<button type="button" class="btn btn-default">中间按钮</button>
+		<button type="button" class="btn btn-default">右边按钮</button>
+	</div>
+
+	<div class="btn-toolbar" role="toolbar" aria-label="...">
+		<div class="btn-group btn-group-lg" role="group" aria-label="按钮组">
+			<button type="button" class="btn btn-default">1</button>
+			<button type="button" class="btn btn-default">2</button>
+			<button type="button" class="btn btn-default">3</button>
+			<button type="button" class="btn btn-default">4</button>
+		</div>
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button" class="btn btn-default">5</button>
+			<button type="button" class="btn btn-default">6</button>
+			<button type="button" class="btn btn-default">7</button>
+		</div>
+		<div class="btn-group btn-group-sm" role="group" aria-label="...">
+			<button type="button" class="btn btn-default">8</button>
+			<button type="button" class="btn btn-default">9</button>
+		</div>
+		<div class="btn-group btn-group-xs" role="group" aria-label="...">
+			<button type="button" class="btn btn-default">10</button>
+		</div>
+		<div class="btn-group btn-group" role="group">
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					嵌套下拉框
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">嵌套选择1</a></li>
+					<li><a href="#">嵌套选择2</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="btn-group-vertical" role="group">
+		<button type="button" class="btn btn-default">垂直排列按钮</button>
+		<button type="button" class="btn btn-default">按钮1</button>
+		<button type="button" class="btn btn-default">按钮2</button>
+		<button type="button" class="btn btn-default">按钮3</button>
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				嵌套下拉框
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">嵌套1</a></li>
+				<li><a href="#">嵌套2</a></li>
+			</ul>
+		</div>
+		<button type="button" class="btn btn-default">按钮4</button>
+		<button type="button" class="btn btn-default">按钮5</button>
+		<button type="button" class="btn btn-default">按钮6</button>
+		<button type="button" class="btn btn-default">按钮7</button>
+	</div>
+
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+	  <div class="btn-group" role="group">
+	    <button type="button" class="btn btn-default">Left</button>
+	  </div>
+	  <div class="btn-group" role="group">
+	    <button type="button" class="btn btn-default">Middle</button>
+	  </div>
+	  <div class="btn-group" role="group">
+	    <button type="button" class="btn btn-default">Right</button>
+	  </div>
+	</div>
+
+	<!-- Split button -->
+	<div class="btn-group">
+	  <button type="button" class="btn btn-danger">Action</button>
+	  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    <span class="caret"></span>
+	    <span class="sr-only">Toggle Dropdown</span>
+	  </button>
+	  <ul class="dropdown-menu">
+	    <li><a href="#">Action</a></li>
+	    <li><a href="#">Another action</a></li>
+	    <li><a href="#">Something else here</a></li>
+	    <li role="separator" class="divider"></li>
+	    <li><a href="#">Separated link</a></li>
+	  </ul>
+	</div>
+
+	<div class="btn-group">
+		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			蓝色框
+		<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#">选项1</a></li>
+			<li><a href="#">选项2</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			绿色框
+		<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#">选项1</a></li>
+			<li><a href="#">选项2</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			淡蓝框
+		<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#">选项1</a></li>
+			<li><a href="#">选项2</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			橙色框
+		<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#">选项1</a></li>
+			<li><a href="#">选项2</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			红色框
+		<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#">选项1</a></li>
+			<li><a href="#">选项2</a></li>
+		</ul>
+	</div>
+
+
+	<!-- footer -->
+	<hr class="featurette-divider">
+	<footer>
+		<p class="pull-right"><a href="#">Back to top</a></p>
+		<p>&copy; 2017 Company, YT.</p>
+	</footer>
+</body>
+</html>
