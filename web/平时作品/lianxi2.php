@@ -333,16 +333,213 @@ EOT;
 							<p>该类型的属性或方法只能在该类中使用，在该类的实例、子类中、子类的实例中都不能调用私有类型的属性和方法</p>
 						</li>
 					</ul>
-<?php
+<pre>
+&lt;?php
 
 class duixiang {
 	public $publicProp='public';
 	protected $protected = 'protected';
 	private $privateProp = 'private';
 }
+$prod = new duixiang();
+echo $prod->publicProp;    //public
+
+class fotaad {
+	public $bar = <<<'EOT'
+bareat
+EOT;
+}
+$fotdas = new fotaad();
+echo $fotdas->bar;      //bareat
+
+?>
+<?php
+
+/*class duixiang {
+	public $publicProp='public';
+	protected $protected = 'protected';
+	private $privateProp = 'private';
+}
+
+$prod = new duixiang();
+echo $prod->publicProp."<br />";
+
+class fotaad {
+	public $bar = <<<'EOT'
+bareat
+EOT;
+}
+$fotdas = new fotaad();
+echo $fotdas->bar;*/
+
+?>
+</pre>
+					<p>由于 { 无法被转义，只有 $ 紧挨着 { 时才会被识别。</p>
+<pre>
+&lt;?php
+
+class foo {
+    var $bar = 'I am bar.';
+}
+
+$foo = new foo();
+$bar = 'bar';
+$baz = array('foo', 'bar', 'baz', 'quux');
+echo "{$foo->$bar}\n";         //I am bar.
+echo "{$foo->$baz[1]}\n";      //I am bar.
+
+?>
+<?php
+
+class fat {
+    var $bar = 'I am bar.';
+}
+
+$foo = new fat();
+$bar = 'bar';
+$baz = array('foo', 'bar', 'baz', 'quux');
+echo "{$foo->$bar}\n";
+echo "{$foo->$baz[1]}\n";
+?>
+</pre>
+					<p>只有在该字符串被定义的命名空间中才可以将其值作为变量名来访问。只单一使用花括号 ({}) 无法处理从函数或方法的返回值或者类常量以及类静态变量的值。</p>
+					<p>PHP中<code>::</code> 类中 静态方法和静态属性的引用方法</p>
+					<ul>
+						<li>可以不用实例化对象直接使用 Test::$test 来取得$test属性的值</li>
+						<li>静态方法调用也同理Test::test(); 直接调用静态方法test</li>
+					</ul>
+<pre>
+&lt;?php
+// 显示所有错误
+error_reporting(E_ALL);
+
+class beers {
+    const softdrink = 'rootbeer';
+    public static $ale = 'ipa';
+}
+
+$rootbeer = 'A & W';
+$ipa = 'Alexander Keith\'s';
+
+// 有效，输出： I'd like an A & W
+echo "I'd like an {${beers::softdrink}}\n";
+
+// 也有效，输出： I'd like an Alexander Keith's
+echo "I'd like an {${beers::$ale}}\n";
+?>
+
+<?php
+// 显示所有错误
+error_reporting(E_ALL);
+
+class beers {
+    const softdrink = 'rootbeer';
+    public static $ale = 'ipa';
+}
+
+$rootbeer = 'A & W';
+$ipa = 'Alexander Keith\'s';
+
+// 有效，输出： I'd like an A & W
+echo "I'd like an {${beers::softdrink}}\n";
+
+// 也有效，输出： I'd like an Alexander Keith's
+echo "I'd like an {${beers::$ale}}\n";
+?>
+</pre>
+					<p>获取字符串</p>
+<pre>
+&lt;?php
+
+// 获取字符串长度
+$str = 'This is a test.';
+$first = strlen($str);
+
+// 取得字符串的第一个字符
+$str = 'This is a test.';
+$first = $str[0];
+
+// 取得字符串的第三个字符
+$third = $str[2];
+
+// 取得字符串的最后一个字符
+$str = 'This is still a test.';
+$last = $str[strlen($str)-1]; 
+
+// 修改字符串的最后一个字符
+$str = 'Look at the sea';
+$str[strlen($str)-1] = 'e';
+
+?>
+</pre>
+					<p>可以使用<code>ord()</code>和<code>chr()</code>实现ASCII码和字符间的转换</p>
+<pre>
+&lt;?php
+
+	echo ord("S");
+	echo chr("83");
+	echo ord("bac");
+	echo chr("98");
 
 ?>
 
+<?php
+
+	echo ord("S")."<br/>";
+	echo chr("83")."<br/>";
+	echo ord("bac")."<br/>";
+	echo chr("98");
+
+?>
+</pre>
+					<h3>Array数组</h3>
+					<li>定义数组array()</li>
+<pre>
+&lt;?php
+
+$arraya = array("bar","foo");
+$arrayb = array(
+	"foo" => "bar",
+	"bar" => "foo",
+);
+$arrayc = [
+	"foo" => "bar",
+	"bar" => "foo",
+];
+
+echo var_dump($arraya);  //array(2) { [0]=> string(3) "bar" [1]=> string(3) "foo" } 
+echo var_dump($arrayb);  //array(2) { ["foo"]=> string(3) "bar" ["bar"]=> string(3) "foo" } 
+echo var_dump($arrayc);  //array(2) { ["foo"]=> string(3) "bar" ["bar"]=> string(3) "foo" }
+?>
+</pre>
+					<li>类型强制与覆盖</li>
+<pre>
+&lt;?php
+
+$array = array(
+	1    => "a",
+	"1"  => "b",
+	1.5  => "c",
+	true => "d",
+);
+var_dump($array);    //array(1) { [1]=> string(1) "d" }
+
+?>
+</pre>
+					<li>混合integer和string</li>
+<pre>
+&lt;?php
+$array = array(
+	"for" => "bar",
+	"bar" => "for",
+	100   => -100,
+	-100  => 100,
+	"foo" => 101,
+	101   => "foo"
+);
+var_dump($array);    //array(6) { ["for"]=> string(3) "bar" ["bar"]=> string(3) "for" [100]=> int(-100) [-100]=> int(100) ["foo"]=> int(101) [101]=> string(3) "foo" }
+?>
+</pre>
 				</div>
 			</div>
 		</div>
