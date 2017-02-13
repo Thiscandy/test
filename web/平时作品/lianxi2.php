@@ -540,6 +540,204 @@ $array = array(
 var_dump($array);    //array(6) { ["for"]=> string(3) "bar" ["bar"]=> string(3) "for" [100]=> int(-100) [-100]=> int(100) ["foo"]=> int(101) [101]=> string(3) "foo" }
 ?>
 </pre>
+					<li>对部分单元指定键名</li>
+					<ul>
+						<li>键名用数字会继承</li>
+						<li>键名用字符不会继承(字符没加引号会报错)</li>
+					</ul>
+<pre>
+&lt;?php
+$array = array(
+         "a",
+         "b",
+    6 => "c",
+         "d",
+);
+var_dump($array);  //array(4) { [0]=> string(1) "a" [1]=> string(1) "b" [6]=> string(1) "c" [7]=> string(1) "d" }
+$arr = array(
+         "a",
+         "b",
+    'a' => "c",
+         "d",
+);
+var_dump($arr);    //array(4) { [0]=> string(1) "a" [1]=> string(1) "b" ["a"]=> string(1) "c" [2]=> string(1) "d" }
+?>
+</pre>
+					<li>用方括号语法访问数组单元</li>
+<pre>
+// 方框号直接访问
+&lt;?php
+$arrayd = array(
+    "foo" => "baa",
+    42    => 24,
+    "mat" => array(
+            "dic" => array(
+                "ard" => "for"
+            )
+        )
+);
+
+var_dump($arrayd["foo"]);                //string(3) "baa"
+var_dump($arrayd[42]);                   //int(24)
+var_dump($arrayd["mat"]["dic"]["ard"]);  //string(3) "for"
+
+
+// 调用间接访问
+
+function getArray() {
+    return array(1, 2, 3);
+}
+
+// on PHP 5.4
+$secondElement = getArray()[1];
+echo $secondElement;             // 2
+
+// previously
+$tmp = getArray();
+$secondE = $tmp[1];
+echo $secondE;                   // 2
+
+// or
+list(, $second) = getArray();    // list()把数组中的值赋给对应位的变量
+echo $second;                    // 2
+?>
+</pre>
+					<li>用方括号的语法新建 / 修改</li>
+<pre>
+&lt;?php
+$arr = array(5 => 1, 12 => 2);
+
+var_dump($arr);    // array(2) { [5]=> int(1) [12]=> int(2) }
+
+$arr[] = 56;       // 这样的意思相同于 $arr[13] = 56;
+
+var_dump($arr);    // array(3) { [5]=> int(1) [12]=> int(2) [13]=> int(56) }
+
+$arr["x"] = 42;    // 这将添加一个新元素到数组的键"x"
+
+var_dump($arr);    // array(4) { [5]=> int(1) [12]=> int(2) [13]=> int(56) ["x"]=> int(42) }
+             
+unset($arr[5]);    // unset() 销毁指定的变量。
+
+var_dump($arr);    // array(3) { [12]=> int(2) [13]=> int(56) ["x"]=> int(42) }
+
+unset($arr);       // 这将删除整个数组
+
+
+// 创建一个简单的数组
+
+$array = array(1, 2, 3, 4, 5);
+print_r($array);                  // Array ( [0] => 1 [1] => 2 [2] => 3 [3] => 4 [4] => 5  )
+
+// foreach() 语法结构用于遍历操作或输出数组
+// 现在删除其中的所有元素，但保持数组本身不变:
+
+foreach ($array as $i => $value) {
+    unset($array[$i]);
+}
+print_r($array);                  // Array ( )
+
+// 添加一个单元（注意新的键名是 5，而不是你可能以为的 0）
+
+$array[] = 6;
+print_r($array);                  // Array ( [5] => 6 )
+
+// array_values() 返回一个包含给定数组中所有键值的数组，键名从 0 开始并以 1 递增。
+// 重新索引：
+
+$array = array_values($array);
+$array[] = 7;
+print_r($array);                  // Array ( [0] => 6 [1] => 7 ) 
+?>
+</pre>
+					<li>数组 函数</li>
+					<ul>
+						<li>array_change_key_case — 返回字符串键名全为小写或大写的数组</li>
+						<li>array_chunk — 将一个数组分割成多个</li>
+						<li>array_column — 返回数组中指定的一列</li>
+						<li>array_combine — 创建一个数组，用一个数组的值作为其键名，另一个数组的值作为其值</li>
+						<li>array_count_values — 统计数组中所有的值出现的次数</li>
+						<li>array_diff_assoc — 带索引检查计算数组的差集</li>
+						<li>array_diff_key — 使用键名比较计算数组的差集</li>
+						<li>array_diff_uassoc — 用用户提供的回调函数做索引检查来计算数组的差集</li>
+						<li>array_diff_ukey — 用回调函数对键名比较计算数组的差集</li>
+						<li>array_diff — 计算数组的差集</li>
+						<li>array_fill_keys — 使用指定的键和值填充数组</li>
+						<li>array_fill — 用给定的值填充数组</li>
+						<li>array_filter — 用回调函数过滤数组中的单元</li>
+						<li>array_flip — 交换数组中的键和值</li>
+						<li>array_intersect_assoc — 带索引检查计算数组的交集</li>
+						<li>array_intersect_key — 使用键名比较计算数组的交集</li>
+						<li>array_intersect_uassoc — 带索引检查计算数组的交集，用回调函数比较索引</li>
+						<li>array_intersect_ukey — 用回调函数比较键名来计算数组的交集</li>
+						<li>array_intersect — 计算数组的交集</li>
+						<li>array_key_exists — 检查给定的键名或索引是否存在于数组中</li>
+						<li>array_keys — 返回数组中部分的或所有的键名</li>
+						<li>array_map — 为数组的每个元素应用回调函数</li>
+						<li>array_merge_recursive — 递归地合并一个或多个数组</li>
+						<li>array_merge — 合并一个或多个数组</li>
+						<li>array_multisort — 对多个数组或多维数组进行排序</li>
+						<li>array_pad — 用值将数组填补到指定长度</li>
+						<li>array_pop — 将数组最后一个单元弹出（出栈）</li>
+						<li>array_product — 计算数组中所有值的乘积</li>
+						<li>array_push — 将一个或多个单元压入数组的末尾（入栈）</li>
+						<li>array_rand — 从数组中随机取出一个或多个单元</li>
+						<li>array_reduce — 用回调函数迭代地将数组简化为单一的值</li>
+						<li>array_replace_recursive — 使用传递的数组递归替换第一个数组的元素</li>
+						<li>array_replace — 使用传递的数组替换第一个数组的元素</li>
+						<li>array_reverse — 返回一个单元顺序相反的数组</li>
+						<li>array_search — 在数组中搜索给定的值，如果成功则返回相应的键名</li>
+						<li>array_shift — 将数组开头的单元移出数组</li>
+						<li>array_slice — 从数组中取出一段</li>
+						<li>array_splice — 把数组中的一部分去掉并用其它值取代</li>
+						<li>array_sum — 计算数组中所有值的和</li>
+						<li>array_udiff_assoc — 带索引检查计算数组的差集，用回调函数比较数据</li>
+						<li>array_udiff_uassoc — 带索引检查计算数组的差集，用回调函数比较数据和索引</li>
+						<li>array_udiff — 用回调函数比较数据来计算数组的差集</li>
+						<li>array_uintersect_assoc — 带索引检查计算数组的交集，用回调函数比较数据</li>
+						<li>array_uintersect_uassoc — 带索引检查计算数组的交集，用回调函数比较数据和索引</li>
+						<li>array_uintersect — 计算数组的交集，用回调函数比较数据</li>
+						<li>array_unique — 移除数组中重复的值</li>
+						<li>array_unshift — 在数组开头插入一个或多个单元</li>
+						<li>array_values — 返回数组中所有的值</li>
+						<li>array_walk_recursive — 对数组中的每个成员递归地应用用户函数</li>
+						<li>array_walk — 使用用户自定义函数对数组中的每个元素做回调处理</li>
+						<li>array — 新建一个数组</li>
+						<li>arsort — 对数组进行逆向排序并保持索引关系</li>
+						<li>asort — 对数组进行排序并保持索引关系</li>
+						<li>compact — 建立一个数组，包括变量名和它们的值</li>
+						<li>count — 计算数组中的单元数目或对象中的属性个数</li>
+						<li>current — 返回数组中的当前单元</li>
+						<li>each — 返回数组中当前的键／值对并将数组指针向前移动一步</li>
+						<li>end — 将数组的内部指针指向最后一个单元</li>
+						<li>extract — 从数组中将变量导入到当前的符号表</li>
+						<li>in_array — 检查数组中是否存在某个值</li>
+						<li>key_exists — 别名 array_key_exists</li>
+						<li>key — 从关联数组中取得键名</li>
+						<li>krsort — 对数组按照键名逆向排序</li>
+						<li>ksort — 对数组按照键名排序</li>
+						<li>list — 把数组中的值赋给一些变量</li>
+						<li>natcasesort — 用“自然排序”算法对数组进行不区分大小写字母的排序</li>
+						<li>natsort — 用“自然排序”算法对数组排序</li>
+						<li>next — 将数组中的内部指针向前移动一位</li>
+						<li>pos — current 的别名</li>
+						<li>prev — 将数组的内部指针倒回一位</li>
+						<li>range — 建立一个包含指定范围单元的数组</li>
+						<li>reset — 将数组的内部指针指向第一个单元</li>
+						<li>rsort — 对数组逆向排序</li>
+						<li>shuffle — 将数组打乱</li>
+						<li>sizeof — count 的别名</li>
+						<li>sort — 对数组排序</li>
+						<li>uasort — 使用用户自定义的比较函数对数组中的值进行排序并保持索引关联</li>
+						<li>uksort — 使用用户自定义的比较函数对数组中的键名进行排序</li>
+						<li>usort — 使用用户自定义的比较函数对数组中的值进行排序</li>
+						<li>foreach — 控制结构是专门用于数组的。它提供了一个简单的方法来遍历数组。</li>
+					</ul>
+					<?php
+						$foo['bar'] = 'enemy';
+						// $foo = array('bar' => 'enemy', );
+						echo $foo['bar'];
+					?>
 				</div>
 			</div>
 		</div>
