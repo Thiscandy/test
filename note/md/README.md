@@ -88,7 +88,7 @@
 
 示例：
 
-![我的头像](https://www.https://github.com/Thiscandy/Baidu-ife/avatar.jpg)
+![我的头像](https://thiscandy.github.io/Baidu-ife/avatar.jpg)
 
 # Cmd Markdown 高阶语法手册
 
