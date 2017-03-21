@@ -41,10 +41,51 @@ test();
 alert(0);
 ```
 
-考察点:``定时器``、``event loop``、``闭包``
+考察点:**定时器**、**event loop**、**闭包**
 
 setTimeout()只是将任务添加到任务队列中而已，要等到主执行栈中的代码执行完之后，才会调用定时器中的回调函数。
-1.0
-2.2（闭包，当test执行完成之后，a为2）
-3.3（闭包，第一个定时器执行完之后，修改了a的值为3）
+1. 0
+2. 2（闭包，当test执行完成之后，a为2）
+3. 3（闭包，第一个定时器执行完之后，修改了a的值为3）
 
+# 21 Mar 2017
+
+### 写一段脚本，实现：当页面上任意一个链接被点击的时候，alert出这个链接在页面上的顺序号，如第一个链接则alert(1), 依次类推；
+
+考察点:**定时器**、**event loop**、**闭包**
+
+```javascript
+window.onload = function(){
+    var len = document.links.length;
+    for(var i = 0; i < len;i++){
+        document.links[i].onclick = (function(i){
+            return function(){
+                return i+1;
+            }
+        })(i);
+    }
+}
+```
+
+### 写出下面代码的输出值
+
+```javascript
+var obj = {
+    a: 1,
+    b: function () {console.log(this.a)}
+};
+var a = 2;
+var objb = obj.b;
+
+obj.b();
+objb();
+obj.b.call(window);
+```
+
+考察点：``this``、**全局作用域**、``call``
+
+结果：
+
+1. obj.b()：此时this->obj，因此输出：1
+2. objb()：由于是在全局作用域调用，this->window，因此输出结果为：2
+3. obj.b.call(window)：由于call的作用，this->window，因此输出结果为：2
