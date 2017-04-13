@@ -90,3 +90,72 @@ obj.b.call(window);
 2. objb()：由于是在全局作用域调用，this->window，因此输出结果为：2
 3. obj.b.call(window)：由于call的作用，this->window，因此输出结果为：2
 
+# 10 Apr 2017
+
+### replace
+
+stringObject.replace(regexp/substr,replacement)
+
+  regexp/substr 必需。规定子字符串或要替换的模式的 RegExp 对象。
+  replacement 必需。一个字符串值。规定了替换文本或生成替换文本的函数。
+
+```javascript
+var str = "DAVID IS david David ddavid DAVID IS david David ddavid";
+str.replace("David","Dar");
+// DAVID IS david Dar ddavid DAVID IS david David ddavid
+str.replace(/David/g,"Dar");
+// DAVID IS david Dar ddavid DAVID IS david Dar ddavid
+str.replace(/David/gi,"Dar");
+// Dar IS Dar Dar dDar Dar IS Dar Dar dDar
+```
+
+结果：
+
+1. replace 方法并不会 替换所有匹配的子串——而仅仅替换第一次匹配
+2. 正则  全局标志位(/g)
+3. 正则  大小写(/i)
+
+
+### Array.sort
+
+```javascript
+[
+    { name: "He", age: 30 },
+    { name: "The", age: 24 },
+    { name: "She", age: 28  }
+].sort(function(obj1, obj2) {
+    // Ascending: first age less than the previous
+    // 实现增序排列：前者的 age 小于后者
+    return obj1.age - obj2.age;
+});
+// 返回值:  
+// [
+//    { name: "The", age: 24 },
+//    { name: "She", age: 28 },
+//    { name: "He", age: 30 }
+// ]
+```
+
+### 用``length``属性来截断数组
+
+当数组重新赋值为 [] 时，确实会创建出一个新的空数组，但其它对老数组的引用仍然没变
+
+```javascript
+var myArray = yourArray = [1, 2, 3];
+
+myArray = []; // `yourArray` 仍然是 [1, 2, 3]
+
+// 正确的方法是保持引用  
+myArray.length = 0;  // `yourArray` 和 `myArray`（以及其它所有对这个数组的引用）都变成 [ ] 了
+```
+
+### 用``push``合并数组
+
+简单的原生方法实现数组合
+
+```javascript
+var mar = [4,5,6];
+var mer = [7,8,9];
+Array.prototype.push.apply(mar,mer);
+mar; // [4,5,6,7,8,9]
+```
