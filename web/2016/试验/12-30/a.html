@@ -1,0 +1,23 @@
+<html> 
+<head> 
+  <meta charset="utf-8">
+  <title> demo </title> 
+  <meta name="Author" content="xugang" /> 
+</head> 
+<body> 
+  <FORM name="frm" METHOD="get" ACTION="b.html" onsubmit="return foo()"> 
+    <INPUT TYPE="hidden" id="hid" name="hid"> 
+    <INPUT TYPE="submit" value="提交"> 
+  </FORM> 
+  <script>
+  	function foo(){ 
+  	  
+  	        var str = "abc"; 
+  	  
+  	        var frm = window.event.srcElement; 
+  	        frm.hid.value = str; 
+  	        return true; 
+  	 }
+  </script>
+</body> 
+</html>
