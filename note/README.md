@@ -159,3 +159,40 @@ var mer = [7,8,9];
 Array.prototype.push.apply(mar,mer);
 mar; // [4,5,6,7,8,9]
 ```
+
+# 22 June 2017
+
+### 用``?``代替``if...else``
+
+? 真 : 假，可嵌套
+
+```javascript
+const x = 20;
+
+// 正常 if...else 判断
+
+let big;
+if ( x > 10 ) { big = true; } else { big = false; }
+
+// 代替后
+
+const big = x > 10 ? true : false;
+
+// 多层嵌套
+
+const big = x > 10 ? '大于 10' : x < 5 ? '小于 5' : '大于 5 小于 10'
+```
+
+### 用``||``代替判断变量不是``null``、``undefined``或``空``
+
+```javascript
+// 正常判断一个变量不为 null、undefined、空
+
+if (bit !== null || bit !== undefined || bit !=='') {
+    let bit2 = bit;
+}
+
+// 代替后
+
+const bit2 = bit || 'new';
+```
