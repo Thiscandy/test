@@ -60,6 +60,111 @@ CSS 如何实现垂直居中？
       display: -webkit-flex;
       align-items: center; // 指定垂直居中
 
+  行内居中
+
+    text-align:center;
+
+    heighe,line-height;
+
+  绝对居中
+
+    position:absolute;
+    left:0; right:0; top:0; bottom:0;
+
+    position:absolute;
+    top:50%; left:50%;
+    margin-top;margin-left;
+
+  瀑布流实现
+
+    Flex 布局
+    justify-content
+
+Script 的 defer 和 async 属性
+
+  async 加载同步进行，完成后中断元素解析执行任务
+
+  defer 加载同步进行，但在元素解析完成后才会执行任务
+
+数组去重
+
+  indexOf 方法
+
+    返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。
+
+    function unique(arr){
+     var res = [];
+     for(var i=0; i<arr.length; i++){
+      if(res.indexOf(arr[i]) == -1){
+       res.push(arr[i]);
+      }
+     }
+     return res;
+    }
+
+  new Set 方法
+
+    function unique10(arr){
+     //Set数据结构，它类似于数组，其成员的值都是唯一的
+     return Array.from(new Set(arr)); // 利用Array.from将Set结构转换成数组
+    }
+  
+
+jQuery
+
+  $.extend()
+    函数用于将一个或多个对象的内容合并到目标对象
+  
+  append()
+    在被选元素内的结尾插入指定内容
+  
+  data()
+    向被选元素附加数据，或者从被选元素获取数据
+
+  offset()
+    返回或设置匹配元素相对于文档的偏移
+
+  on('scroll',function)
+    滚动条事件
+
+  height()
+    返回或设置匹配元素的高度
+
+  children()
+    返回被选元素的所有直接子元素
+
+  eq()
+    将匹配元素集缩减值指定 index 上的一个
+
+  hasClass()
+    检查被选元素是否包含指定的 class
+
+  removeClass()
+    从被选元素移除一个或多个类
+
+  addClass()
+    向被选元素添加一个或多个类
+
+  animate()
+    执行 CSS 属性集的自定义动画
+
+Javascript
+
+  Node.contains()
+    表示传入的节点是否为该节点的后代节点
+
+  Element.getBoundingClientRect()
+    返回值是一个 DOMRect 对象,包含了一组用于描述边框的只读属性
+        left
+        top
+        right
+        bottom
+
+  Element.scrollHeight
+    一个元素内容高度，包括由于溢出导致的视图中不可见内容
+
+
+
 split()
 
   方法用于把一个字符串分割成字符串数组

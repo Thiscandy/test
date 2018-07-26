@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JS冒泡排序优化</title>
+</head>
+<body>
+
+<h1>冒泡排序</h1>
+
+<script type="text/javascript">
+
+// 冒泡排序
+function BubbleSort1( arr ) {
+	var tmp,  // 临时变量
+		len = arr.length;  // 数组长度
+
+	for ( var i = 0; i < len; i++ ) {
+
+		// console.log('外比较第'+i+'次');
+
+		for ( var j = 0; j < len; j++ ) {
+
+			// console.log('--内比较第'+j+'次');
+
+			if ( arr[j] > arr[j+1] ) {
+				tmp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = tmp;
+			}
+		}
+	}
+
+	var obj = {
+		i:i,
+		j:j,
+		arr:arr
+	}
+
+	return obj;
+}
+
+// 冒泡排序-优化去掉外循环无用排序
+function BubbleSort2( arr ) {
+	var tmp,   // 临时变量
+		sign,  // 是否交换标志
+		len = arr.length;  // 数组长度
+
+	for ( var i = 0; i < len; i++ ) {
+
+		sign = true;
+
+		// console.log('外比较第'+i+'次');
+
+		for ( var j = 0; j < len; j++ ) {
+
+			// console.log('--内比较第'+j+'次');
+
+			if ( arr[j] > arr[j+1] ) {
+				tmp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = tmp;
+				sign = false;
+
+				// console.log(arr);
+			}
+		}
+
+		if ( sign ) break;
+	}
+
+	var obj = {
+		i:i,
+		j:j,
+		arr:arr
+	}
+
+	return obj;
+}
+
+// 冒泡排序-优化去掉内循环无用排序
+function BubbleSort3(arr){
+	var tmp;    // 临时变量
+	var end;    // 最后交换位置
+	var sign;   // 是否交换标志
+	var len = arr.length;  // 外围循环长度
+	var end = arr.length;    // 内围循环长度
+
+	for (var i = 0; i < len; i++) {
+
+		sign = true;
+
+		// console.log('外比较第'+i+'次');
+
+		for (var j = 0; j < end; j++ ){
+
+			// console.log('--内比较第'+j+'次');
+
+			if(arr[j]>arr[j+1]) {
+
+				tmp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = tmp;
+				sign = false;
+
+				// console.log(arr);
+
+			}
+
+		}
+		if ( sign ) break;
+		end--;
+	}
+
+	var obj = {
+		i:i,
+		j:j,
+		arr:arr
+	}
+
+	return obj;
+}
+
+(function(){
+
+var arrer = [5,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7,8,6,3,9,2,1,7];
+
+console.time('time1');
+console.log(BubbleSort1(arrer.slice(0)));
+console.timeEnd('time1');
+
+console.time('time2');
+console.log(BubbleSort2(arrer.slice(0)));
+console.timeEnd('time2');
+
+console.time('time3');
+console.log(BubbleSort3(arrer.slice(0)));
+console.timeEnd('time3');
+
+})();
+
+
+</script>
+
+</body>
+</html>

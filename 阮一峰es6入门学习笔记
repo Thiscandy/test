@@ -365,17 +365,129 @@ ES6 声明变量的六种方法
 
   二进制和八进制表示法
 
+    二进制 前缀 0b（或0B）
+    八进制 前缀 0o（或0O）
+    
+      0b111110111 === 503 // true
+    
+      0o767 === 503 // true
+
+      Number('0b111')  // 7
+    
+      Number('0o10')  // 8
+
   Number.isFinite(), Number.isNaN()
+
+    Number.isFinite() 用来检查一个数值是否为有限的（finite），即不是 Infinity
+
+      参数类型不是数值，Number.isFinite 一律返回 false
+
+    Number.isNaN() 用来检查一个值是否为 NaN
+
+      参数类型不是NaN，Number.isNaN一律返回false
 
   Number.parseInt(), Number.parseFloat()
 
+    ES6 将全局方法 parseInt() 和 parseFloat()，移植到Number对象上面，行为完全保持不变
+
   Number.isInteger()
+
+    Number.isInteger()用来判断一个数值是否为整数
+
+      参数不是数值，Number.isInteger 返回 false
+
+        如果数值的精度超过 53 个二进制位，第 54 位及后面的位就会被丢弃，Number.isInteger可能会误判
+
+          Number.isInteger(3.0000000000000002) // true
+
+        对数据精度的要求较高，不建议使用Number.isInteger()判断一个数值是否为整数
 
   Number.EPSILON
 
+    Number.EPSILON 实际上是 JavaScript 能够表示的最小精度。误差如果小于这个值，就可以认为已经没有意义了，即不存在误差了
+
   安全整数和 Number.isSafeInteger()
 
+    JavaScript 能够准确表示的整数范围在-2^53到2^53之间（不含两个端点）
+
+      Number.MAX_SAFE_INTEGER 表示为 2^53 (9007199254740991)
+  
+        Number.MAX_SAFE_INTEGER === Math.pow(2, 53) - 1
+        // true
+        Number.MAX_SAFE_INTEGER === 9007199254740991
+        // true
+  
+      Number.MIN_SAFE_INTEGER 表示为 -2^53 (-9007199254740991)
+  
+        Number.MIN_SAFE_INTEGER === -Number.MAX_SAFE_INTEGER
+        // true
+        Number.MIN_SAFE_INTEGER === -9007199254740991
+        // true
+
+    Number.isSafeInteger() 则是用来判断一个整数是否落在这个范围之内
+
+      这个函数的实现很简单，就是跟安全整数的两个边界值比较一下
+
+        验证运算结果是否落在安全整数的范围内，不要只验证运算结果，而要同时验证参与运算的每个值
+
+          Number.isSafeInteger(9007199254740993)
+          // false
+          Number.isSafeInteger(990)
+          // true
+          Number.isSafeInteger(9007199254740993 - 990)
+          // true
+          9007199254740993 - 990
+          // 返回结果 9007199254740002
+          // 正确答案应该是 9007199254740003
+
   Math 对象的扩展
+
+    ES6 在 Math 对象上新增了 17 个与数学相关的方法。所有这些方法都是静态方法，只能在 Math 对象上调用
+
+      Math.trunc() 用于去除一个数的小数部分，返回整数部分
+
+        对于非数值，Math.trunc内部使用Number方法将其先转为数值
+
+          Math.trunc('123.456') // 123
+          Math.trunc(true) //1
+          Math.trunc(false) // 0
+          Math.trunc(null) // 0
+
+        对于空值和无法截取整数的值，返回 NaN
+
+          Math.trunc(NaN);      // NaN
+          Math.trunc('foo');    // NaN
+          Math.trunc();         // NaN
+          Math.trunc(undefined) // NaN
+
+      Math.sign() 用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值
+
+        返回五种值
+
+          - 参数为正数，返回+1
+
+              Math.sign(-5) // -1
+          
+          - 参数为负数，返回-1
+
+              Math.sign(5) // +1
+          
+          - 参数为 0，返回0
+
+              Math.sign(0) // +0
+          
+          - 参数为-0，返回-0
+
+              Math.sign(-0) // -0
+          
+          - 其他值，返回NaN
+
+              Math.sign(NaN) // NaN
+
+        参数是非数值，会自动转为数值。对于那些无法转为数值的值，会返回NaN
+
+      Math.cbrt() 用于计算一个数的立方根
+
 
   指数运算符
 
