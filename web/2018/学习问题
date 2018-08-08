@@ -18,6 +18,24 @@ vue-cli起的webpack项目 ip 不可以访问
   
     已安装的可以在文件目录下的 .eslintrc 文件夹中修改错误提示配置
 
+vue-router
+
+  在 app.vue 里加挂载点 
+
+    <router-view></router-view>
+
+  直接用例子 template: '<div></div>' 需要在 webpack 加解析
+
+    resolve: {
+      alias: {
+        vue: 'vue/dist/vue.js'
+      }
+    }
+
+vuex
+
+  使用 mapState 辅助函数需要先把 vuex 注册到 vue 里
+
 从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)
 
   查看是否缓存，缓存是否最新
@@ -163,7 +181,8 @@ this
         }
         add.apply([1, 2, 3], [10, 50]); // 63
 
-原型链
+继承与原型链
+
 
 闭包
 
@@ -217,6 +236,14 @@ this
 防抖与节流
 
   都是用来控制某个函数在一定时间内执行多少次的技巧
+
+逗号表达式
+
+  1. 逗号表达式的运算过程为：从左往右逐个计算表达式
+
+  2. 逗号表达式作为一个整体，它的值为最后一个表达式
+
+  3. 逗号运算符的优先级别在所有运算符中最低
 
 SQL
 
@@ -316,6 +343,18 @@ JS 原生方法
   
     方法可从已有的数组中返回选定的元素
 
+  .trim()
+
+    去前后空格
+
+  .replace(/[\r\n]/g, "")
+
+    去回车换行
+
+  .match(/<\w+>(.*?)<\/\w+>/g)[0]
+
+    正则匹配第一个 html 标签
+
 Laravel
 
   php artisan serve 启动服务
@@ -325,3 +364,56 @@ Laravel
 一行代码禁止网页的右键和复制功能
 
   <body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
+
+phpStudy
+
+  自定义 403、404 页面
+
+    修改配置
+
+      phpStudy>Apache>conf 下面的 httpd.conf 文件
+  
+      `-- httpd.conf
+        <Directory />
+        Options FollowSymLinks
+        AllowOverride All
+        </Directory>
+  
+        ErrorDocument 404 /missing.html
+      `
+
+    在网站根目录建 .htaccess
+
+      `-- .htaccess
+        ErrorDocument 403 /404.html
+        ErrorDocument 404 /404.html
+      `
+
+    建自定义 404 页面 名字为 404.html
+
+打包错误
+
+  错误
+
+    Chunk.entrypoints: Use Chunks.groupsIterable and filter by instanceof Entrypoint instead
+
+  问题
+
+    插件不是 4.0.0
+
+  解决方法
+
+    npm install --save-dev extract-text-webpack-plugin@next
+    会下载到+ extract-text-webpack-plugin@4.0.0-beta.0 
+
+  错误
+
+    Cannot use [chunkhash] or [contenthash] for chunk in '[name].
+
+  问题
+
+    热更新(HMR)不能和[chunkhash]同时使用
+
+  解决方法
+
+    去掉热更新
