@@ -1,0 +1,120 @@
+
+
+Git
+
+  git init 
+	
+    把当前目录初始化变成 Git 可管理的仓库
+
+  git add <file>
+
+    把文件添加到仓库
+
+  git reset HEAD <file>
+
+    把文件从暂存区的修改撤销掉，重新放回工作区
+
+  git checkout -- <file>
+
+    可以丢弃工作区的修改，回到最新版本的文件
+
+  git rm <file>
+
+    删除文件
+
+  git commit -m <message>
+
+    把文件提交到仓库
+
+      file changed 文件更改
+
+      insertions   插入行数
+
+  git status
+
+    告诉仓库当前的状态
+
+  git diff <file>
+
+    查看当前文件哪里被修改了
+
+  git log
+
+    查看历史提交记录
+
+  git reset --hard HEAD^
+
+    返回上一个版本
+
+  git reset --hard <commit>
+
+    恢复指定 <commit> 版本
+
+  git reflog
+
+    查看命令历史，以便要回到那个版本状态下
+
+  git branch
+
+  	查看分支
+
+  git branch <name>
+
+  	创建分支
+
+  git checkout <name>
+
+  	切换分支
+
+  git checkout -b <name>
+
+  	创建+切换分支
+
+  git merge <name>
+
+  	合并某分支到当前分支
+
+  git branch -d <name>
+
+  	删除分支
+
+  git log --graph
+
+  	查看分支合并图
+
+  git stash
+
+  	存储当前工作区
+
+  git stash list
+
+  	查看存储的工作区
+
+  git stash apply
+
+  	恢复存储的工作区
+
+  git stash drop
+
+  	删除存储的工作区
+
+  git stash pop
+
+  	恢复的同时把stash内容也删了
+
+  git branch -D <name>
+
+  	强行删除没有被合并过的分支
+
+  git remote -v
+
+  	查看远程库的详细信息
+
+  git push origin master
+
+  	推送分支
+
+  git push origin dev
+
+  	推送其他分支
+

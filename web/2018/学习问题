@@ -20,7 +20,7 @@ vue-cli起的webpack项目 ip 不可以访问
 
 vue-router
 
-  在 app.vue 里加挂载点 
+  在 app.vue 里加挂载点
 
     <router-view></router-view>
 

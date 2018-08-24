@@ -1,0 +1,10 @@
+cd e:/fff  切换到哪个目录下
+cd ..      回退到上一个目录
+pwd        打印工作目录
+ls         列出当前目录中的所有文件
+touch      新建一个文件
+rm         删除一个文件
+mkdir      新建一个文件夹
+rm -r      删除一个文件夹
+mv         移动文件, mv index.html src
+reset      清屏

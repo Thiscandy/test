@@ -2,7 +2,11 @@
 
 ### 利用 Array(n).fill().map(...) 可以方便快速地构造数组：
 
-> Array(10).fill().map((_,i) => i+1); // 得到 [1,2,3,4,5,6,7,8,9,10]
+```javascript
+
+Array(10).fill().map((_,i) => i+1); // 得到 [1,2,3,4,5,6,7,8,9,10]
+
+```
 
 ### 下面代码的输出值是
 
@@ -44,9 +48,9 @@ alert(0);
 考察点:**定时器**、``event loop``、**闭包**
 
 setTimeout()只是将任务添加到任务队列中而已，要等到主执行栈中的代码执行完之后，才会调用定时器中的回调函数。
-1. 0
-2. 2（闭包，当test执行完成之后，a为2）
-3. 3（闭包，第一个定时器执行完之后，修改了a的值为3）
+> 0
+> 2（闭包，当test执行完成之后，a为2）
+> 3（闭包，第一个定时器执行完之后，修改了a的值为3）
 
 # 21 Mar 2017
 
@@ -86,9 +90,9 @@ obj.b.call(window);
 
 结果：
 
-1. obj.b()：此时this->obj，因此输出：1
-2. objb()：由于是在全局作用域调用，this->window，因此输出结果为：2
-3. obj.b.call(window)：由于call的作用，this->window，因此输出结果为：2
+> obj.b()：此时this->obj，因此输出：1
+> objb()：由于是在全局作用域调用，this->window，因此输出结果为：2
+> obj.b.call(window)：由于call的作用，this->window，因此输出结果为：2
 
 # 10 Apr 2017
 
@@ -100,20 +104,27 @@ stringObject.replace(regexp/substr,replacement)
   replacement 必需。一个字符串值。规定了替换文本或生成替换文本的函数。
 
 ```javascript
+
 var str = "DAVID IS david David ddavid DAVID IS david David ddavid";
 str.replace("David","Dar");
+
 // DAVID IS david Dar ddavid DAVID IS david David ddavid
+
 str.replace(/David/g,"Dar");
+
 // DAVID IS david Dar ddavid DAVID IS david Dar ddavid
+
 str.replace(/David/gi,"Dar");
+
 // Dar IS Dar Dar dDar Dar IS Dar Dar dDar
+
 ```
 
 结果：
 
-1. replace 方法并不会 替换所有匹配的子串——而仅仅替换第一次匹配
-2. 正则  全局标志位(/g)
-3. 正则  大小写(/i)
+> replace 方法并不会 替换所有匹配的子串——而仅仅替换第一次匹配
+> 正则  全局标志位(/g)
+> 正则  大小写(/i)
 
 
 ### Array.sort
@@ -196,3 +207,46 @@ if (bit !== null || bit !== undefined || bit !=='') {
 
 const bit2 = bit || 'new';
 ```
+
+# 12 Jul 2017
+
+### ``undefined``和``null``的区别
+
+``null``表示"**没有对象**",即该处不应该有值
+
+1. 作为函数的参数,表示该函数的参数不是对象
+2. 作为对象原型链的终点
+
+```javascript
+
+Object.getPrototypeOf(Object.prototype)
+
+// null
+
+```
+
+``undefined``表示"**缺少值**",就是此处应该有一个值,但是还没有定义
+
+1. 变量被声明了,但没有赋值时,就等于undefined
+2. 调用函数时,应该提供的参数没有提供,该参数等于undefined
+3. 对象没有赋值的属性,该属性的值为undefined
+4. 函数没有返回值时,默认返回undefined
+
+```javascript
+
+var i;
+i  //  undefined
+
+function f(x) { console.log(x) }
+f()  // undefined
+
+var o =  new Object();
+o.p  // undefined
+
+var x = f();
+x  //  undefined
+
+```
+
+
+
